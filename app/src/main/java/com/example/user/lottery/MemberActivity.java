@@ -7,6 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONObject;
+
+import java.util.List;
+
 public class MemberActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
@@ -20,7 +24,48 @@ public class MemberActivity extends AppCompatActivity {
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
+        getData();
         setFnBtn();
+    }
+
+    public void getData() {
+        new Thread() {
+            @Override
+            public void run() {
+                getMemberData();
+            }
+        }.start();
+    }
+
+    public void getMemberData() {
+        try {
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_get_mem_data");
+            mu.sendCookie(cookie);
+            int i = mu.getResponseCode();
+            Log.i("troy", "----" + i + "----");
+
+            JSONObject jo = mu.getJSONObjectData();
+            int len  = jo.length();
+            Log.i("troy", "共有" + len + "筆資料");
+
+//            List<String> a = mu.getHtml();
+//            for (String line : a) {
+//                Log.i("troy", line);
+//            }
+//            JSONArray ja = mu.getJSONArrayData();
+//            int len = ja.length();
+//            Log.i("troy", "共有" + len + "筆資料");
+//            for (int i = 0; i < len; i++) {
+//                JSONObject rec = ja.getJSONObject(i);
+//                String issueno = rec.getString("issueno");
+//                String gold = rec.getString("gold");
+//                String war = rec.getString("war");
+//                String win = rec.getString("win");
+//                String profit = rec.getString("profit");
+//            }
+        } catch (Exception e) {
+            Log.i("troy", e.toString());
+        }
     }
 
     public void setFnBtn() {

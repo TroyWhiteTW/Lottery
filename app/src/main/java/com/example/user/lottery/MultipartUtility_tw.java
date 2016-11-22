@@ -56,6 +56,10 @@ public class MultipartUtility_tw {
         return httpConn.getHeaderField("Set-Cookie");
     }
 
+    public int getResponseCode() throws IOException {
+        return httpConn.getResponseCode();
+    }
+
     public List<String> getHtml() throws IOException {
         List<String> response = new ArrayList<String>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
