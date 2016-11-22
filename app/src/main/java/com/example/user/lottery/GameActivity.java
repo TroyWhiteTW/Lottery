@@ -7,13 +7,17 @@ import android.view.View;
 import android.widget.Button;
 
 public class GameActivity extends AppCompatActivity {
-    Button btn_history, btn_member, btn_game, btn_list;
+    private Button btn_history, btn_member, btn_game, btn_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        setFnBtn();
+    }
+
+    public void setFnBtn() {
         btn_list = (Button) findViewById(R.id.btn_list_game);
         btn_game = (Button) findViewById(R.id.btn_game_game);
         btn_member = (Button) findViewById(R.id.btn_member_game);

@@ -49,11 +49,27 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <CheckBox
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="同意會員協議"/>
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="同意會員協議" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="查看會員協議內容"
+                    android:textColor="#0000ff"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_login"
