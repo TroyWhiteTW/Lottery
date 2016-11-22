@@ -3,16 +3,22 @@ package com.example.user.lottery;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class GameActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
+    private String cookie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        Intent it = getIntent();
+        cookie = it.getStringExtra("cookie");
+        Log.i("troy", cookie);
 
         setFnBtn();
     }
@@ -27,6 +33,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(GameActivity.this, ListActivity.class);
+                it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();
             }
@@ -41,6 +48,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(GameActivity.this, MemberActivity.class);
+                it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();
             }
@@ -49,6 +57,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(GameActivity.this, HistoryActivity.class);
+                it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();
             }

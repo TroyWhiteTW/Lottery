@@ -1,5 +1,6 @@
 package com.example.user.lottery;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,9 +67,15 @@ public class MultipartUtility_tw {
         return response;
     }
 
-    public JSONObject getJsonData() throws IOException, JSONException {
+    public JSONObject getJSONObjectData() throws IOException, JSONException {
         String line = getHtml().get(0);
         JSONObject jo = new JSONObject(line);
+        return jo;
+    }
+
+    public JSONArray getJSONArrayData() throws IOException, JSONException {
+        String line = getHtml().get(0);
+        JSONArray jo = new JSONArray(line);
         return jo;
     }
 

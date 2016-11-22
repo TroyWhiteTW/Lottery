@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
-        getData();
+//        getData();
         setFnBtn();
     }
 
@@ -53,10 +53,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
-    }
-
-    public void getHistoryData() {
-
     }
 
     public void setFnBtn() {

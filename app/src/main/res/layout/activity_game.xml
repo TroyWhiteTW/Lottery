@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#fffec9"
-            android:text="明細"
+            android:text="本期明細"
             android:textStyle="bold" />
 
         <Button

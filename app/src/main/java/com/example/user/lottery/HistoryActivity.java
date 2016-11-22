@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -45,26 +46,24 @@ public class HistoryActivity extends AppCompatActivity {
 
     public void getHistoryData() {
         try {
-            MultipartUtility_tw mu_4 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_get_order_history");
-            mu_4.sendCookie(cookie);
-            List<String> ret_4 = mu_4.getHtml();
-            for (String line2 : ret_4) {
-                Log.i("troy", line2);
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_get_order_history");
+            mu.sendCookie(cookie);
+//            List<String> a = mu_4.getHtml();
+//            for (String line : a) {
+//                Log.i("troy", line);
+//            }
+            JSONArray ja = mu.getJSONArrayData();
+            int len = ja.length();
+            Log.i("troy", "共有" + len + "筆資料");
+            for (int i = 0; i < len; i++) {
+                JSONObject rec = ja.getJSONObject(i);
+                String issueno = rec.getString("issueno");
+                String gold = rec.getString("gold");
+                String war = rec.getString("war");
+                String win = rec.getString("win");
+                String profit = rec.getString("profit");
+                list(issueno, gold, war, win, profit);
             }
-            String line = ret_4.get(0);
-            JSONObject jo = new JSONObject(line);
-            String v1 = jo.getJSONObject(String.valueOf(0)).getString("issueno");
-            Log.i("troy", v1);
-            String v2 = jo.getJSONObject(String.valueOf(0)).getString("gold");
-            Log.i("troy", v2);
-            String v3 = jo.getJSONObject(String.valueOf(0)).getString("war");
-            Log.i("troy", v3);
-            String v4 = jo.getJSONObject(String.valueOf(0)).getString("win");
-            Log.i("troy", v4);
-            String v5 = jo.getJSONObject(String.valueOf(0)).getString("profit");
-            Log.i("troy", v5);
-
-            list(v1, v2, v3, v4, v5);
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
@@ -80,6 +79,7 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(HistoryActivity.this, ListActivity.class);
+                it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();
             }
@@ -88,6 +88,7 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(HistoryActivity.this, GameActivity.class);
+                it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();
             }
@@ -96,6 +97,7 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(HistoryActivity.this, MemberActivity.class);
+                it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();
             }

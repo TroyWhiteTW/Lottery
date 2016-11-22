@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#a47bbe"
-            android:text="明細"
+            android:text="本期明細"
             android:textStyle="bold" />
 
         <Button
@@ -86,8 +86,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#ffe6ca"
             android:gravity="center"
@@ -96,8 +96,8 @@
             android:textColor="#000000" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#ffe6ca"
             android:gravity="center"
@@ -106,8 +106,8 @@
             android:textColor="#000000" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#ffe6ca"
             android:gravity="center"
@@ -116,8 +116,8 @@
             android:textColor="#000000" />
 
         <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#ffe6ca"
             android:gravity="center"
@@ -131,8 +131,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -140,8 +140,8 @@
             android:textAlignment="center" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -149,8 +149,8 @@
             android:textAlignment="center" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -158,8 +158,8 @@
             android:textAlignment="center" />
 
         <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:buttonTint="#848484"
@@ -174,8 +174,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -183,8 +183,8 @@
             android:textAlignment="center" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -192,8 +192,8 @@
             android:textAlignment="center" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -201,8 +201,8 @@
             android:textAlignment="center" />
 
         <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:buttonTint="#848484"
