@@ -5,17 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.json.JSONObject;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class MemberActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
     private TextView rcedits, rcedits_use;
+    private Spinner sp0;
+    private ArrayAdapter<String> lunchList;
+    private String[] lunch = {"雞腿飯", "魯肉飯", "排骨飯", "水餃", "陽春麵"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,9 @@ public class MemberActivity extends AppCompatActivity {
 
         rcedits = (TextView) findViewById(R.id.rcedits);
         rcedits_use = (TextView) findViewById(R.id.rcedits_use);
+
+        sp0 = (Spinner) findViewById(R.id.sp0);
+
 
         getData();
         setFnBtn();
@@ -50,26 +59,20 @@ public class MemberActivity extends AppCompatActivity {
             Log.i("troy", "----" + i + "----");
 
             JSONObject jo = mu.getJSONObjectData();
-            int len  = jo.length();
+            int len = jo.length();
             Log.i("troy", "共有" + len + "筆資料");
 
             rcedits.setText(jo.getJSONObject("head_data").getString("rcedits"));
             rcedits_use.setText(jo.getJSONObject("head_data").getString("rcedits_use"));
-//            List<String> a = mu.getHtml();
-//            for (String line : a) {
-//                Log.i("troy", line);
-//            }
-//            JSONArray ja = mu.getJSONArrayData();
-//            int len = ja.length();
-//            Log.i("troy", "共有" + len + "筆資料");
-//            for (int i = 0; i < len; i++) {
-//                JSONObject rec = ja.getJSONObject(i);
-//                String issueno = rec.getString("issueno");
-//                String gold = rec.getString("gold");
-//                String war = rec.getString("war");
-//                String win = rec.getString("win");
-//                String profit = rec.getString("profit");
-//            }
+
+            lunchList = new ArrayAdapter<>(MemberActivity.this, android.R.layout.simple_spinner_item, lunch);
+            sp0.setAdapter(lunchList);
+
+            Iterator<String> iter = jo.getJSONObject("huishui_list").getJSONObject("list").getJSONObject("1").keys();
+            while (iter.hasNext()) {
+                String key = iter.next();
+                Log.i("troy", key);
+            }
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
