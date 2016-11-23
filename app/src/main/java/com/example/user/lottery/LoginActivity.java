@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-    private Button btn_login;
+    private Button btn_login, btn_agreement;
     private String cookie;
     private AutoCompleteTextView login_act;
     private EditText login_pw;
@@ -27,6 +27,13 @@ public class LoginActivity extends AppCompatActivity {
         login_act = (AutoCompleteTextView) findViewById(R.id.login_act);
         login_pw = (EditText) findViewById(R.id.login_pw);
 
+        btn_agreement = (Button) findViewById(R.id.btn_agreement);
+        btn_agreement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, AgreementActivity.class));
+            }
+        });
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

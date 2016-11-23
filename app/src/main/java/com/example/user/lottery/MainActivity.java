@@ -40,16 +40,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void getTestData() {
         try {
-            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_head_data");
+            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
             mu_2.sendCookie(cookie);
             List<String> ret_2 = mu_2.getHtml();
             for (String line : ret_2) {
                 Log.i("troy", line);
             }
-            String line = ret_2.get(0);
-            JSONObject jo = new JSONObject(line);
-            String v1 = jo.getString("username");
-            Log.i("troy", v1);
+//            String line = ret_2.get(0);
+//            JSONObject jo = new JSONObject(line);
+//            String v1 = jo.getString("username");
+//            Log.i("troy", v1);
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }

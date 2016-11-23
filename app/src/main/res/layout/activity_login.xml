@@ -56,12 +56,14 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/check_agreement"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="同意會員協議" />
 
                 <Button
+                    android:id="@+id/btn_agreement"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

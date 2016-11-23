@@ -21,7 +21,8 @@
         <activity android:name=".HistoryActivity" />
         <activity android:name=".MemberActivity" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".ListActivity"></activity>
+        <activity android:name=".ListActivity" />
+        <activity android:name=".AgreementActivity"></activity>
     </application>
 
 </manifest>

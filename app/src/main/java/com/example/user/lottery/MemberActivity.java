@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.json.JSONObject;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public class MemberActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
+    private TextView rcedits, rcedits_use;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,9 @@ public class MemberActivity extends AppCompatActivity {
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
+
+        rcedits = (TextView) findViewById(R.id.rcedits);
+        rcedits_use = (TextView) findViewById(R.id.rcedits_use);
 
         getData();
         setFnBtn();
@@ -48,6 +53,8 @@ public class MemberActivity extends AppCompatActivity {
             int len  = jo.length();
             Log.i("troy", "共有" + len + "筆資料");
 
+            rcedits.setText(jo.getJSONObject("head_data").getString("rcedits"));
+            rcedits_use.setText(jo.getJSONObject("head_data").getString("rcedits_use"));
 //            List<String> a = mu.getHtml();
 //            for (String line : a) {
 //                Log.i("troy", line);
