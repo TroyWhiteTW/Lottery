@@ -1,7 +1,10 @@
 package com.example.user.lottery;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,29 +16,34 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.List;
-
 public class HistoryActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
     private LinearLayout historyList;
+    private ProgressDialog pDialog;
+    private UIHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+        handler = new UIHandler();
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
         historyList = (LinearLayout) findViewById(R.id.historyList);
+        pDialog = new ProgressDialog(this);
+        pDialog.setTitle("Loading Data");
+        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         getData();
         setFnBtn();
     }
 
     public void getData() {
+//        pDialog.show();
         new Thread() {
             @Override
             public void run() {
@@ -62,11 +70,21 @@ public class HistoryActivity extends AppCompatActivity {
                 String war = rec.getString("war");
                 String win = rec.getString("win");
                 String profit = rec.getString("profit");
-                list(issueno, gold, war, win, profit);
+
+                Message msg = new Message();
+                Bundle b = new Bundle();
+                b.putString("issueno", issueno);
+                b.putString("gold", gold);
+                b.putString("war", war);
+                b.putString("win", win);
+                b.putString("profit", profit);
+                msg.setData(b);
+                handler.sendMessage(msg);
             }
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
+//        handler.sendEmptyMessage(0);
     }
 
     public void setFnBtn() {
@@ -158,5 +176,23 @@ public class HistoryActivity extends AppCompatActivity {
         ll.addView(tv4);
         ll.addView(tv5);
         historyList.addView(ll);
+    }
+
+    private class UIHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            String issueno = msg.getData().getString("issueno");
+            String gold = msg.getData().getString("gold");
+            String war = msg.getData().getString("war");
+            String win = msg.getData().getString("win");
+            String profit = msg.getData().getString("profit");
+            list(issueno, gold, war, win, profit);
+
+//            if (pDialog.isShowing()) {
+//                pDialog.dismiss();
+//            }
+        }
     }
 }

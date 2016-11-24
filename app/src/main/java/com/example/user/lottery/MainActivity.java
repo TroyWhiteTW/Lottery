@@ -1,12 +1,16 @@
 package com.example.user.lottery;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
-//        getData();
+        getData();
         setFnBtn();
     }
 
@@ -40,16 +44,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void getTestData() {
         try {
-            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
-            mu_2.sendCookie(cookie);
-            List<String> ret_2 = mu_2.getHtml();
-            for (String line : ret_2) {
-                Log.i("troy", line);
-            }
-//            String line = ret_2.get(0);
-//            JSONObject jo = new JSONObject(line);
-//            String v1 = jo.getString("username");
-//            Log.i("troy", v1);
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_exe_order_print");
+            mu.sendCookie(cookie);
+            mu.postKeyValue("idarray", "116898159");
+//            int i = mu.getResponseCode();
+//            Log.i("troy", "----" + i + "----");
+//            List<String> ret_2 = mu.getHtml();
+//            for (String line : ret_2) {
+//                Log.i("troy", line);
+//            }
+            String a = mu.getJSONObjectData().getString("list");
+            Log.i("troy", a);
+            String rec = new JSONArray(a).getJSONObject(0).getString("ticket");
+            Log.i("troy", rec);
+
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }

@@ -1,7 +1,10 @@
 package com.example.user.lottery;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,29 +16,34 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.List;
-
 public class ListActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
     private LinearLayout orderList;
+    private ProgressDialog pDialog;
+    private UIHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        handler = new UIHandler();
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
         orderList = (LinearLayout) findViewById(R.id.orderList);
+        pDialog = new ProgressDialog(this);
+        pDialog.setTitle("Loading Data");
+        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         getData();
         setFnBtn();
     }
 
     public void getData() {
+//        pDialog.show();
         new Thread() {
             @Override
             public void run() {
@@ -60,11 +68,19 @@ public class ListActivity extends AppCompatActivity {
                 String number = rec.getString("number");
                 String money = rec.getString("money");
                 String frank = rec.getString("frank");
-                list(number, money, frank);
+
+                Message msg = new Message();
+                Bundle b = new Bundle();
+                b.putString("number", number);
+                b.putString("money", money);
+                b.putString("frank", frank);
+                msg.setData(b);
+                handler.sendMessage(msg);
             }
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
+//        handler.sendEmptyMessage(0);
     }
 
     public void setFnBtn() {
@@ -131,7 +147,7 @@ public class ListActivity extends AppCompatActivity {
         tv3.setBackgroundColor(Color.parseColor("#ffffff"));
         tv3.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         TextView tv4 = new TextView(ListActivity.this);
-        tv4.setText("X");
+        tv4.setText("--");
         tv4.setTextSize(20);
         tv4.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
         tv4.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -141,5 +157,21 @@ public class ListActivity extends AppCompatActivity {
         ll.addView(tv3);
         ll.addView(tv4);
         orderList.addView(ll);
+    }
+
+    private class UIHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            String number = msg.getData().getString("number");
+            String money = msg.getData().getString("money");
+            String frank = msg.getData().getString("frank");
+            list(number, money, frank);
+
+//            if (pDialog.isShowing()) {
+//                pDialog.dismiss();
+//            }
+        }
     }
 }

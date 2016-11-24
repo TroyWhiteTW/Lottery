@@ -1,6 +1,9 @@
 package com.example.user.lottery;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,36 +16,42 @@ import android.widget.TextView;
 import org.json.JSONObject;
 
 import java.util.Iterator;
-import java.util.List;
 
 public class MemberActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
-    private TextView rcedits, rcedits_use;
+    private ProgressDialog pDialog;
+    private UIHandler handler;
+    private TextView tv_rcedits, tv_rcedits_use;
     private Spinner sp0;
     private ArrayAdapter<String> lunchList;
-    private String[] lunch = {"雞腿飯", "魯肉飯", "排骨飯", "水餃", "陽春麵"};
+    private String[] lunch = {"a", "b", "c", "d", "e"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member);
 
+        handler = new UIHandler();
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
-        rcedits = (TextView) findViewById(R.id.rcedits);
-        rcedits_use = (TextView) findViewById(R.id.rcedits_use);
+        pDialog = new ProgressDialog(this);
+        pDialog.setTitle("Loading Data");
+        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+        tv_rcedits = (TextView) findViewById(R.id.rcedits);
+        tv_rcedits_use = (TextView) findViewById(R.id.rcedits_use);
 
         sp0 = (Spinner) findViewById(R.id.sp0);
-
 
         getData();
         setFnBtn();
     }
 
     public void getData() {
+//        pDialog.show();
         new Thread() {
             @Override
             public void run() {
@@ -55,18 +64,20 @@ public class MemberActivity extends AppCompatActivity {
         try {
             MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_get_mem_data");
             mu.sendCookie(cookie);
-            int i = mu.getResponseCode();
-            Log.i("troy", "----" + i + "----");
 
             JSONObject jo = mu.getJSONObjectData();
             int len = jo.length();
             Log.i("troy", "共有" + len + "筆資料");
 
-            rcedits.setText(jo.getJSONObject("head_data").getString("rcedits"));
-            rcedits_use.setText(jo.getJSONObject("head_data").getString("rcedits_use"));
+            String rcedits = jo.getJSONObject("head_data").getString("rcedits");
+            String rcedits_use = jo.getJSONObject("head_data").getString("rcedits_use");
 
-            lunchList = new ArrayAdapter<>(MemberActivity.this, android.R.layout.simple_spinner_item, lunch);
-            sp0.setAdapter(lunchList);
+            Message msg = new Message();
+            Bundle b = new Bundle();
+            b.putString("rcedits", rcedits);
+            b.putString("rcedits_use", rcedits_use);
+            msg.setData(b);
+            handler.sendMessage(msg);
 
             Iterator<String> iter = jo.getJSONObject("huishui_list").getJSONObject("list").getJSONObject("1").keys();
             while (iter.hasNext()) {
@@ -76,6 +87,7 @@ public class MemberActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
+//        handler.sendEmptyMessage(0);
     }
 
     public void setFnBtn() {
@@ -117,5 +129,25 @@ public class MemberActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private class UIHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            String rcedits = msg.getData().getString("rcedits");
+            Log.i("troy", rcedits);
+            String rcedits_use = msg.getData().getString("rcedits_use");
+            Log.i("troy", rcedits_use);
+            tv_rcedits.setText(rcedits);
+            tv_rcedits_use.setText(rcedits_use);
+            lunchList = new ArrayAdapter<>(MemberActivity.this, android.R.layout.simple_spinner_item, lunch);
+            sp0.setAdapter(lunchList);
+
+//            if (pDialog.isShowing()) {
+//                pDialog.dismiss();
+//            }
+        }
     }
 }

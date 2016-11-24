@@ -69,16 +69,16 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i("troy", line);
             }
 
-            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_head_data");
-            mu_2.sendCookie(cookie);
-            List<String> ret_2 = mu_2.getHtml();
-            for (String line : ret_2) {
-                Log.i("troy", line);
-            }
-            String line = ret_2.get(0);
-            JSONObject jo = new JSONObject(line);
-            String v1 = jo.getString("username");
-            Log.i("troy", v1);
+//            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_head_data");
+//            mu_2.sendCookie(cookie);
+//            List<String> ret_2 = mu_2.getHtml();
+//            for (String line : ret_2) {
+//                Log.i("troy", line);
+//            }
+//            String line = ret_2.get(0);
+//            JSONObject jo = new JSONObject(line);
+//            String v1 = jo.getString("username");
+//            Log.i("troy", v1);
 
 //            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
 //            mu_3.sendCookie(cookie);

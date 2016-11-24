@@ -127,65 +127,87 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/orderList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/orderList"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:gravity="center"
+                        android:text="合计"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:gravity="center"
+                        android:text="--"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:gravity="center"
+                        android:text="--"
+                        android:textAlignment="center" />
+
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:buttonTint="#848484"
+                        android:gravity="center"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <Button
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="#FFFFFF"
-                    android:gravity="center"
-                    android:text="合计"
-                    android:textAlignment="center" />
+                    android:text="退码" />
 
-                <TextView
+                <Button
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="#FFFFFF"
-                    android:gravity="center"
-                    android:text="--"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#FFFFFF"
-                    android:gravity="center"
-                    android:text="--"
-                    android:textAlignment="center" />
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#FFFFFF"
-                    android:buttonTint="#848484"
-                    android:gravity="center"
-                    android:textAlignment="center" />
+                    android:text="打印" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:text="退码" />
 
 </LinearLayout>
