@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
-        getData();
+//        getData();
         setFnBtn();
     }
 

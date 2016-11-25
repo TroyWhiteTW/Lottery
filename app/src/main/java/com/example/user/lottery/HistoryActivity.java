@@ -22,6 +22,7 @@ public class HistoryActivity extends AppCompatActivity {
     private LinearLayout historyList;
     private ProgressDialog pDialog;
     private UIHandler handler;
+    private pDialogHandler pDialogHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         handler = new UIHandler();
+        pDialogHandler = new pDialogHandler();
+
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
@@ -43,7 +46,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     public void getData() {
-//        pDialog.show();
+        pDialog.show();
         new Thread() {
             @Override
             public void run() {
@@ -84,7 +87,7 @@ public class HistoryActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
-//        handler.sendEmptyMessage(0);
+        pDialogHandler.sendEmptyMessage(0);
     }
 
     public void setFnBtn() {
@@ -189,10 +192,17 @@ public class HistoryActivity extends AppCompatActivity {
             String win = msg.getData().getString("win");
             String profit = msg.getData().getString("profit");
             list(issueno, gold, war, win, profit);
+        }
+    }
 
-//            if (pDialog.isShowing()) {
-//                pDialog.dismiss();
-//            }
+    private class pDialogHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            if (pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
         }
     }
 }

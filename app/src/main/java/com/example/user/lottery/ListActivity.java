@@ -18,10 +18,12 @@ import org.json.JSONObject;
 
 public class ListActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
-    private String cookie;
+    private Button btn_print_list;
+    private String cookie, ListID;
     private LinearLayout orderList;
     private ProgressDialog pDialog;
     private UIHandler handler;
+    private pDialogHandler pDialogHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         handler = new UIHandler();
+        pDialogHandler = new pDialogHandler();
+
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
@@ -38,12 +42,23 @@ public class ListActivity extends AppCompatActivity {
         pDialog.setTitle("Loading Data");
         pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
+        btn_print_list = (Button) findViewById(R.id.btn_print_list);
+        btn_print_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(ListActivity.this, BTPrintActivity.class);
+                it.putExtra("cookie", cookie);
+                it.putExtra("ListID", ListID);
+                startActivity(it);
+            }
+        });
+
         getData();
         setFnBtn();
     }
 
     public void getData() {
-//        pDialog.show();
+        pDialog.show();
         new Thread() {
             @Override
             public void run() {
@@ -63,6 +78,7 @@ public class ListActivity extends AppCompatActivity {
             JSONArray ja = mu.getJSONObjectData().getJSONArray("list");
             int len = ja.length();
             Log.i("troy", "共有" + len + "筆資料");
+            ListID = ja.getJSONObject(0).getString("id");
             for (int i = 0; i < len; i++) {
                 JSONObject rec = ja.getJSONObject(i);
                 String number = rec.getString("number");
@@ -80,7 +96,7 @@ public class ListActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
-//        handler.sendEmptyMessage(0);
+        pDialogHandler.sendEmptyMessage(0);
     }
 
     public void setFnBtn() {
@@ -168,10 +184,17 @@ public class ListActivity extends AppCompatActivity {
             String money = msg.getData().getString("money");
             String frank = msg.getData().getString("frank");
             list(number, money, frank);
+        }
+    }
 
-//            if (pDialog.isShowing()) {
-//                pDialog.dismiss();
-//            }
+    private class pDialogHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            if (pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
         }
     }
 }

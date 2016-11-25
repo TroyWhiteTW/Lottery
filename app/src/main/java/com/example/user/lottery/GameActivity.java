@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
+    private EditText number, money;
+    private Button commit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,38 +25,65 @@ public class GameActivity extends AppCompatActivity {
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
-        getData();
+        number = (EditText) findViewById(R.id.number);
+        money = (EditText) findViewById(R.id.money);
+
+        commit = (Button) findViewById(R.id.commit);
+        commit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = String.valueOf(number.getText());
+                String b = String.valueOf(money.getText());
+                getData(a, b);
+            }
+        });
+
+//        getData();
         setFnBtn();
     }
 
-    public void getData() {
+//    public void getData() {
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                getGameData();
+//            }
+//        }.start();
+//    }
+
+    public void getData(final String a, final String b) {
         new Thread() {
             @Override
             public void run() {
-                getGameData();
+                getGameData(a, b);
             }
         }.start();
     }
 
-    public void getGameData() {
+//    public void getGameData() {
+//        try {
+//            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
+//            mu.sendCookie(cookie);
+//            List<String> a = mu.getHtml();
+//            for (String line : a) {
+//                Log.i("troy", line);
+//            }
+//
+//        } catch (Exception e) {
+//            Log.i("troy", e.toString());
+//        }
+//    }
+
+    public void getGameData(String a, String b) {
         try {
             MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
             mu.sendCookie(cookie);
-            List<String> a = mu.getHtml();
-            for (String line : a) {
+            mu.postKeyValue("post_number", a + "," + b + ",0");
+            List<String> aa = mu.getHtml();
+            for (String line : aa) {
                 Log.i("troy", line);
             }
-//            JSONArray ja = mu.getJSONArrayData();
-//            int len = ja.length();
-//            Log.i("troy", "共有" + len + "筆資料");
-//            for (int i = 0; i < len; i++) {
-//                JSONObject rec = ja.getJSONObject(i);
-//                String issueno = rec.getString("issueno");
-//                String gold = rec.getString("gold");
-//                String war = rec.getString("war");
-//                String win = rec.getString("win");
-//                String profit = rec.getString("profit");
-//            }
+
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }

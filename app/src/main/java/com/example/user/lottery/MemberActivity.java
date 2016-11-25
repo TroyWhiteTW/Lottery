@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MemberActivity extends AppCompatActivity {
@@ -22,10 +23,12 @@ public class MemberActivity extends AppCompatActivity {
     private String cookie;
     private ProgressDialog pDialog;
     private UIHandler handler;
+    private pDialogHandler pDialogHandler;
     private TextView tv_rcedits, tv_rcedits_use;
     private Spinner sp0;
     private ArrayAdapter<String> lunchList;
     private String[] lunch = {"a", "b", "c", "d", "e"};
+    private ArrayList list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class MemberActivity extends AppCompatActivity {
         setContentView(R.layout.activity_member);
 
         handler = new UIHandler();
+        pDialogHandler = new pDialogHandler();
+
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
@@ -44,6 +49,7 @@ public class MemberActivity extends AppCompatActivity {
         tv_rcedits = (TextView) findViewById(R.id.rcedits);
         tv_rcedits_use = (TextView) findViewById(R.id.rcedits_use);
 
+        list = new ArrayList();
         sp0 = (Spinner) findViewById(R.id.sp0);
 
         getData();
@@ -51,7 +57,7 @@ public class MemberActivity extends AppCompatActivity {
     }
 
     public void getData() {
-//        pDialog.show();
+        pDialog.show();
         new Thread() {
             @Override
             public void run() {
@@ -83,11 +89,13 @@ public class MemberActivity extends AppCompatActivity {
             while (iter.hasNext()) {
                 String key = iter.next();
                 Log.i("troy", key);
+                list.add(key);
             }
+            Log.i("troy", list.toString());
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
-//        handler.sendEmptyMessage(0);
+        pDialogHandler.sendEmptyMessage(0);
     }
 
     public void setFnBtn() {
@@ -144,10 +152,17 @@ public class MemberActivity extends AppCompatActivity {
             tv_rcedits_use.setText(rcedits_use);
             lunchList = new ArrayAdapter<>(MemberActivity.this, android.R.layout.simple_spinner_item, lunch);
             sp0.setAdapter(lunchList);
+        }
+    }
 
-//            if (pDialog.isShowing()) {
-//                pDialog.dismiss();
-//            }
+    private class pDialogHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            if (pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
         }
     }
 }

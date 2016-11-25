@@ -131,35 +131,43 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:background="#da8c8c"
         android:orientation="horizontal">
 
-        <CheckBox
-            android:layout_width="match_parent"
+        <RadioButton
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="四字現"
             android:textAlignment="center" />
 
-        <CheckBox
-            android:layout_width="match_parent"
+        <RadioButton
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="全轉"
             android:textAlignment="center" />
 
-    </LinearLayout>
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="一般"
+            android:textAlignment="center" />
+
+    </RadioGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -176,13 +184,13 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="4"
             android:background="#ffffff"
-            android:inputType="number"
             android:maxLength="4"
             android:textSize="20sp" />
 
@@ -196,13 +204,13 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/money"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="4"
             android:background="#ffffff"
-            android:inputType="number"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -332,6 +340,7 @@
             android:textSize="15sp" />
 
         <Button
+            android:id="@+id/commit"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -350,7 +359,7 @@
         android:layout_marginTop="5dp"
         android:background="#da8c8c"
         android:gravity="center"
-        android:text="目前停押號碼：5566"
+        android:text="目前停押號碼："
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textSize="18sp" />

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.lottery">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -37,6 +40,7 @@
         <activity
             android:name=".AgreementActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".BTPrintActivity"></activity>
     </application>
 
 </manifest>

@@ -117,32 +117,26 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
-            <LinearLayout
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="40dp">
+                android:layout_height="30dp"
+                android:orientation="horizontal">
 
-                <RadioGroup
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:text="实际" />
 
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:text="实际" />
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:text="转换" />
 
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:text="转换" />
-
-                </RadioGroup>
-
-            </LinearLayout>
+            </RadioGroup>
 
             <Button
                 android:layout_width="wrap_content"
