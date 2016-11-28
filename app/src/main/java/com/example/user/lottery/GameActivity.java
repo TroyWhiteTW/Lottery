@@ -1,12 +1,14 @@
 package com.example.user.lottery;
 
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -38,41 +40,19 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-//        getData();
         setFnBtn();
     }
-
-//    public void getData() {
-//        new Thread() {
-//            @Override
-//            public void run() {
-//                getGameData();
-//            }
-//        }.start();
-//    }
 
     public void getData(final String a, final String b) {
         new Thread() {
             @Override
             public void run() {
+                Looper.prepare();
                 getGameData(a, b);
+                Looper.loop();
             }
         }.start();
     }
-
-//    public void getGameData() {
-//        try {
-//            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
-//            mu.sendCookie(cookie);
-//            List<String> a = mu.getHtml();
-//            for (String line : a) {
-//                Log.i("troy", line);
-//            }
-//
-//        } catch (Exception e) {
-//            Log.i("troy", e.toString());
-//        }
-//    }
 
     public void getGameData(String a, String b) {
         try {
@@ -85,6 +65,7 @@ public class GameActivity extends AppCompatActivity {
             }
 
         } catch (Exception e) {
+            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
     }

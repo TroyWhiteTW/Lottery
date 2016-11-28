@@ -2,6 +2,7 @@ package com.example.user.lottery;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
+                Looper.prepare();
                 getTestData();
+                Looper.loop();
             }
         }.start();
     }
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("troy", rec);
 
         } catch (Exception e) {
+            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
     }

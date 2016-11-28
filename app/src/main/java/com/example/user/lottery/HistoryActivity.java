@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,6 +43,7 @@ public class HistoryActivity extends AppCompatActivity {
         pDialog.setTitle("Loading Data");
         pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
+
         getData();
         setFnBtn();
     }
@@ -50,7 +53,9 @@ public class HistoryActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
+                Looper.prepare();
                 getHistoryData();
+                Looper.loop();
             }
         }.start();
     }
@@ -85,6 +90,7 @@ public class HistoryActivity extends AppCompatActivity {
                 handler.sendMessage(msg);
             }
         } catch (Exception e) {
+            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
         pDialogHandler.sendEmptyMessage(0);

@@ -1,6 +1,7 @@
 package com.example.user.lottery;
 
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,7 +57,9 @@ public class LoginActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
+                Looper.prepare();
                 doLogin();
+                Looper.loop();
             }
         }.start();
     }
