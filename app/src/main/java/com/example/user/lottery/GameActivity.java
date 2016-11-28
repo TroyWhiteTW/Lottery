@@ -8,8 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,8 @@ public class GameActivity extends AppCompatActivity {
     private Button btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_0, btn_X;
     private Button clear, commit;
     private StringBuilder sb;
+    private ScrollView gameContent;
+    private TextView game_open;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,9 @@ public class GameActivity extends AppCompatActivity {
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
+
+        gameContent = (ScrollView) findViewById(R.id.gameContent);
+        game_open = (TextView) findViewById(R.id.game_open);
 
         sb = new StringBuilder();
 
@@ -43,9 +51,7 @@ public class GameActivity extends AppCompatActivity {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                number.setText("");
-                money.setText("");
-                sb.setLength(0);
+                reset();
             }
         });
 
@@ -62,11 +68,49 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     Log.i("troy", "OK");
                     getData(a, b);
+                    reset();
                 }
             }
         });
 
+        getData();
         setFnBtn();
+    }
+
+    public void getData() {
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                getGameData();
+                Looper.loop();
+            }
+        }.start();
+    }
+
+    public void getGameData() {
+        try {
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_head_data");
+            mu.sendCookie(cookie);
+//            List<String> aa = mu.getHtml();
+//            for (String line : aa) {
+//                Log.i("troy", line);
+//            }
+            JSONObject jo = mu.getJSONObjectData();
+            Log.i("troy", jo.getString("webname"));
+            if (jo.getInt("game_open") == 0) {
+                Toast.makeText(this, "關盤中", Toast.LENGTH_LONG).show();
+                game_open.setText("關盤中");
+            } else if (jo.getInt("game_open") == 1) {
+                Toast.makeText(this, "開盤中", Toast.LENGTH_LONG).show();
+                game_open.setText("開盤中");
+                gameContent.setVisibility(View.VISIBLE);
+            }
+
+        } catch (Exception e) {
+            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Log.i("troy", e.toString());
+        }
     }
 
     public void getData(final String a, final String b) {
@@ -274,5 +318,11 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void reset() {
+        number.setText("");
+        money.setText("");
+        sb.setLength(0);
     }
 }

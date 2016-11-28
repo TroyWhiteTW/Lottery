@@ -28,9 +28,9 @@ public class MemberActivity extends AppCompatActivity {
     private pDialogHandler pDialogHandler;
     private TextView tv_rcedits, tv_rcedits_use;
     private Spinner sp0;
-    private ArrayAdapter<String> lunchList;
-    private String[] lunch = {"a", "b", "c", "d", "e"};
-    private ArrayList list;
+    private ArrayAdapter<String> adapter;
+    private String[] sa;
+    private ArrayList<String> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +96,8 @@ public class MemberActivity extends AppCompatActivity {
                 list.add(key);
             }
             Log.i("troy", list.toString());
+            sa = list.toArray(new String[list.size()]);
+
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
@@ -155,8 +157,8 @@ public class MemberActivity extends AppCompatActivity {
             Log.i("troy", rcedits_use);
             tv_rcedits.setText(rcedits);
             tv_rcedits_use.setText(rcedits_use);
-            lunchList = new ArrayAdapter<>(MemberActivity.this, android.R.layout.simple_spinner_item, lunch);
-            sp0.setAdapter(lunchList);
+            adapter = new ArrayAdapter<>(MemberActivity.this, android.R.layout.simple_spinner_item, sa);
+            sp0.setAdapter(adapter);
         }
     }
 

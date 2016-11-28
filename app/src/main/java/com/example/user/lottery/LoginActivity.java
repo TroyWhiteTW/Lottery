@@ -76,11 +76,11 @@ public class LoginActivity extends AppCompatActivity {
 //            Log.i("troy", b[0]);
             cookie = mu.getCookie().split("; ")[0];
             Log.i("troy", cookie);
-            List<String> ret = mu.getHtml();
-            for (String line : ret) {
-                Log.i("troy", line);
-            }
-
+//            List<String> ret = mu.getHtml();
+//            for (String line : ret) {
+//                Log.i("troy", line);
+//            }
+//
 //            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_head_data");
 //            mu_2.sendCookie(cookie);
 //            List<String> ret_2 = mu_2.getHtml();
@@ -105,11 +105,17 @@ public class LoginActivity extends AppCompatActivity {
 //            for (String line2 : ret_4) {
 //                Log.i("troy", line2);
 //            }
-
-            Intent it = new Intent(LoginActivity.this, MainActivity.class);
-            it.putExtra("cookie", cookie);
-            startActivity(it);
-            finish();
+            JSONObject jo = mu.getJSONObjectData();
+            Log.i("troy", jo.getString("msg"));
+            if (jo.getInt("status") == 200) {
+                Toast.makeText(this, "成功登录", Toast.LENGTH_LONG).show();
+                Intent it = new Intent(LoginActivity.this, MainActivity.class);
+                it.putExtra("cookie", cookie);
+                startActivity(it);
+                finish();
+            } else {
+                Toast.makeText(this, "账号和密码不匹配，请重新登录。", Toast.LENGTH_LONG).show();
+            }
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
