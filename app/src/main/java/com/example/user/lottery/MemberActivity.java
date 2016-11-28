@@ -82,13 +82,6 @@ public class MemberActivity extends AppCompatActivity {
             String rcedits = jo.getJSONObject("head_data").getString("rcedits");
             String rcedits_use = jo.getJSONObject("head_data").getString("rcedits_use");
 
-            Message msg = new Message();
-            Bundle b = new Bundle();
-            b.putString("rcedits", rcedits);
-            b.putString("rcedits_use", rcedits_use);
-            msg.setData(b);
-            handler.sendMessage(msg);
-
             Iterator<String> iter = jo.getJSONObject("huishui_list").getJSONObject("list").getJSONObject("1").keys();
             while (iter.hasNext()) {
                 String key = iter.next();
@@ -97,6 +90,13 @@ public class MemberActivity extends AppCompatActivity {
             }
             Log.i("troy", list.toString());
             sa = list.toArray(new String[list.size()]);
+
+            Message msg = new Message();
+            Bundle b = new Bundle();
+            b.putString("rcedits", rcedits);
+            b.putString("rcedits_use", rcedits_use);
+            msg.setData(b);
+            handler.sendMessage(msg);
 
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();

@@ -1,7 +1,9 @@
 package com.example.user.lottery;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +22,7 @@ import java.util.List;
 public class GameActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
+    private UIHandler handler;
     private TextView number;
     private EditText money;
     private Button btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_0, btn_X;
@@ -32,6 +35,8 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        handler = new UIHandler();
 
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
@@ -98,15 +103,12 @@ public class GameActivity extends AppCompatActivity {
 //            }
             JSONObject jo = mu.getJSONObjectData();
             Log.i("troy", jo.getString("webname"));
-            if (jo.getInt("game_open") == 0) {
-                Toast.makeText(this, "關盤中", Toast.LENGTH_LONG).show();
-                game_open.setText("關盤中");
-            } else if (jo.getInt("game_open") == 1) {
-                Toast.makeText(this, "開盤中", Toast.LENGTH_LONG).show();
-                game_open.setText("開盤中");
-                gameContent.setVisibility(View.VISIBLE);
-            }
 
+            Message msg = new Message();
+            Bundle b = new Bundle();
+            b.putInt("game_open", jo.getInt("game_open"));
+            msg.setData(b);
+            handler.sendMessage(msg);
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
@@ -179,6 +181,33 @@ public class GameActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private class UIHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            int game_open_code = msg.getData().getInt("game_open");
+            Log.i("troy", "game_open: " + game_open);
+            if (game_open_code == 0) {
+                game_open_toast(0);
+                game_open.setText("關盤中");
+            } else if (game_open_code == 1) {
+                game_open_toast(1);
+                game_open.setText("開盤中");
+                gameContent.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void game_open_toast(int i) {
+        if (i == 0) {
+            Toast.makeText(this, "關盤中", Toast.LENGTH_LONG).show();
+        } else if (i == 1) {
+            Toast.makeText(this, "開盤中", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public void commitErr() {
