@@ -8,15 +8,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
-    private EditText number, money;
-    private Button commit;
+    private TextView number;
+    private EditText money;
+    private Button btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_0, btn_X;
+    private Button clear, commit;
+    private StringBuilder sb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +32,37 @@ public class GameActivity extends AppCompatActivity {
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
-        number = (EditText) findViewById(R.id.number);
+        sb = new StringBuilder();
+
+        number = (TextView) findViewById(R.id.number);
         money = (EditText) findViewById(R.id.money);
+
+        numBtn();
+
+        clear = (Button) findViewById(R.id.clear);
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                number.setText("");
+                money.setText("");
+                sb.setLength(0);
+            }
+        });
 
         commit = (Button) findViewById(R.id.commit);
         commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String a = String.valueOf(number.getText());
-                String b = String.valueOf(money.getText());
-                getData(a, b);
+                String a = number.getText().toString();
+                String b = money.getText().toString();
+                Log.i("troy", String.valueOf(a.length()));
+                if (a.isEmpty() || b.isEmpty() || a.length() != 4) {
+                    Log.i("troy", "XX");
+                    commitErr();
+                } else {
+                    Log.i("troy", "OK");
+                    getData(a, b);
+                }
             }
         });
 
@@ -58,12 +84,12 @@ public class GameActivity extends AppCompatActivity {
         try {
             MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
             mu.sendCookie(cookie);
-            mu.postKeyValue("post_number", a + "," + b + ",0");
+            mu.postKeyValue("post_number", a + "," + b + "," + "0");
             List<String> aa = mu.getHtml();
             for (String line : aa) {
                 Log.i("troy", line);
             }
-
+            Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
@@ -107,6 +133,145 @@ public class GameActivity extends AppCompatActivity {
                 it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();
+            }
+        });
+    }
+
+    public void commitErr() {
+        Toast.makeText(this, "號碼或金額輸入錯誤", Toast.LENGTH_LONG).show();
+    }
+
+    public void numBtn() {
+        btn_1 = (Button) findViewById(R.id.btn_1);
+        btn_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "1";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_2 = (Button) findViewById(R.id.btn_2);
+        btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "2";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_3 = (Button) findViewById(R.id.btn_3);
+        btn_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "3";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_4 = (Button) findViewById(R.id.btn_4);
+        btn_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "4";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_5 = (Button) findViewById(R.id.btn_5);
+        btn_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "5";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_6 = (Button) findViewById(R.id.btn_6);
+        btn_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "6";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_7 = (Button) findViewById(R.id.btn_7);
+        btn_7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "7";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_8 = (Button) findViewById(R.id.btn_8);
+        btn_8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "8";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_9 = (Button) findViewById(R.id.btn_9);
+        btn_9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "9";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_0 = (Button) findViewById(R.id.btn_0);
+        btn_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "0";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
+            }
+        });
+        btn_X = (Button) findViewById(R.id.btn_X);
+        btn_X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = "X";
+                if (sb.length() < 4) {
+                    sb.append(a);
+                    Log.i("troy", "sb--" + sb.toString());
+                    number.setText(sb.toString());
+                }
             }
         });
     }
