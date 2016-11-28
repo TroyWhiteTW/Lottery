@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -18,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private String cookie;
     private AutoCompleteTextView login_act;
     private EditText login_pw;
+    private CheckBox check_agreement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +37,17 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, AgreementActivity.class));
             }
         });
+        check_agreement = (CheckBox) findViewById(R.id.check_agreement);
+
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                if (check_agreement.isChecked()) {
+                    login();
+                } else {
+                    agreeHint();
+                }
             }
         });
     }
@@ -99,7 +108,12 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(it);
             finish();
         } catch (Exception e) {
+            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
+    }
+
+    public void agreeHint() {
+        Toast.makeText(this, "請先同意會員協議後方可登入", Toast.LENGTH_LONG).show();
     }
 }
