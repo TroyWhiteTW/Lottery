@@ -1,5 +1,7 @@
 package com.example.user.lottery;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
@@ -7,6 +9,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -353,5 +356,34 @@ public class GameActivity extends AppCompatActivity {
         number.setText("");
         money.setText("");
         sb.setLength(0);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        確定按下退出鍵and防止重複按下退出鍵
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            exitDialog();
+        }
+        return false;
+    }
+
+    public void exitDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);//創建訊息方塊
+        builder.setMessage("確定要離開？");
+        builder.setTitle("離開");
+        builder.setPositiveButton("確認", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();//dismiss為關閉dialog,Activity還會保留dialog的狀態
+                GameActivity.this.finish();//關閉activity
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.create().show();
     }
 }
