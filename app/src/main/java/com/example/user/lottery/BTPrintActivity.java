@@ -1,11 +1,15 @@
 package com.example.user.lottery;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +20,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,15 +49,21 @@ public class BTPrintActivity extends AppCompatActivity {
     private ListView listViewPairedDevice;
     private ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
-    private LinearLayout inputPane;
     private Button btn_print;
     private ThreadConnectBTdevice myThreadConnectBTdevice;
     private ThreadConnected myThreadConnected;
+    private ScrollView sv_preview;
+    private TextView tv_preview;
+    private String rec;
+    private UIHandler handler;
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_btprint);
+
+        handler = new UIHandler();
 
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
@@ -61,13 +72,19 @@ public class BTPrintActivity extends AppCompatActivity {
 
         textStatus = (TextView) findViewById(R.id.status);
         listViewPairedDevice = (ListView) findViewById(R.id.pairedlist);
-        inputPane = (LinearLayout) findViewById(R.id.inputpane);
+        sv_preview = (ScrollView) findViewById(R.id.sv_preview);
+        tv_preview = (TextView) findViewById(R.id.tv_preview);
         btn_print = (Button) findViewById(R.id.btn_print);
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setTitle("Loading Data");
+        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         btn_print.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getData();
+                print(rec);
+                clearData();
             }
         });
 
@@ -93,6 +110,8 @@ public class BTPrintActivity extends AppCompatActivity {
             finish();
             return;
         }
+
+        getData();
     }
 
     public void print(String s) {
@@ -107,24 +126,63 @@ public class BTPrintActivity extends AppCompatActivity {
     }
 
     public void getData() {
+        pDialog.show();
         new Thread() {
             @Override
             public void run() {
+                Looper.prepare();
                 getListData();
+                Looper.loop();
             }
         }.start();
     }
 
     public void getListData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_exe_order_print");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_get_order_print_long");
             mu.sendCookie(cookie);
-            mu.postKeyValue("idarray", ListID);
+//            mu.postKeyValue("idarray", ListID);
+//            List<String> a = mu.getHtml();
+//            for (String line : a) {
+//                Log.i("troy", line);
+//            }
             String a = mu.getJSONObjectData().getString("list");
             Log.i("troy", a);
-            String rec = new JSONArray(a).getJSONObject(0).getString("ticket");
+            rec = new JSONArray(a).getJSONObject(0).getString("ticket");
             Log.i("troy", rec);
-            print(rec);
+//            Message msg = new Message();
+//            Bundle b = new Bundle();
+//            b.putString("rec", rec);
+//            msg.setData(b);
+//            handler.sendMessage(msg);
+
+        } catch (Exception e) {
+            Log.i("troy", e.toString());
+            Toast.makeText(this, "無未打印資料", Toast.LENGTH_LONG).show();
+            finish();
+        }
+        handler.sendEmptyMessage(0);
+    }
+
+    public void clearData() {
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                clearListData();
+                Looper.loop();
+            }
+        }.start();
+    }
+
+    public void clearListData() {
+        try {
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_clr_order_print");
+            mu.sendCookie(cookie);
+            List<String> b = mu.getHtml();
+            for (String line : b) {
+                Log.i("troy", line);
+            }
         } catch (Exception e) {
             Log.i("troy", e.toString());
         }
@@ -188,17 +246,14 @@ public class BTPrintActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     BluetoothDevice device = (BluetoothDevice) parent.getItemAtPosition(position);
                     Toast.makeText(BTPrintActivity.this,
-                            "Name: " + device.getName() + "\n" +
-                                    "Address: " + device.getAddress() + "\n" +
-                                    "BondState: " + device.getBondState() + "\n" +
-                                    "BluetoothClass: " + device.getBluetoothClass() + "\n" +
-                                    "Class: " + device.getClass(),
-                            Toast.LENGTH_SHORT).show();
+                            "藍芽打印機連接成功",
+                            Toast.LENGTH_LONG).show();
 
                     textStatus.setText("start ThreadConnectBTdevice");
                     myThreadConnectBTdevice = new ThreadConnectBTdevice(device);
                     myThreadConnectBTdevice.start();
                     btn_print.setVisibility(View.VISIBLE);
+                    sv_preview.setVisibility(View.VISIBLE);
                 }
             });
         }
@@ -233,7 +288,6 @@ public class BTPrintActivity extends AppCompatActivity {
 
         public ThreadConnectBTdevice(BluetoothDevice device) {
             bluetoothDevice = device;
-
             try {
                 bluetoothSocket = device.createRfcommSocketToServiceRecord(myUUID);
                 textStatus.setText("bluetoothSocket: \n" + bluetoothSocket);
@@ -259,7 +313,6 @@ public class BTPrintActivity extends AppCompatActivity {
                         textStatus.setText("something wrong bluetoothSocket.connect(): \n" + eMessage);
                     }
                 });
-
                 try {
                     bluetoothSocket.close();
                 } catch (IOException e1) {
@@ -278,12 +331,9 @@ public class BTPrintActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         textStatus.setText(msgconnected);
-
                         listViewPairedDevice.setVisibility(View.GONE);
-                        inputPane.setVisibility(View.VISIBLE);
                     }
                 });
-
                 startThreadConnected(bluetoothSocket);
             } else {
                 //fail
@@ -291,21 +341,16 @@ public class BTPrintActivity extends AppCompatActivity {
         }
 
         public void cancel() {
-
             Toast.makeText(getApplicationContext(),
                     "close bluetoothSocket",
                     Toast.LENGTH_LONG).show();
-
             try {
                 bluetoothSocket.close();
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
         }
-
-
     }
 
     private void startThreadConnected(BluetoothSocket socket) {
@@ -387,4 +432,19 @@ public class BTPrintActivity extends AppCompatActivity {
             }
         }
     }
+
+    private class UIHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+//            String rec = msg.getData().getString("rec");
+            tv_preview.setText(rec);
+
+            if (pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
+        }
+    }
+
 }

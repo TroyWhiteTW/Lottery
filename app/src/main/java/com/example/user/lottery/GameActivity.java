@@ -70,7 +70,7 @@ public class GameActivity extends AppCompatActivity {
                 String a = number.getText().toString();
                 String b = money.getText().toString();
                 Log.i("troy", String.valueOf(a.length()));
-                if (a.isEmpty() || b.isEmpty() || a.length() != 4) {
+                if (a.isEmpty() || b.isEmpty() || a.length() > 4 || a.length() < 2) {
                     Log.i("troy", "XX");
                     commitErr();
                 } else {
