@@ -69,15 +69,29 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String a = number.getText().toString();
                 String b = money.getText().toString();
-                Log.i("troy", String.valueOf(a.length()));
-                if (a.isEmpty() || b.isEmpty() || a.length() > 4 || a.length() < 2) {
-                    Log.i("troy", "XX");
+                int i = a.length();
+                if (a.isEmpty() || b.isEmpty() || i > 4 || i < 2) {
                     commitErr();
+                } else if (i == 2 && a.contains("X")) {
+                    commitErr();
+                } else if (i == 3 && a.contains("X")) {
+                    commitErr();
+                } else if (i == 4 && a.contains("X")) {
+                    int x = 0;
+                    if (String.valueOf(a.charAt(0)).equals("X")) x++;
+                    if (String.valueOf(a.charAt(1)).equals("X")) x++;
+                    if (String.valueOf(a.charAt(2)).equals("X")) x++;
+                    if (String.valueOf(a.charAt(3)).equals("X")) x++;
+                    Log.i("troy", "x=" + x);
+                    if (x >= 3) {
+                        commitErr();
+                    } else {
+                        getData(a, b);
+                    }
                 } else {
-                    Log.i("troy", "OK");
                     getData(a, b);
-                    reset();
                 }
+                reset();
             }
         });
 
@@ -192,7 +206,6 @@ public class GameActivity extends AppCompatActivity {
             super.handleMessage(msg);
 
             int game_open_code = msg.getData().getInt("game_open");
-            Log.i("troy", "game_open: " + game_open);
             if (game_open_code == 0) {
                 game_open_toast(0);
                 game_open.setText("關盤中");
