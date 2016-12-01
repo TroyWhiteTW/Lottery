@@ -22,21 +22,20 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
-    private String cookie;
-    private UIHandler handler;
-    private UIHandler_2 handler_2;
-    private TextView number;
-    private EditText money;
     private Button btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_0, btn_X;
     private Button clear, commit;
+    private String cookie;
     private StringBuilder sb;
-    private ScrollView gameContent;
+    private UIHandler handler;
+    private UIHandler_2 handler_2;
+    private TextView number, numberType;
+    private EditText money;
     private TextView game_open;
+    private ScrollView gameContent;
     private LinearLayout recentOrder;
     private ProgressDialog pDialog;
     private pDialogHandler pDialogHandler;
@@ -46,7 +45,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        findXmlElement();
+        initial();
 
         handler = new UIHandler();
         handler_2 = new UIHandler_2();
@@ -63,6 +62,19 @@ public class GameActivity extends AppCompatActivity {
         pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         numBtn();
+        getData();
+        setFnBtn();
+    }
+
+    public void initial() {
+        recentOrder = (LinearLayout) findViewById(R.id.recentOrder);
+        gameContent = (ScrollView) findViewById(R.id.gameContent);
+        game_open = (TextView) findViewById(R.id.game_open);
+        number = (TextView) findViewById(R.id.number);
+        numberType = (TextView) findViewById(R.id.numberType);
+        money = (EditText) findViewById(R.id.money);
+        clear = (Button) findViewById(R.id.clear);
+        commit = (Button) findViewById(R.id.commit);
 
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,19 +113,6 @@ public class GameActivity extends AppCompatActivity {
                 reset();
             }
         });
-
-        getData();
-        setFnBtn();
-    }
-
-    public void findXmlElement() {
-        recentOrder = (LinearLayout) findViewById(R.id.recentOrder);
-        gameContent = (ScrollView) findViewById(R.id.gameContent);
-        game_open = (TextView) findViewById(R.id.game_open);
-        number = (TextView) findViewById(R.id.number);
-        money = (EditText) findViewById(R.id.money);
-        clear = (Button) findViewById(R.id.clear);
-        commit = (Button) findViewById(R.id.commit);
     }
 
     public void getData() {
@@ -308,11 +307,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "1";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_2 = (Button) findViewById(R.id.btn_2);
@@ -320,11 +315,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "2";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_3 = (Button) findViewById(R.id.btn_3);
@@ -332,11 +323,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "3";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_4 = (Button) findViewById(R.id.btn_4);
@@ -344,11 +331,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "4";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_5 = (Button) findViewById(R.id.btn_5);
@@ -356,11 +339,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "5";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_6 = (Button) findViewById(R.id.btn_6);
@@ -368,11 +347,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "6";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_7 = (Button) findViewById(R.id.btn_7);
@@ -380,11 +355,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "7";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_8 = (Button) findViewById(R.id.btn_8);
@@ -392,11 +363,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "8";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_9 = (Button) findViewById(R.id.btn_9);
@@ -404,11 +371,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "9";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_0 = (Button) findViewById(R.id.btn_0);
@@ -416,11 +379,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "0";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
         btn_X = (Button) findViewById(R.id.btn_X);
@@ -428,13 +387,29 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = "X";
-                if (sb.length() < 4) {
-                    sb.append(a);
-                    Log.i("troy", "sb--" + sb.toString());
-                    number.setText(sb.toString());
-                }
+                setNumberText(a);
             }
         });
+    }
+
+    public void setNumberText(String s) {
+        if (sb.length() < 4) {
+            sb.append(s);
+            Log.i("troy", "sb--" + sb.toString());
+            number.setText(sb.toString());
+
+            switch (sb.length()) {
+                case 2:
+                    numberType.setText("現");
+                    break;
+                case 3:
+                    numberType.setText("現");
+                    break;
+                default:
+                    numberType.setText("--");
+                    break;
+            }
+        }
     }
 
     public void reset() {

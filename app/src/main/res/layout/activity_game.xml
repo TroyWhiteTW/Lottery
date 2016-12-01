@@ -80,7 +80,7 @@
                 android:layout_height="40dp"
                 android:background="#da8c8c"
                 android:gravity="center"
-                android:text="最後一筆下注"
+                android:text="最近下注"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="18sp" />
@@ -199,6 +199,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/numberType"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
