@@ -67,6 +67,7 @@
         android:id="@+id/gameContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
         android:visibility="gone">
 
         <LinearLayout
@@ -79,76 +80,54 @@
                 android:layout_height="40dp"
                 android:background="#da8c8c"
                 android:gravity="center"
-                android:text="下注框"
+                android:text="最後一筆下注"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff"
+                    android:background="#ffe6ca"
                     android:gravity="center"
-                    android:text="---"
-                    android:textAlignment="center" />
+                    android:text="号码"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff"
+                    android:background="#ffe6ca"
                     android:gravity="center"
-                    android:text="---"
-                    android:textAlignment="center" />
+                    android:text="金额"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff"
+                    android:background="#ffe6ca"
                     android:gravity="center"
-                    android:text="---"
-                    android:textAlignment="center" />
+                    android:text="赔率"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/recentOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="---"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="---"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="---"
-                    android:textAlignment="center" />
 
             </LinearLayout>
 
@@ -196,27 +175,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="5"
+                    android:layout_weight="1"
                     android:text="號碼"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/number"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="4"
+                    android:layout_weight="2"
                     android:background="#ffffff"
                     android:gravity="center"
                     android:maxLength="4"
@@ -224,23 +199,30 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="5"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="--"
+                    android:textAlignment="center"
+                    android:textColor="#ff0000" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="金額"
                     android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/money"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="4"
+                    android:layout_weight="2"
                     android:background="#ffffff"
+                    android:gravity="center"
                     android:inputType="number"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
             </LinearLayout>

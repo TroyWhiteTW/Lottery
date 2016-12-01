@@ -147,9 +147,9 @@ public class BTPrintActivity extends AppCompatActivity {
 //                Log.i("troy", line);
 //            }
             String a = mu.getJSONObjectData().getString("list");
-            Log.i("troy", a);
+//            Log.i("troy", a);
             rec = new JSONArray(a).getJSONObject(0).getString("ticket");
-            Log.i("troy", rec);
+//            Log.i("troy", rec);
 //            Message msg = new Message();
 //            Bundle b = new Bundle();
 //            b.putString("rec", rec);

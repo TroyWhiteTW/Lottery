@@ -55,6 +55,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <Button
@@ -97,8 +99,7 @@
             android:backgroundTint="#86f183"
             android:gravity="center"
             android:text="中獎"
-            android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textAlignment="center" />
 
     </LinearLayout>
 
@@ -143,7 +144,8 @@
             android:layout_weight="1"
             android:background="#ffe6ca"
             android:gravity="center"
-            android:text="全选" />
+            android:text="全选"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
@@ -206,6 +208,12 @@
                 <!--</LinearLayout>-->
 
             </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="xxx"
+                android:visibility="invisible" />
 
         </LinearLayout>
 

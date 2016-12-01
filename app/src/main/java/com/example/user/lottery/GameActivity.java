@@ -1,8 +1,10 @@
 package com.example.user.lottery;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -13,6 +15,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +29,7 @@ public class GameActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
     private UIHandler handler;
+    private UIHandler_2 handler_2;
     private TextView number;
     private EditText money;
     private Button btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_0, btn_X;
@@ -33,29 +37,33 @@ public class GameActivity extends AppCompatActivity {
     private StringBuilder sb;
     private ScrollView gameContent;
     private TextView game_open;
+    private LinearLayout recentOrder;
+    private ProgressDialog pDialog;
+    private pDialogHandler pDialogHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        findXmlElement();
+
         handler = new UIHandler();
+        handler_2 = new UIHandler_2();
+        pDialogHandler = new pDialogHandler();
 
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
-        gameContent = (ScrollView) findViewById(R.id.gameContent);
-        game_open = (TextView) findViewById(R.id.game_open);
-
         sb = new StringBuilder();
 
-        number = (TextView) findViewById(R.id.number);
-        money = (EditText) findViewById(R.id.money);
+        pDialog = new ProgressDialog(this);
+        pDialog.setTitle("Loading Data");
+        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         numBtn();
 
-        clear = (Button) findViewById(R.id.clear);
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +71,6 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        commit = (Button) findViewById(R.id.commit);
         commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,10 +93,10 @@ public class GameActivity extends AppCompatActivity {
                     if (x >= 3) {
                         commitErr();
                     } else {
-                        getData(a, b);
+                        sendData(a, b);
                     }
                 } else {
-                    getData(a, b);
+                    sendData(a, b);
                 }
                 reset();
             }
@@ -99,7 +106,18 @@ public class GameActivity extends AppCompatActivity {
         setFnBtn();
     }
 
+    public void findXmlElement() {
+        recentOrder = (LinearLayout) findViewById(R.id.recentOrder);
+        gameContent = (ScrollView) findViewById(R.id.gameContent);
+        game_open = (TextView) findViewById(R.id.game_open);
+        number = (TextView) findViewById(R.id.number);
+        money = (EditText) findViewById(R.id.money);
+        clear = (Button) findViewById(R.id.clear);
+        commit = (Button) findViewById(R.id.commit);
+    }
+
     public void getData() {
+        pDialog.show();
         new Thread() {
             @Override
             public void run() {
@@ -126,24 +144,40 @@ public class GameActivity extends AppCompatActivity {
             b.putInt("game_open", jo.getInt("game_open"));
             msg.setData(b);
             handler.sendMessage(msg);
+
+            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
+            mu_2.sendCookie(cookie);
+            JSONObject rec = mu_2.getJSONObjectData().getJSONArray("list").getJSONObject(0);
+            String number = rec.getString("number");
+            String money = rec.getString("money");
+            String frank = rec.getString("frank");
+
+            Message msg_2 = new Message();
+            Bundle b_2 = new Bundle();
+            b_2.putString("number", number);
+            b_2.putString("money", money);
+            b_2.putString("frank", frank);
+            msg_2.setData(b_2);
+            handler_2.sendMessage(msg_2);
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
+        pDialogHandler.sendEmptyMessage(0);
     }
 
-    public void getData(final String a, final String b) {
+    public void sendData(final String a, final String b) {
         new Thread() {
             @Override
             public void run() {
                 Looper.prepare();
-                getGameData(a, b);
+                sendGameData(a, b);
                 Looper.loop();
             }
         }.start();
     }
 
-    public void getGameData(String a, String b) {
+    public void sendGameData(String a, String b) {
         try {
             MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
             mu.sendCookie(cookie);
@@ -153,6 +187,21 @@ public class GameActivity extends AppCompatActivity {
                 Log.i("troy", line);
             }
             Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
+
+            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
+            mu_2.sendCookie(cookie);
+            JSONObject rec = mu_2.getJSONObjectData().getJSONArray("list").getJSONObject(0);
+            String number = rec.getString("number");
+            String money = rec.getString("money");
+            String frank = rec.getString("frank");
+
+            Message msg_2 = new Message();
+            Bundle b_2 = new Bundle();
+            b_2.putString("number", number);
+            b_2.putString("money", money);
+            b_2.putString("frank", frank);
+            msg_2.setData(b_2);
+            handler_2.sendMessage(msg_2);
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
@@ -213,6 +262,29 @@ public class GameActivity extends AppCompatActivity {
                 game_open_toast(1);
                 game_open.setText("開盤中");
                 gameContent.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    private class UIHandler_2 extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            String number = msg.getData().getString("number");
+            String money = msg.getData().getString("money");
+            String frank = msg.getData().getString("frank");
+            list(number, money, frank);
+        }
+    }
+
+    private class pDialogHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            if (pDialog.isShowing()) {
+                pDialog.dismiss();
             }
         }
     }
@@ -369,6 +441,34 @@ public class GameActivity extends AppCompatActivity {
         number.setText("");
         money.setText("");
         sb.setLength(0);
+    }
+
+    public void list(String number, String money, String frank) {
+        LinearLayout ll = new LinearLayout(GameActivity.this);
+        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        ll.setOrientation(LinearLayout.HORIZONTAL);
+        TextView tv1 = new TextView(GameActivity.this);
+        tv1.setText(number);
+        tv1.setTextSize(20);
+        tv1.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv1.setBackgroundColor(Color.parseColor("#ffffff"));
+        tv1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+        TextView tv2 = new TextView(GameActivity.this);
+        tv2.setText(money);
+        tv2.setTextSize(20);
+        tv2.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv2.setBackgroundColor(Color.parseColor("#ffffff"));
+        tv2.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+        TextView tv3 = new TextView(GameActivity.this);
+        tv3.setText(frank);
+        tv3.setTextSize(20);
+        tv3.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv3.setBackgroundColor(Color.parseColor("#ffffff"));
+        tv3.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+        ll.addView(tv1);
+        ll.addView(tv2);
+        ll.addView(tv3);
+        recentOrder.addView(ll);
     }
 
     @Override

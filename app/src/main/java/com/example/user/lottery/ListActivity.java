@@ -21,6 +21,8 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class ListActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private Button btn_print_list;
@@ -82,7 +84,10 @@ public class ListActivity extends AppCompatActivity {
 //            for (String line : a) {
 //                Log.i("troy", line);
 //            }
-            JSONArray ja = mu.getJSONObjectData().getJSONArray("list");
+            JSONObject jo = mu.getJSONObjectData();
+            int totalPage = jo.getInt("total_page");
+            Log.i("troy", "共有" + totalPage + "頁");
+            JSONArray ja = jo.getJSONArray("list");
             int len = ja.length();
             Log.i("troy", "共有" + len + "筆資料");
             ListID = ja.getJSONObject(0).getString("id");

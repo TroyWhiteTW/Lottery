@@ -24,8 +24,8 @@ public class MultipartUtility_tw {
     MultipartUtility_tw(String requestURL) throws IOException {
         URL url = new URL(requestURL);
         httpConn = (HttpURLConnection) url.openConnection();
-        httpConn.setReadTimeout(5000);// 設置讀取超時為5秒
-        httpConn.setConnectTimeout(10000);// 設置連接網路超時為10秒
+        httpConn.setReadTimeout(30000);// 設置讀取超時為30秒
+        httpConn.setConnectTimeout(60000);// 設置連接網路超時為60秒
         httpConn.setUseCaches(false);
         httpConn.setDoOutput(true);
         httpConn.setDoInput(true);
