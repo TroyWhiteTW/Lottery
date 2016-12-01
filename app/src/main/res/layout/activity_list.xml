@@ -93,10 +93,11 @@
             android:textSize="24sp" />
 
         <Button
+            android:id="@+id/btn_winGame"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_weight="3"
-            android:backgroundTint="#86f183"
+            android:backgroundTint="#ff6262"
             android:gravity="center"
             android:text="中獎"
             android:textAlignment="center" />
@@ -210,10 +211,10 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/btn_moreData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="xxx"
-                android:visibility="invisible" />
+                android:text="載入更多資料" />
 
         </LinearLayout>
 

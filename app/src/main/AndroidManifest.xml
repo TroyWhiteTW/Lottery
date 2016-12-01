@@ -40,7 +40,8 @@
         <activity
             android:name=".AgreementActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".BTPrintActivity"></activity>
+        <activity android:name=".BTPrintActivity" />
+        <activity android:name=".MoreListDataActivity"></activity>
     </application>
 
 </manifest>

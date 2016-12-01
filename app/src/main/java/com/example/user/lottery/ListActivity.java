@@ -25,12 +25,13 @@ import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
-    private Button btn_print_list;
+    private Button btn_print_list, btn_winGame, btn_moreData;
     private String cookie, ListID;
     private LinearLayout orderList;
     private ProgressDialog pDialog;
     private UIHandler handler;
     private pDialogHandler pDialogHandler;
+    private int totalPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,25 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
+        btn_winGame = (Button) findViewById(R.id.btn_winGame);
+        btn_winGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btn_moreData = (Button) findViewById(R.id.btn_moreData);
+        btn_moreData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(ListActivity.this, MoreListDataActivity.class);
+                it.putExtra("cookie", cookie);
+                it.putExtra("totalPage", totalPage);
+                startActivity(it);
+            }
+        });
+
         getData();
         setFnBtn();
     }
@@ -85,7 +105,7 @@ public class ListActivity extends AppCompatActivity {
 //                Log.i("troy", line);
 //            }
             JSONObject jo = mu.getJSONObjectData();
-            int totalPage = jo.getInt("total_page");
+            totalPage = jo.getInt("total_page");
             Log.i("troy", "共有" + totalPage + "頁");
             JSONArray ja = jo.getJSONArray("list");
             int len = ja.length();
