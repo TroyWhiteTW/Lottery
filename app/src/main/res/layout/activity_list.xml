@@ -163,7 +163,10 @@
                 android:id="@+id/orderList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <!--<LinearLayout-->
                 <!--android:layout_width="match_parent"-->
@@ -213,7 +216,7 @@
             <Button
                 android:id="@+id/btn_moreData"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="載入更多資料" />
 
         </LinearLayout>
