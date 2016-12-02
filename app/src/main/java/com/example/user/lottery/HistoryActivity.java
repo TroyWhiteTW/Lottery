@@ -89,6 +89,7 @@ public class HistoryActivity extends AppCompatActivity {
                 b.putString("war", war);
                 b.putString("win", win);
                 b.putString("profit", profit);
+                b.putInt("i", i);
                 msg.setData(b);
                 handler.sendMessage(msg);
             }
@@ -148,11 +149,15 @@ public class HistoryActivity extends AppCompatActivity {
      * win : 中獎
      * profit : 盈虧
      */
-    public void list(String issueno, String gold, String war, String win, String profit) {
+    public void list(String issueno, String gold, String war, String win, String profit, int i) {
         LinearLayout ll = new LinearLayout(HistoryActivity.this);
         ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         ll.setOrientation(LinearLayout.HORIZONTAL);
-        ll.setBackgroundColor(Color.parseColor("#ffffff"));
+        if (i % 2 == 0) {
+            ll.setBackgroundColor(Color.parseColor("#d1d0d0"));
+        }
+        TextView tv0 = new TextView(HistoryActivity.this);
+        tv0.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT));
         TextView tv1 = new TextView(HistoryActivity.this);
         tv1.setText(issueno);
         tv1.setTextSize(20);
@@ -178,11 +183,15 @@ public class HistoryActivity extends AppCompatActivity {
         tv5.setTextSize(20);
         tv5.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
         tv5.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+        TextView tv6 = new TextView(HistoryActivity.this);
+        tv6.setLayoutParams(new LinearLayout.LayoutParams(50, LinearLayout.LayoutParams.MATCH_PARENT));
+        ll.addView(tv0);
         ll.addView(tv1);
         ll.addView(tv2);
         ll.addView(tv3);
         ll.addView(tv4);
         ll.addView(tv5);
+        ll.addView(tv6);
         historyList.addView(ll);
     }
 
@@ -196,7 +205,8 @@ public class HistoryActivity extends AppCompatActivity {
             String war = msg.getData().getString("war");
             String win = msg.getData().getString("win");
             String profit = msg.getData().getString("profit");
-            list(issueno, gold, war, win, profit);
+            int i = msg.getData().getInt("i");
+            list(issueno, gold, war, win, profit, i);
         }
     }
 

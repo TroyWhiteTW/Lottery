@@ -114,6 +114,7 @@ public class MoreListDataActivity extends AppCompatActivity {
                 b.putString("number", number);
                 b.putString("money", money);
                 b.putString("frank", frank);
+                b.putInt("i", i);
                 msg.setData(b);
                 handler.sendMessage(msg);
             }
@@ -133,7 +134,8 @@ public class MoreListDataActivity extends AppCompatActivity {
             String number = msg.getData().getString("number");
             String money = msg.getData().getString("money");
             String frank = msg.getData().getString("frank");
-            list(number, money, frank);
+            int i = msg.getData().getInt("i");
+            list(number, money, frank, i);
         }
     }
 
@@ -168,10 +170,15 @@ public class MoreListDataActivity extends AppCompatActivity {
         moreOrderList.addView(page_tv);
     }
 
-    public void list(String number, String money, String frank) {
+    public void list(String number, String money, String frank, int i) {
         LinearLayout ll = new LinearLayout(MoreListDataActivity.this);
         ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         ll.setOrientation(LinearLayout.HORIZONTAL);
+        if (i % 2 == 0) {
+            ll.setBackgroundColor(Color.parseColor("#d1d0d0"));
+        }
+        TextView tv0 = new TextView(MoreListDataActivity.this);
+        tv0.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT));
         TextView tv1 = new TextView(MoreListDataActivity.this);
         tv1.setText(number);
         tv1.setTextSize(20);
@@ -187,9 +194,13 @@ public class MoreListDataActivity extends AppCompatActivity {
         tv3.setTextSize(20);
         tv3.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
         tv3.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+        TextView tv4 = new TextView(MoreListDataActivity.this);
+        tv4.setLayoutParams(new LinearLayout.LayoutParams(50, LinearLayout.LayoutParams.MATCH_PARENT));
+        ll.addView(tv0);
         ll.addView(tv1);
         ll.addView(tv2);
         ll.addView(tv3);
+        ll.addView(tv4);
         moreOrderList.addView(ll);
     }
 }

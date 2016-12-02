@@ -11,9 +11,12 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,13 +28,14 @@ import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
-    private Button btn_print_list, btn_winGame, btn_moreData;
+    private Button btn_print_list, btn_winGame, btn_moreData, order_cancel;
     private String cookie, ListID;
     private LinearLayout orderList;
     private ProgressDialog pDialog;
     private UIHandler handler;
     private pDialogHandler pDialogHandler;
     private int totalPage;
+    private StringBuilder sb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +84,44 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
+        sb = new StringBuilder();
+
+        order_cancel = (Button) findViewById(R.id.order_cancel);
+        order_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                orderCancel();
+            }
+        });
+
         getData();
         setFnBtn();
+    }
+
+    public void orderCancel() {
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                doCamcel();
+                Looper.loop();
+            }
+        }.start();
+    }
+
+    public void doCamcel() {
+        try {
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_exe_order_cancel");
+            mu.sendCookie(cookie);
+            mu.postKeyValue("idarray", sb.toString());
+            List<String> a = mu.getHtml();
+            for (String line : a) {
+                Log.i("troy", line);
+            }
+
+        } catch (Exception e) {
+            Log.i("troy", e.toString());
+        }
     }
 
     public void getData() {
@@ -111,17 +151,23 @@ public class ListActivity extends AppCompatActivity {
             int len = ja.length();
             Log.i("troy", "共有" + len + "筆資料");
             ListID = ja.getJSONObject(0).getString("id");
+
             for (int i = 0; i < len; i++) {
                 JSONObject rec = ja.getJSONObject(i);
                 String number = rec.getString("number");
                 String money = rec.getString("money");
                 String frank = rec.getString("frank");
+                int cancel_able = rec.getInt("cancel_able");
+                String id = rec.getString("id");
 
                 Message msg = new Message();
                 Bundle b = new Bundle();
                 b.putString("number", number);
                 b.putString("money", money);
                 b.putString("frank", frank);
+                b.putInt("cancel_able", cancel_able);
+                b.putInt("i", i);
+                b.putString("id", id);
                 msg.setData(b);
                 handler.sendMessage(msg);
             }
@@ -173,10 +219,16 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
-    public void list(String number, String money, String frank) {
+    public void list(String number, String money, String frank, int i, int cancel_able, final String id) {
         LinearLayout ll = new LinearLayout(ListActivity.this);
         ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         ll.setOrientation(LinearLayout.HORIZONTAL);
+        if (i % 2 == 0) {
+            ll.setBackgroundColor(Color.parseColor("#d1d0d0"));
+        }
+
+        TextView tv0 = new TextView(ListActivity.this);
+        tv0.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT));
         TextView tv1 = new TextView(ListActivity.this);
         tv1.setText(number);
         tv1.setTextSize(20);
@@ -192,15 +244,36 @@ public class ListActivity extends AppCompatActivity {
         tv3.setTextSize(20);
         tv3.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
         tv3.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
-        TextView tv4 = new TextView(ListActivity.this);
-        tv4.setText("--");
-        tv4.setTextSize(20);
-        tv4.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
-        tv4.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+
+        TextView tv5 = new TextView(ListActivity.this);
+        tv5.setLayoutParams(new LinearLayout.LayoutParams(50, LinearLayout.LayoutParams.MATCH_PARENT));
+
+        ll.addView(tv0);
         ll.addView(tv1);
         ll.addView(tv2);
         ll.addView(tv3);
-        ll.addView(tv4);
+        if (cancel_able == 1) {
+            CheckBox tv4 = new CheckBox(ListActivity.this);
+            tv4.setId(Integer.parseInt(id));
+            tv4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    sb.append(id);
+                    sb.append(",");
+                    Log.i("troy", sb.toString());
+                }
+            });
+            tv4.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+            ll.addView(tv4);
+        } else {
+            TextView tv4 = new TextView(ListActivity.this);
+            tv4.setText("--");
+            tv4.setTextSize(20);
+            tv4.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+            tv4.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+            ll.addView(tv4);
+        }
+        ll.addView(tv5);
         orderList.addView(ll);
     }
 
@@ -212,7 +285,10 @@ public class ListActivity extends AppCompatActivity {
             String number = msg.getData().getString("number");
             String money = msg.getData().getString("money");
             String frank = msg.getData().getString("frank");
-            list(number, money, frank);
+            int cancel_able = msg.getData().getInt("cancel_able");
+            int i = msg.getData().getInt("i");
+            String id = msg.getData().getString("id");
+            list(number, money, frank, i, cancel_able, id);
         }
     }
 

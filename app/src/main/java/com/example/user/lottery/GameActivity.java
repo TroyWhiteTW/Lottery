@@ -422,6 +422,8 @@ public class GameActivity extends AppCompatActivity {
         LinearLayout ll = new LinearLayout(GameActivity.this);
         ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         ll.setOrientation(LinearLayout.HORIZONTAL);
+        TextView tv0 = new TextView(GameActivity.this);
+        tv0.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT));
         TextView tv1 = new TextView(GameActivity.this);
         tv1.setText(number);
         tv1.setTextSize(20);
@@ -437,9 +439,13 @@ public class GameActivity extends AppCompatActivity {
         tv3.setTextSize(20);
         tv3.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
         tv3.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+        TextView tv4 = new TextView(GameActivity.this);
+        tv4.setLayoutParams(new LinearLayout.LayoutParams(50, LinearLayout.LayoutParams.MATCH_PARENT));
+        ll.addView(tv0);
         ll.addView(tv1);
         ll.addView(tv2);
         ll.addView(tv3);
+        ll.addView(tv4);
         recentOrder.addView(ll);
     }
 
