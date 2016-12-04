@@ -46,7 +46,7 @@
         <activity
             android:name=".MoreListDataActivity"
             android:screenOrientation="portrait" />
-
+        <activity android:name=".WinGameActivity"></activity>
     </application>
 
 </manifest>
