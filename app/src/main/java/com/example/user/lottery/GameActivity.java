@@ -20,8 +20,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
@@ -158,8 +160,11 @@ public class GameActivity extends AppCompatActivity {
             b_2.putString("frank", frank);
             msg_2.setData(b_2);
             handler_2.sendMessage(msg_2);
-        } catch (Exception e) {
+        } catch (IOException e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Log.i("troy", e.toString());
+        } catch (JSONException e) {
+            Toast.makeText(this, "資料錯誤", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
         pDialogHandler.sendEmptyMessage(0);
