@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,13 +35,13 @@ public class GameActivity extends AppCompatActivity {
     private StringBuilder sb, sb_2;
     private UIHandler handler;
     private UIHandler_2 handler_2;
-    private TextView number, numberType, money;
-    private TextView game_open;
+    private TextView number, numberType, money, game_open;
     private ScrollView gameContent;
     private LinearLayout recentOrder;
     private ProgressDialog pDialog;
     private pDialogHandler pDialogHandler;
     private int textPos = 0;
+    private RadioButton rb_allfour, rb_change, rb_normal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +65,15 @@ public class GameActivity extends AppCompatActivity {
         pDialog.setTitle("Loading Data");
         pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-//        numBtn();
+        numBtn();
         getData();
         setFnBtn();
     }
 
     public void initial() {
+        rb_allfour = (RadioButton) findViewById(R.id.rb_allfour);
+        rb_change = (RadioButton) findViewById(R.id.rb_change);
+        rb_normal = (RadioButton) findViewById(R.id.rb_normal);
         btn_1 = (Button) findViewById(R.id.btn_1);
         btn_2 = (Button) findViewById(R.id.btn_2);
         btn_3 = (Button) findViewById(R.id.btn_3);
@@ -90,13 +94,16 @@ public class GameActivity extends AppCompatActivity {
         clear = (Button) findViewById(R.id.clear);
         commit = (Button) findViewById(R.id.commit);
 
+        rb_normal.setChecked(true);
+        number.setBackgroundColor(Color.parseColor("#da8c8c"));
+
         number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 number.setBackgroundColor(Color.parseColor("#da8c8c"));
                 money.setBackgroundColor(Color.parseColor("#ffffff"));
                 textPos = 0;
-                numBtn();
+//                numBtn();
             }
         });
 
@@ -106,7 +113,7 @@ public class GameActivity extends AppCompatActivity {
                 money.setBackgroundColor(Color.parseColor("#da8c8c"));
                 number.setBackgroundColor(Color.parseColor("#ffffff"));
                 textPos = 1;
-                numBtn();
+//                numBtn();
             }
         });
 
@@ -219,6 +226,8 @@ public class GameActivity extends AppCompatActivity {
             for (String line : aa) {
                 Log.i("troy", line);
             }
+
+            // TODO : 判斷下注成功與否訊息
             Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
 
             MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
@@ -567,4 +576,5 @@ public class GameActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
+
 }

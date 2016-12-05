@@ -141,31 +141,29 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/rb_allfour"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:checked="false"
-                    android:clickable="false"
                     android:gravity="center"
                     android:text="四字現"
                     android:textAlignment="center" />
 
                 <RadioButton
+                    android:id="@+id/rb_change"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:checked="false"
-                    android:clickable="false"
                     android:gravity="center"
                     android:text="全轉"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:visibility="gone" />
 
                 <RadioButton
+                    android:id="@+id/rb_normal"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:checked="true"
-                    android:clickable="false"
                     android:gravity="center"
                     android:text="一般"
                     android:textAlignment="center" />
