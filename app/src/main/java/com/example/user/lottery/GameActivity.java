@@ -31,16 +31,16 @@ public class GameActivity extends AppCompatActivity {
     private Button btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_0, btn_X;
     private Button clear, commit;
     private String cookie;
-    private StringBuilder sb;
+    private StringBuilder sb, sb_2;
     private UIHandler handler;
     private UIHandler_2 handler_2;
-    private TextView number, numberType;
-    private EditText money;
+    private TextView number, numberType, money;
     private TextView game_open;
     private ScrollView gameContent;
     private LinearLayout recentOrder;
     private ProgressDialog pDialog;
     private pDialogHandler pDialogHandler;
+    private int textPos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,23 +58,35 @@ public class GameActivity extends AppCompatActivity {
         Log.i("troy", cookie);
 
         sb = new StringBuilder();
+        sb_2 = new StringBuilder();
 
         pDialog = new ProgressDialog(this);
         pDialog.setTitle("Loading Data");
         pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-        numBtn();
+//        numBtn();
         getData();
         setFnBtn();
     }
 
     public void initial() {
+        btn_1 = (Button) findViewById(R.id.btn_1);
+        btn_2 = (Button) findViewById(R.id.btn_2);
+        btn_3 = (Button) findViewById(R.id.btn_3);
+        btn_4 = (Button) findViewById(R.id.btn_4);
+        btn_5 = (Button) findViewById(R.id.btn_5);
+        btn_6 = (Button) findViewById(R.id.btn_6);
+        btn_7 = (Button) findViewById(R.id.btn_7);
+        btn_8 = (Button) findViewById(R.id.btn_8);
+        btn_9 = (Button) findViewById(R.id.btn_9);
+        btn_0 = (Button) findViewById(R.id.btn_0);
+        btn_X = (Button) findViewById(R.id.btn_X);
         recentOrder = (LinearLayout) findViewById(R.id.recentOrder);
         gameContent = (ScrollView) findViewById(R.id.gameContent);
         game_open = (TextView) findViewById(R.id.game_open);
         number = (TextView) findViewById(R.id.number);
         numberType = (TextView) findViewById(R.id.numberType);
-        money = (EditText) findViewById(R.id.money);
+        money = (TextView) findViewById(R.id.money);
         clear = (Button) findViewById(R.id.clear);
         commit = (Button) findViewById(R.id.commit);
 
@@ -83,6 +95,8 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View view) {
                 number.setBackgroundColor(Color.parseColor("#da8c8c"));
                 money.setBackgroundColor(Color.parseColor("#ffffff"));
+                textPos = 0;
+                numBtn();
             }
         });
 
@@ -91,6 +105,8 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View view) {
                 money.setBackgroundColor(Color.parseColor("#da8c8c"));
                 number.setBackgroundColor(Color.parseColor("#ffffff"));
+                textPos = 1;
+                numBtn();
             }
         });
 
@@ -323,92 +339,137 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void numBtn() {
-        btn_1 = (Button) findViewById(R.id.btn_1);
+
         btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "1";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
+
             }
         });
-        btn_2 = (Button) findViewById(R.id.btn_2);
+
         btn_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "2";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
             }
         });
-        btn_3 = (Button) findViewById(R.id.btn_3);
+
         btn_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "3";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
             }
         });
-        btn_4 = (Button) findViewById(R.id.btn_4);
+
         btn_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "4";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
             }
         });
-        btn_5 = (Button) findViewById(R.id.btn_5);
+
         btn_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "5";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
             }
         });
-        btn_6 = (Button) findViewById(R.id.btn_6);
+
         btn_6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "6";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
             }
         });
-        btn_7 = (Button) findViewById(R.id.btn_7);
+
         btn_7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "7";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
             }
         });
-        btn_8 = (Button) findViewById(R.id.btn_8);
+
         btn_8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "8";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
             }
         });
-        btn_9 = (Button) findViewById(R.id.btn_9);
+
         btn_9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "9";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
             }
         });
-        btn_0 = (Button) findViewById(R.id.btn_0);
+
         btn_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "0";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+                    setMoneyText(a);
+                }
             }
         });
-        btn_X = (Button) findViewById(R.id.btn_X);
+
         btn_X.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "X";
-                setNumberText(a);
+                if (textPos == 0) {
+                    setNumberText(a);
+                } else if (textPos == 1) {
+//                    setMoneyText(a);
+                }
             }
         });
     }
@@ -433,10 +494,18 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    public void setMoneyText(String s) {
+        sb_2.append(s);
+        Log.i("troy", "sb_2--" + sb_2.toString());
+        money.setText(sb_2.toString());
+
+    }
+
     public void reset() {
         number.setText("");
         money.setText("");
         sb.setLength(0);
+        sb_2.setLength(0);
     }
 
     public void list(String number, String money, String frank) {

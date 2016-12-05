@@ -91,7 +91,7 @@ public class BTPrintActivity extends AppCompatActivity {
         // 如果裝置沒有藍芽，顯示不支援藍芽的Toast並結束程式
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
             Toast.makeText(this,
-                    "FEATURE_BLUETOOTH NOT support",
+                    "本機無藍芽裝置，無法使用藍芽打印功能",
                     Toast.LENGTH_LONG).show();
             finish();
             return;

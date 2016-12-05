@@ -121,7 +121,9 @@ public class ListActivity extends AppCompatActivity {
             String b = mu.getJSONObjectData().getString("message");
             Log.i("troy", b);
 
+            Toast.makeText(this, "退碼成功", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
+            Toast.makeText(this, "退碼失敗", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
     }
