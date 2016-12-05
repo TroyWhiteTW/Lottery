@@ -225,7 +225,7 @@ public class ListActivity extends AppCompatActivity {
 
     public void list(String number, String money, String frank, int i, int cancel_able, final String id) {
         LinearLayout ll = new LinearLayout(ListActivity.this);
-        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 50));
         ll.setOrientation(LinearLayout.HORIZONTAL);
         if (i % 2 == 0) {
             ll.setBackgroundColor(Color.parseColor("#d1d0d0"));
