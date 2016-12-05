@@ -114,10 +114,12 @@ public class ListActivity extends AppCompatActivity {
             MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_exe_order_cancel");
             mu.sendCookie(cookie);
             mu.postKeyValue("idarray", sb.toString());
-            List<String> a = mu.getHtml();
-            for (String line : a) {
-                Log.i("troy", line);
-            }
+//            List<String> a = mu.getHtml();
+//            for (String line : a) {
+//                Log.i("troy", line);
+//            }
+            String b = mu.getJSONObjectData().getString("message");
+            Log.i("troy", b);
 
         } catch (Exception e) {
             Log.i("troy", e.toString());

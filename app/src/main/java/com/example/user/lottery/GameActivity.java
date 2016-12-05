@@ -78,6 +78,22 @@ public class GameActivity extends AppCompatActivity {
         clear = (Button) findViewById(R.id.clear);
         commit = (Button) findViewById(R.id.commit);
 
+        number.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                number.setBackgroundColor(Color.parseColor("#da8c8c"));
+                money.setBackgroundColor(Color.parseColor("#ffffff"));
+            }
+        });
+
+        money.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                money.setBackgroundColor(Color.parseColor("#da8c8c"));
+                number.setBackgroundColor(Color.parseColor("#ffffff"));
+            }
+        });
+
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -160,11 +176,8 @@ public class GameActivity extends AppCompatActivity {
             b_2.putString("frank", frank);
             msg_2.setData(b_2);
             handler_2.sendMessage(msg_2);
-        } catch (IOException e) {
+        } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
-            Log.i("troy", e.toString());
-        } catch (JSONException e) {
-            Toast.makeText(this, "資料錯誤", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
         pDialogHandler.sendEmptyMessage(0);
@@ -206,8 +219,11 @@ public class GameActivity extends AppCompatActivity {
             b_2.putString("frank", frank);
             msg_2.setData(b_2);
             handler_2.sendMessage(msg_2);
-        } catch (Exception e) {
+        } catch (IOException e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Log.i("troy", e.toString());
+        } catch (JSONException e) {
+            Toast.makeText(this, "資料錯誤", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
     }
