@@ -248,6 +248,7 @@ public class ListActivity extends AppCompatActivity {
 
         TextView tv0 = new TextView(ListActivity.this);
         tv0.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT));
+
         TextView tv1 = new TextView(ListActivity.this);
         tv1.setText(number);
         tv1.setTextSize(20);

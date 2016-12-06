@@ -11,6 +11,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -144,6 +145,10 @@ public class HistoryActivity extends AppCompatActivity {
         });
     }
 
+    public int dpToPx(int i) {
+        return (int) ((i * getBaseContext().getResources().getDisplayMetrics().density) + 0.5);
+    }
+
     /**
      * issueno : 期數名稱
      * is_result : 已結算 --暫無使用--
@@ -154,40 +159,49 @@ public class HistoryActivity extends AppCompatActivity {
      */
     public void list(String issueno, String gold, String war, String win, String profit, int i) {
         LinearLayout ll = new LinearLayout(HistoryActivity.this);
-        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(50)));
         ll.setOrientation(LinearLayout.HORIZONTAL);
         if (i % 2 == 0) {
             ll.setBackgroundColor(Color.parseColor("#d1d0d0"));
         }
+
         TextView tv0 = new TextView(HistoryActivity.this);
         tv0.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT));
+
         TextView tv1 = new TextView(HistoryActivity.this);
         tv1.setText(issueno);
         tv1.setTextSize(20);
         tv1.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv1.setGravity(Gravity.CENTER);
         tv1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         TextView tv2 = new TextView(HistoryActivity.this);
         tv2.setText(gold);
         tv2.setTextSize(20);
         tv2.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv2.setGravity(Gravity.CENTER);
         tv2.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         TextView tv3 = new TextView(HistoryActivity.this);
         tv3.setText(war);
         tv3.setTextSize(20);
         tv3.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv3.setGravity(Gravity.CENTER);
         tv3.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         TextView tv4 = new TextView(HistoryActivity.this);
         tv4.setText(win);
         tv4.setTextSize(20);
         tv4.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv4.setGravity(Gravity.CENTER);
         tv4.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         TextView tv5 = new TextView(HistoryActivity.this);
         tv5.setText(profit);
         tv5.setTextSize(20);
         tv5.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv5.setGravity(Gravity.CENTER);
         tv5.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+
         TextView tv6 = new TextView(HistoryActivity.this);
-        tv6.setLayoutParams(new LinearLayout.LayoutParams(50, LinearLayout.LayoutParams.MATCH_PARENT));
+        tv6.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(10), LinearLayout.LayoutParams.MATCH_PARENT));
+
         ll.addView(tv0);
         ll.addView(tv1);
         ll.addView(tv2);
