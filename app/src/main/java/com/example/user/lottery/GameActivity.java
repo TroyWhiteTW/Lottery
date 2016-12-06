@@ -20,6 +20,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,10 +32,11 @@ public class GameActivity extends AppCompatActivity {
     private Button btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_0, btn_X;
     private Button clear, commit;
     private String cookie;
-    private StringBuilder sb, sb_2;
+    private StringBuilder sb, sb_2, sb_fail;
     private UIHandler handler;
     private UIHandler_2 handler_2;
-    private TextView number, numberType, money, game_open;
+    private UIHandler_3 handler_3;
+    private TextView number, numberType, money, game_open, tv_fail;
     private ScrollView gameContent;
     private LinearLayout recentOrder;
     private ProgressDialog pDialog;
@@ -51,6 +53,7 @@ public class GameActivity extends AppCompatActivity {
 
         handler = new UIHandler();
         handler_2 = new UIHandler_2();
+        handler_3 = new UIHandler_3();
         pDialogHandler = new pDialogHandler();
 
         Intent it = getIntent();
@@ -59,6 +62,7 @@ public class GameActivity extends AppCompatActivity {
 
         sb = new StringBuilder();
         sb_2 = new StringBuilder();
+        sb_fail = new StringBuilder();
 
         pDialog = new ProgressDialog(this);
         pDialog.setTitle("Loading Data");
@@ -89,6 +93,7 @@ public class GameActivity extends AppCompatActivity {
         game_open = (TextView) findViewById(R.id.game_open);
         number = (TextView) findViewById(R.id.number);
         numberType = (TextView) findViewById(R.id.numberType);
+        tv_fail = (TextView) findViewById(R.id.tv_fail);
         money = (TextView) findViewById(R.id.money);
         clear = (Button) findViewById(R.id.clear);
         commit = (Button) findViewById(R.id.commit);
@@ -124,6 +129,8 @@ public class GameActivity extends AppCompatActivity {
         commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sb_fail.setLength(0);
+                tv_fail.setText("");
                 String a = number.getText().toString();
                 String b = money.getText().toString();
                 int i = a.length();
@@ -217,6 +224,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void sendGameData(String a, String b) {
+        int fail = 0;
         try {
             int allfournumber = 0;
             if (rb_allfour.isChecked()) {
@@ -225,27 +233,43 @@ public class GameActivity extends AppCompatActivity {
             MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
             mu.sendCookie(cookie);
             mu.postKeyValue("post_number", a + "," + b + "," + allfournumber);
-            List<String> aa = mu.getHtml();
-            for (String line : aa) {
-                Log.i("troy", line);
+//            List<String> aa = mu.getHtml();
+//            for (String line : aa) {
+//                Log.i("troy", line);
+//            }
+            JSONArray ja = mu.getJSONObjectData().getJSONObject("fail_dtl").getJSONArray("l");
+            int len = ja.length();
+            for (int i = 0; i < len; i++) {
+                sb_fail.append(ja.getJSONObject(i).getString("number"));
+                sb_fail.append(" x ");
+                sb_fail.append(ja.getJSONObject(i).getInt("money"));
+                sb_fail.append("\n");
+                if (ja.getJSONObject(i).getString("number").equals(a) && String.valueOf(ja.getJSONObject(i).getInt("money")).equals(b)) {
+                    fail = 1;
+                }
+            }
+            handler_3.sendEmptyMessage(0);
+//            Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
+
+            if (fail == 1) {
+
+            } else {
+                MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
+                mu_2.sendCookie(cookie);
+                JSONObject rec = mu_2.getJSONObjectData().getJSONArray("list").getJSONObject(0);
+                String number = rec.getString("number");
+                String money = rec.getString("money");
+                String frank = rec.getString("frank");
+
+                Message msg_2 = new Message();
+                Bundle b_2 = new Bundle();
+                b_2.putString("number", number);
+                b_2.putString("money", money);
+                b_2.putString("frank", frank);
+                msg_2.setData(b_2);
+                handler_2.sendMessage(msg_2);
             }
 
-            Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
-
-            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
-            mu_2.sendCookie(cookie);
-            JSONObject rec = mu_2.getJSONObjectData().getJSONArray("list").getJSONObject(0);
-            String number = rec.getString("number");
-            String money = rec.getString("money");
-            String frank = rec.getString("frank");
-
-            Message msg_2 = new Message();
-            Bundle b_2 = new Bundle();
-            b_2.putString("number", number);
-            b_2.putString("money", money);
-            b_2.putString("frank", frank);
-            msg_2.setData(b_2);
-            handler_2.sendMessage(msg_2);
         } catch (IOException e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
@@ -322,6 +346,15 @@ public class GameActivity extends AppCompatActivity {
             String money = msg.getData().getString("money");
             String frank = msg.getData().getString("frank");
             list(number, money, frank);
+        }
+    }
+
+    private class UIHandler_3 extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            tv_fail.setText(sb_fail.toString());
         }
     }
 
