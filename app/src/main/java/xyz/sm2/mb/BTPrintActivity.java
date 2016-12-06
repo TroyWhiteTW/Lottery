@@ -1,4 +1,4 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -26,8 +25,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -57,11 +54,14 @@ public class BTPrintActivity extends AppCompatActivity {
     private String rec;
     private UIHandler handler;
     private ProgressDialog pDialog;
+    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_btprint);
+
+        app_net = getResources().getString(R.string.app_net);
 
         handler = new UIHandler();
 
@@ -139,7 +139,7 @@ public class BTPrintActivity extends AppCompatActivity {
 
     public void getListData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_get_order_print_long");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_get_order_print_long");
             mu.sendCookie(cookie);
 //            mu.postKeyValue("idarray", ListID);
 //            List<String> a = mu.getHtml();
@@ -177,7 +177,7 @@ public class BTPrintActivity extends AppCompatActivity {
 
     public void clearListData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_clr_order_print");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_clr_order_print");
             mu.sendCookie(cookie);
             List<String> b = mu.getHtml();
             for (String line : b) {

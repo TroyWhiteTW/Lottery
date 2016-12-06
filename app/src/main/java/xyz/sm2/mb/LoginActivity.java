@@ -1,4 +1,4 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -17,19 +17,20 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import java.util.List;
-
 public class LoginActivity extends AppCompatActivity {
     private Button btn_login, btn_agreement;
     private String cookie;
     private AutoCompleteTextView login_act;
     private EditText login_pw;
     private CheckBox check_agreement;
+    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        app_net = getResources().getString(R.string.app_net);
 
         login_act = (AutoCompleteTextView) findViewById(R.id.login_act);
         login_pw = (EditText) findViewById(R.id.login_pw);
@@ -69,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void doLogin() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/ajax_login.php?action=LogApp");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/ajax_login.php?action=LogApp");
             mu.postKeyValue("username", String.valueOf(login_act.getText()));
             mu.postKeyValue("password", String.valueOf(login_pw.getText()));
 //            mu.postKeyValue("useragent", "mozilla/5.0 (windows nt 6.1; wow64; trident/7.0; slcc2; .net clr 2.0.50727; .net clr 3.5.30729; .net clr 3.0.30729; .net4.0c; .net4.0e; media center pc 6.0; infopath.3; rv:11.0) like gecko");
@@ -84,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 //                Log.i("troy", line);
 //            }
 //
-//            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_head_data");
+//            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_head_data");
 //            mu_2.sendCookie(cookie);
 //            List<String> ret_2 = mu_2.getHtml();
 //            for (String line : ret_2) {
@@ -95,14 +96,14 @@ public class LoginActivity extends AppCompatActivity {
 //            String v1 = jo.getString("username");
 //            Log.i("troy", v1);
 
-//            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
+//            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_order_dtl");
 //            mu_3.sendCookie(cookie);
 //            List<String> ret_3 = mu_3.getHtml();
 //            for (String line2 : ret_3) {
 //                Log.i("troy", line2);
 //            }
 //
-//            MultipartUtility_tw mu_4 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_get_order_history");
+//            MultipartUtility_tw mu_4 = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_get_order_history");
 //            mu_4.sendCookie(cookie);
 //            List<String> ret_4 = mu_4.getHtml();
 //            for (String line2 : ret_4) {

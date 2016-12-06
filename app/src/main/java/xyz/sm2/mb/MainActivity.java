@@ -1,9 +1,8 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,24 +10,21 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
+    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        app_net = getResources().getString(R.string.app_net);
 
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
@@ -51,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void getTestData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_exe_order_print");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_exe_order_print");
             mu.sendCookie(cookie);
             mu.postKeyValue("idarray", "116898159");
 //            int i = mu.getResponseCode();

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.user.lottery">
+    package="xyz.sm2.mb">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name="xyz.sm2.mb.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,28 +23,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="xyz.sm2.mb.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HistoryActivity"
+            android:name="xyz.sm2.mb.HistoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MemberActivity"
+            android:name="xyz.sm2.mb.MemberActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".GameActivity"
+            android:name="xyz.sm2.mb.GameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ListActivity"
+            android:name="xyz.sm2.mb.ListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AgreementActivity"
+            android:name="xyz.sm2.mb.AgreementActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BTPrintActivity"
+            android:name="xyz.sm2.mb.BTPrintActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MoreListDataActivity"
+            android:name="xyz.sm2.mb.MoreListDataActivity"
             android:screenOrientation="portrait" />
 
     </application>

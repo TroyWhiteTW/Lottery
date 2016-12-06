@@ -1,4 +1,4 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -25,7 +25,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
@@ -44,11 +43,14 @@ public class GameActivity extends AppCompatActivity {
     private int textPos = 0;
     private RadioButton rb_allfour, rb_change, rb_normal;
     private int rcedits, rcedits_use;
+    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        app_net = getResources().getString(R.string.app_net);
 
         initial();
 
@@ -135,12 +137,12 @@ public class GameActivity extends AppCompatActivity {
                 String a = number.getText().toString();
                 String b = money.getText().toString();
                 int i = a.length();
-                if (Integer.parseInt(b) > rcedits - rcedits_use) {
-                    toast("信用餘額不足");
-                } else if (rb_allfour.isChecked() && i != 4) {
+                if (rb_allfour.isChecked() && i != 4) {
                     toast("四字現號碼錯誤");
                 } else if (a.isEmpty() || b.isEmpty() || i > 4 || i < 2) {
                     toast("號碼或金額輸入錯誤");
+                } else if (Integer.parseInt(b) > rcedits - rcedits_use) {
+                    toast("信用餘額不足");
                 } else if (i == 2 && a.contains("X")) {
                     toast("號碼或金額輸入錯誤");
                 } else if (i == 3 && a.contains("X")) {
@@ -179,7 +181,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void getGameData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_head_data");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_head_data");
             mu.sendCookie(cookie);
 //            List<String> aa = mu.getHtml();
 //            for (String line : aa) {
@@ -197,7 +199,7 @@ public class GameActivity extends AppCompatActivity {
             msg.setData(b);
             handler.sendMessage(msg);
 
-            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
+            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_order_dtl");
             mu_2.sendCookie(cookie);
             JSONObject rec = mu_2.getJSONObjectData().getJSONArray("list").getJSONObject(0);
             String number = rec.getString("number");
@@ -212,7 +214,7 @@ public class GameActivity extends AppCompatActivity {
             msg_2.setData(b_2);
             handler_2.sendMessage(msg_2);
 
-//            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
+//            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_soonsend");
 //            mu.sendCookie(cookie);
 ////            List<String> aa = mu.getHtml();
 ////            for (String line : aa) {
@@ -252,7 +254,7 @@ public class GameActivity extends AppCompatActivity {
             if (rb_allfour.isChecked()) {
                 allfournumber = 1;
             }
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_soonsend");
             mu.sendCookie(cookie);
             mu.postKeyValue("post_number", a + "," + b + "," + allfournumber);
 //            List<String> aa = mu.getHtml();
@@ -275,7 +277,7 @@ public class GameActivity extends AppCompatActivity {
             if (fail == 1) {
                 Toast.makeText(this, "下注失敗", Toast.LENGTH_LONG).show();
             } else {
-                MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
+                MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_order_dtl");
                 mu_2.sendCookie(cookie);
                 JSONObject rec = mu_2.getJSONObjectData().getJSONArray("list").getJSONObject(0);
                 String number = rec.getString("number");
@@ -292,7 +294,7 @@ public class GameActivity extends AppCompatActivity {
                 Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
             }
 
-            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_head_data");
+            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_head_data");
             mu_3.sendCookie(cookie);
             JSONObject jo = mu_3.getJSONObjectData();
             rcedits = jo.getInt("rcedits");
@@ -570,9 +572,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void setMoneyText(String s) {
-        sb_2.append(s);
-        Log.i("troy", "sb_2--" + sb_2.toString());
-        money.setText(sb_2.toString());
+        if (sb_2.length() < 7) {
+            sb_2.append(s);
+            Log.i("troy", "sb_2--" + sb_2.toString());
+            money.setText(sb_2.toString());
+        }
     }
 
     public void reset() {
@@ -581,6 +585,9 @@ public class GameActivity extends AppCompatActivity {
         money.setText("");
         sb.setLength(0);
         sb_2.setLength(0);
+        number.setBackgroundColor(Color.parseColor("#da8c8c"));
+        money.setBackgroundColor(Color.parseColor("#ffffff"));
+        textPos = 0;
     }
 
     public void list(String number, String money, String frank) {

@@ -1,8 +1,7 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,7 +16,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +24,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
@@ -39,11 +36,14 @@ public class ListActivity extends AppCompatActivity {
     private int totalPage;
     private StringBuilder sb;
     private ArrayList<String> cancelList;
+    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        app_net = getResources().getString(R.string.app_net);
 
         handler = new UIHandler();
         pDialogHandler = new pDialogHandler();
@@ -120,7 +120,7 @@ public class ListActivity extends AppCompatActivity {
             sb.append(",");
         }
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_exe_order_cancel");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_exe_order_cancel");
             mu.sendCookie(cookie);
             mu.postKeyValue("idarray", sb.toString());
 //            List<String> a = mu.getHtml();
@@ -153,7 +153,7 @@ public class ListActivity extends AppCompatActivity {
 
     public void getListData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_order_dtl");
             mu.sendCookie(cookie);
 //            List<String> a = mu.getHtml();
 //            for (String line : a) {

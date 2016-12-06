@@ -1,4 +1,4 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -29,16 +29,19 @@ public class MemberActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
     private UIHandler handler;
     private pDialogHandler pDialogHandler;
-    private TextView tv_rcedits, tv_rcedits_use;
+    private TextView tv_rcedits, tv_rcedits_use, tv_username;
     private Spinner sp0;
     private ArrayAdapter<String> adapter;
     private String[] sa;
     private ArrayList<String> list;
+    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member);
+
+        app_net = getResources().getString(R.string.app_net);
 
         handler = new UIHandler();
         pDialogHandler = new pDialogHandler();
@@ -53,6 +56,7 @@ public class MemberActivity extends AppCompatActivity {
 
         tv_rcedits = (TextView) findViewById(R.id.rcedits);
         tv_rcedits_use = (TextView) findViewById(R.id.rcedits_use);
+        tv_username = (TextView) findViewById(R.id.tv_username);
 
         list = new ArrayList();
         sp0 = (Spinner) findViewById(R.id.sp0);
@@ -75,13 +79,14 @@ public class MemberActivity extends AppCompatActivity {
 
     public void getMemberData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_get_mem_data");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_get_mem_data");
             mu.sendCookie(cookie);
 
             JSONObject jo = mu.getJSONObjectData();
             int len = jo.length();
             Log.i("troy", "共有" + len + "筆資料");
 
+            String username = jo.getJSONObject("head_data").getString("username");
             String rcedits = jo.getJSONObject("head_data").getString("rcedits");
             String rcedits_use = jo.getJSONObject("head_data").getString("rcedits_use");
 
@@ -96,6 +101,7 @@ public class MemberActivity extends AppCompatActivity {
 
             Message msg = new Message();
             Bundle b = new Bundle();
+            b.putString("username", username);
             b.putString("rcedits", rcedits);
             b.putString("rcedits_use", rcedits_use);
             msg.setData(b);
@@ -154,10 +160,13 @@ public class MemberActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
+            String username = msg.getData().getString("username");
+            Log.i("troy", username);
             String rcedits = msg.getData().getString("rcedits");
             Log.i("troy", rcedits);
             String rcedits_use = msg.getData().getString("rcedits_use");
             Log.i("troy", rcedits_use);
+            tv_username.setText("帳號：" + username);
             tv_rcedits.setText(rcedits);
             tv_rcedits_use.setText(rcedits_use);
             adapter = new ArrayAdapter<>(MemberActivity.this, android.R.layout.simple_spinner_item, sa);

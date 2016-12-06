@@ -1,4 +1,4 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -29,11 +29,14 @@ public class MoreListDataActivity extends AppCompatActivity {
     private TextView tv_totalPages;
     private Button btn_loadNextPage;
     private int whatpage = 1;
+    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_list_data);
+
+        app_net = getResources().getString(R.string.app_net);
 
         handler = new UIHandler();
         handler_2 = new UIHandler_2();
@@ -89,7 +92,7 @@ public class MoreListDataActivity extends AppCompatActivity {
         try {
 //            for (int j = 1; j <= totalPage; j++) {
             String page = String.valueOf(whatpage);
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_order_dtl");
             mu.sendCookie(cookie);
             mu.postKeyValue("page", page);
 

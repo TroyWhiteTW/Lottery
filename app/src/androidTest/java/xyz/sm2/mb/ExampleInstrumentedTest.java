@@ -1,4 +1,4 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

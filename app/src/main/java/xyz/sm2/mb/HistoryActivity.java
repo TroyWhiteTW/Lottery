@@ -1,4 +1,4 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -28,11 +28,14 @@ public class HistoryActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
     private UIHandler handler;
     private pDialogHandler pDialogHandler;
+    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+
+        app_net = getResources().getString(R.string.app_net);
 
         handler = new UIHandler();
         pDialogHandler = new pDialogHandler();
@@ -65,7 +68,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     public void getHistoryData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_get_order_history");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_get_order_history");
             mu.sendCookie(cookie);
 //            List<String> a = mu_4.getHtml();
 //            for (String line : a) {

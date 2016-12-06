@@ -63,7 +63,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:gravity="center"
-            android:text="歡迎使用Lottery，請點按上方功能按鈕進行操作！"
+            android:text="歡迎使用，請點按上方功能按鈕進行操作！"
             android:textAlignment="center"
             android:textSize="20sp" />
 

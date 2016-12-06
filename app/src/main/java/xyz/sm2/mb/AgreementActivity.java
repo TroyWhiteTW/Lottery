@@ -1,4 +1,4 @@
-package com.example.user.lottery;
+package xyz.sm2.mb;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
