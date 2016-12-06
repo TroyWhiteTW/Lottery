@@ -25,6 +25,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
@@ -37,6 +38,7 @@ public class ListActivity extends AppCompatActivity {
     private pDialogHandler pDialogHandler;
     private int totalPage;
     private StringBuilder sb;
+    private ArrayList<String> cancelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class ListActivity extends AppCompatActivity {
 
         handler = new UIHandler();
         pDialogHandler = new pDialogHandler();
+        cancelList = new ArrayList();
 
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
@@ -111,6 +114,11 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void doCamcel() {
+        for (String a : cancelList) {
+            Log.i("troy", a);
+            sb.append(a);
+            sb.append(",");
+        }
         try {
             MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_exe_order_cancel");
             mu.sendCookie(cookie);
@@ -266,13 +274,18 @@ public class ListActivity extends AppCompatActivity {
         ll.addView(tv3);
         if (cancel_able == 1) {
             CheckBox tv4 = new CheckBox(ListActivity.this);
-            tv4.setId(Integer.parseInt(id));
-            tv4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            int cbID = Integer.parseInt(id);
+            tv4.setId(cbID);
+            tv4.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    sb.append(id);
-                    sb.append(",");
-                    Log.i("troy", sb.toString());
+                public void onClick(View view) {
+                    if (((CheckBox) view).isChecked()) {
+                        cancelList.add(id);
+                        Log.i("troy", cancelList.toString());
+                    } else {
+                        cancelList.remove(id);
+                        Log.i("troy", cancelList.toString());
+                    }
                 }
             });
             tv4.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));

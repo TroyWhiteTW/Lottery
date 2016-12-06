@@ -128,13 +128,13 @@ public class GameActivity extends AppCompatActivity {
                 String b = money.getText().toString();
                 int i = a.length();
                 if (rb_allfour.isChecked() && i != 4) {
-                    allfourErr();
+                    toast("四字現號碼錯誤");
                 } else if (a.isEmpty() || b.isEmpty() || i > 4 || i < 2) {
-                    commitErr();
+                    toast("號碼或金額輸入錯誤");
                 } else if (i == 2 && a.contains("X")) {
-                    commitErr();
+                    toast("號碼或金額輸入錯誤");
                 } else if (i == 3 && a.contains("X")) {
-                    commitErr();
+                    toast("號碼或金額輸入錯誤");
                 } else if (i == 4 && a.contains("X")) {
                     int x = 0;
                     if (String.valueOf(a.charAt(0)).equals("X")) x++;
@@ -143,7 +143,7 @@ public class GameActivity extends AppCompatActivity {
                     if (String.valueOf(a.charAt(3)).equals("X")) x++;
                     Log.i("troy", "x=" + x);
                     if (x >= 3) {
-                        commitErr();
+                        toast("號碼或金額輸入錯誤");
                     } else {
                         sendData(a, b);
                     }
@@ -214,10 +214,6 @@ public class GameActivity extends AppCompatActivity {
                 Looper.loop();
             }
         }.start();
-    }
-
-    public void allfourErr() {
-        Toast.makeText(this, "四字現號碼錯誤", Toast.LENGTH_LONG).show();
     }
 
     public void sendGameData(String a, String b) {
@@ -349,8 +345,8 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    public void commitErr() {
-        Toast.makeText(this, "號碼或金額輸入錯誤", Toast.LENGTH_LONG).show();
+    public void toast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
     }
 
     public void numBtn() {
