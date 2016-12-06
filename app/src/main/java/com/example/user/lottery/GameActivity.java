@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
@@ -103,7 +102,6 @@ public class GameActivity extends AppCompatActivity {
                 number.setBackgroundColor(Color.parseColor("#da8c8c"));
                 money.setBackgroundColor(Color.parseColor("#ffffff"));
                 textPos = 0;
-//                numBtn();
             }
         });
 
@@ -113,7 +111,6 @@ public class GameActivity extends AppCompatActivity {
                 money.setBackgroundColor(Color.parseColor("#da8c8c"));
                 number.setBackgroundColor(Color.parseColor("#ffffff"));
                 textPos = 1;
-//                numBtn();
             }
         });
 
@@ -130,7 +127,9 @@ public class GameActivity extends AppCompatActivity {
                 String a = number.getText().toString();
                 String b = money.getText().toString();
                 int i = a.length();
-                if (a.isEmpty() || b.isEmpty() || i > 4 || i < 2) {
+                if (rb_allfour.isChecked() && i != 4) {
+                    allfourErr();
+                } else if (a.isEmpty() || b.isEmpty() || i > 4 || i < 2) {
                     commitErr();
                 } else if (i == 2 && a.contains("X")) {
                     commitErr();
@@ -217,17 +216,24 @@ public class GameActivity extends AppCompatActivity {
         }.start();
     }
 
+    public void allfourErr() {
+        Toast.makeText(this, "四字現號碼錯誤", Toast.LENGTH_LONG).show();
+    }
+
     public void sendGameData(String a, String b) {
         try {
+            int allfournumber = 0;
+            if (rb_allfour.isChecked()) {
+                allfournumber = 1;
+            }
             MultipartUtility_tw mu = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
             mu.sendCookie(cookie);
-            mu.postKeyValue("post_number", a + "," + b + "," + "0");
+            mu.postKeyValue("post_number", a + "," + b + "," + allfournumber);
             List<String> aa = mu.getHtml();
             for (String line : aa) {
                 Log.i("troy", line);
             }
 
-            // TODO : 判斷下注成功與否訊息
             Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
 
             MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
@@ -348,7 +354,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void numBtn() {
-
         btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -361,7 +366,6 @@ public class GameActivity extends AppCompatActivity {
 
             }
         });
-
         btn_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -373,7 +377,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -385,7 +388,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -397,7 +399,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -409,7 +410,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -421,7 +421,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -433,7 +432,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -445,7 +443,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -457,7 +454,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -469,12 +465,13 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
         btn_X.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String a = "X";
-                if (textPos == 0) {
+                if (rb_allfour.isChecked() && textPos == 0) {
+
+                } else if (textPos == 0) {
                     setNumberText(a);
                 } else if (textPos == 1) {
 //                    setMoneyText(a);
@@ -484,34 +481,46 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void setNumberText(String s) {
-        if (sb.length() < 4) {
-            sb.append(s);
-            Log.i("troy", "sb--" + sb.toString());
-            number.setText(sb.toString());
+        if (!rb_allfour.isChecked()) {
+            if (sb.length() < 4) {
+                sb.append(s);
+                Log.i("troy", "sb--" + sb.toString());
+                number.setText(sb.toString());
 
-            switch (sb.length()) {
-                case 2:
-                    numberType.setText("現");
-                    break;
-                case 3:
-                    numberType.setText("現");
-                    break;
-                default:
-                    numberType.setText("--");
-                    break;
+                switch (sb.length()) {
+                    case 2:
+                        numberType.setText("現");
+                        break;
+                    case 3:
+                        numberType.setText("現");
+                        break;
+                    default:
+                        numberType.setText("--");
+                        break;
+                }
+            }
+        } else {
+            numberType.setText("");
+            if (sb.length() < 4) {
+                sb.append(s);
+                Log.i("troy", "sb--" + sb.toString());
+                number.setText(sb.toString());
             }
         }
+
     }
 
     public void setMoneyText(String s) {
-        sb_2.append(s);
-        Log.i("troy", "sb_2--" + sb_2.toString());
-        money.setText(sb_2.toString());
-
+        if (sb_2.length() < 4) {
+            sb_2.append(s);
+            Log.i("troy", "sb_2--" + sb_2.toString());
+            money.setText(sb_2.toString());
+        }
     }
 
     public void reset() {
         number.setText("");
+        numberType.setText("--");
         money.setText("");
         sb.setLength(0);
         sb_2.setLength(0);
