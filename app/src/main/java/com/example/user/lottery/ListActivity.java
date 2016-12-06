@@ -135,6 +135,8 @@ public class ListActivity extends AppCompatActivity {
             Toast.makeText(this, "退碼失敗", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
+        finish();
+        startActivity(getIntent());
     }
 
     public void getData() {
