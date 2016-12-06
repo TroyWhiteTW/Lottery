@@ -2,6 +2,7 @@ package com.example.user.lottery;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -223,9 +224,13 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
+    public int dpToPx(int i) {
+        return (int) ((i * getBaseContext().getResources().getDisplayMetrics().density) + 0.5);
+    }
+
     public void list(String number, String money, String frank, int i, int cancel_able, final String id) {
         LinearLayout ll = new LinearLayout(ListActivity.this);
-        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 50));
+        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(50)));
         ll.setOrientation(LinearLayout.HORIZONTAL);
         if (i % 2 == 0) {
             ll.setBackgroundColor(Color.parseColor("#d1d0d0"));
@@ -237,20 +242,23 @@ public class ListActivity extends AppCompatActivity {
         tv1.setText(number);
         tv1.setTextSize(20);
         tv1.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv1.setGravity(Gravity.CENTER);
         tv1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         TextView tv2 = new TextView(ListActivity.this);
         tv2.setText(money);
         tv2.setTextSize(20);
         tv2.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv2.setGravity(Gravity.CENTER);
         tv2.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         TextView tv3 = new TextView(ListActivity.this);
         tv3.setText(frank);
         tv3.setTextSize(20);
         tv3.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        tv3.setGravity(Gravity.CENTER);
         tv3.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
 
         TextView tv5 = new TextView(ListActivity.this);
-        tv5.setLayoutParams(new LinearLayout.LayoutParams(50, LinearLayout.LayoutParams.MATCH_PARENT));
+        tv5.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(10), LinearLayout.LayoutParams.MATCH_PARENT));
 
         ll.addView(tv0);
         ll.addView(tv1);
@@ -274,6 +282,7 @@ public class ListActivity extends AppCompatActivity {
             tv4.setText("--");
             tv4.setTextSize(20);
             tv4.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+            tv4.setGravity(Gravity.CENTER);
             tv4.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
             ll.addView(tv4);
         }
