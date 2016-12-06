@@ -43,6 +43,7 @@ public class GameActivity extends AppCompatActivity {
     private pDialogHandler pDialogHandler;
     private int textPos = 0;
     private RadioButton rb_allfour, rb_change, rb_normal;
+    private int rcedits, rcedits_use;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +135,9 @@ public class GameActivity extends AppCompatActivity {
                 String a = number.getText().toString();
                 String b = money.getText().toString();
                 int i = a.length();
-                if (rb_allfour.isChecked() && i != 4) {
+                if (Integer.parseInt(b) > rcedits - rcedits_use) {
+                    toast("信用餘額不足");
+                } else if (rb_allfour.isChecked() && i != 4) {
                     toast("四字現號碼錯誤");
                 } else if (a.isEmpty() || b.isEmpty() || i > 4 || i < 2) {
                     toast("號碼或金額輸入錯誤");
@@ -183,7 +186,10 @@ public class GameActivity extends AppCompatActivity {
 //                Log.i("troy", line);
 //            }
             JSONObject jo = mu.getJSONObjectData();
-            Log.i("troy", jo.getString("webname"));
+            rcedits = jo.getInt("rcedits");
+            Log.i("troy", "rcedits= " + rcedits);
+            rcedits_use = jo.getInt("rcedits_use");
+            Log.i("troy", "rcedits_use= " + rcedits_use);
 
             Message msg = new Message();
             Bundle b = new Bundle();
@@ -205,6 +211,22 @@ public class GameActivity extends AppCompatActivity {
             b_2.putString("frank", frank);
             msg_2.setData(b_2);
             handler_2.sendMessage(msg_2);
+
+//            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_soonsend");
+//            mu.sendCookie(cookie);
+////            List<String> aa = mu.getHtml();
+////            for (String line : aa) {
+////                Log.i("troy", line);
+////            }
+//            JSONArray ja = mu_3.getJSONObjectData().getJSONObject("fail_dtl").getJSONArray("l");
+//            int len = ja.length();
+//            for (int i = 0; i < len; i++) {
+//                sb_fail.append(ja.getJSONObject(i).getString("number"));
+//                sb_fail.append(" x ");
+//                sb_fail.append(ja.getJSONObject(i).getInt("money"));
+//                sb_fail.append("\n");
+//            }
+//            handler_3.sendEmptyMessage(0);
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
@@ -244,15 +266,14 @@ public class GameActivity extends AppCompatActivity {
                 sb_fail.append(" x ");
                 sb_fail.append(ja.getJSONObject(i).getInt("money"));
                 sb_fail.append("\n");
-                if (ja.getJSONObject(i).getString("number").equals(a) && String.valueOf(ja.getJSONObject(i).getInt("money")).equals(b)) {
+                if (ja.getJSONObject(i).getString("number").equals(a)) {
                     fail = 1;
                 }
             }
             handler_3.sendEmptyMessage(0);
-//            Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
 
             if (fail == 1) {
-
+                Toast.makeText(this, "下注失敗", Toast.LENGTH_LONG).show();
             } else {
                 MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_order_dtl");
                 mu_2.sendCookie(cookie);
@@ -268,7 +289,16 @@ public class GameActivity extends AppCompatActivity {
                 b_2.putString("frank", frank);
                 msg_2.setData(b_2);
                 handler_2.sendMessage(msg_2);
+                Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
             }
+
+            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://mb.sm2.xyz/mobile/wap_ajax.php?action=app_head_data");
+            mu_3.sendCookie(cookie);
+            JSONObject jo = mu_3.getJSONObjectData();
+            rcedits = jo.getInt("rcedits");
+            Log.i("troy", "rcedits= " + rcedits);
+            rcedits_use = jo.getInt("rcedits_use");
+            Log.i("troy", "rcedits_use= " + rcedits_use);
 
         } catch (IOException e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
@@ -540,11 +570,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void setMoneyText(String s) {
-        if (sb_2.length() < 4) {
-            sb_2.append(s);
-            Log.i("troy", "sb_2--" + sb_2.toString());
-            money.setText(sb_2.toString());
-        }
+        sb_2.append(s);
+        Log.i("troy", "sb_2--" + sb_2.toString());
+        money.setText(sb_2.toString());
     }
 
     public void reset() {
