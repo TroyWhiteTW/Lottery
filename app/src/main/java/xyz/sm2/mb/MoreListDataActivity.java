@@ -21,6 +21,7 @@ import org.json.JSONObject;
 public class MoreListDataActivity extends AppCompatActivity {
     private String cookie;
     private int totalPage;
+    private String s_issueno;
     private ProgressDialog pDialog;
     private pDialogHandler pDialogHandler;
     private UIHandler handler;
@@ -45,7 +46,9 @@ public class MoreListDataActivity extends AppCompatActivity {
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         totalPage = it.getIntExtra("totalPage", 1);
+        s_issueno = it.getStringExtra("s_issueno");
         Log.i("troy", cookie);
+        Log.i("troy", "第" + s_issueno + "期");
 
         tv_totalPages = (TextView) findViewById(R.id.tv_totalPages);
         tv_totalPages.setText("共 " + totalPage + " 頁");
@@ -95,6 +98,7 @@ public class MoreListDataActivity extends AppCompatActivity {
             MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_order_dtl");
             mu.sendCookie(cookie);
             mu.postKeyValue("page", page);
+            mu.postKeyValue("s_issueno", s_issueno);
 
             JSONArray ja = mu.getJSONObjectData().getJSONArray("list");
             int len = ja.length();

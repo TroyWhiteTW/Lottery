@@ -34,6 +34,7 @@ public class ListActivity extends AppCompatActivity {
     private UIHandler handler;
     private pDialogHandler pDialogHandler;
     private int totalPage;
+    private int s_issueno;
     private StringBuilder sb;
     private ArrayList<String> cancelList;
     private String app_net;
@@ -84,6 +85,7 @@ public class ListActivity extends AppCompatActivity {
                 Intent it = new Intent(ListActivity.this, MoreListDataActivity.class);
                 it.putExtra("cookie", cookie);
                 it.putExtra("totalPage", totalPage);
+                it.putExtra("s_issueno", String.valueOf(s_issueno));
                 startActivity(it);
             }
         });
@@ -120,7 +122,7 @@ public class ListActivity extends AppCompatActivity {
             sb.append(",");
         }
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_exe_order_cancel");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_exe_order_cancel");
             mu.sendCookie(cookie);
             mu.postKeyValue("idarray", sb.toString());
 //            List<String> a = mu.getHtml();
@@ -130,9 +132,9 @@ public class ListActivity extends AppCompatActivity {
             String b = mu.getJSONObjectData().getString("message");
             Log.i("troy", b);
 
-            Toast.makeText(this, "退碼成功", Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "退碼成功", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            Toast.makeText(this, "退碼失敗", Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "退碼失敗", Toast.LENGTH_LONG).show();
             Log.i("troy", e.toString());
         }
         finish();
@@ -153,7 +155,7 @@ public class ListActivity extends AppCompatActivity {
 
     public void getListData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_order_dtl");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_order_dtl");
             mu.sendCookie(cookie);
 //            List<String> a = mu.getHtml();
 //            for (String line : a) {
@@ -162,6 +164,9 @@ public class ListActivity extends AppCompatActivity {
             JSONObject jo = mu.getJSONObjectData();
             totalPage = jo.getInt("total_page");
             Log.i("troy", "共有" + totalPage + "頁");
+            s_issueno = jo.getInt("s_issueno");
+            Log.i("troy", "第" + s_issueno + "期");
+
             JSONArray ja = jo.getJSONArray("list");
             int len = ja.length();
             Log.i("troy", "共有" + len + "筆資料");

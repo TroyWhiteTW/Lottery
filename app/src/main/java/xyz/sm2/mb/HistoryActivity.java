@@ -25,6 +25,7 @@ import org.json.JSONObject;
 public class HistoryActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
+    private int totalPage;
     private LinearLayout historyList;
     private ProgressDialog pDialog;
     private UIHandler handler;
@@ -157,7 +158,7 @@ public class HistoryActivity extends AppCompatActivity {
      * win : 中獎
      * profit : 盈虧
      */
-    public void list(String issueno, String gold, String war, String win, String profit, int i) {
+    public void list(final String issueno, String gold, String war, String win, String profit, int i) {
         LinearLayout ll = new LinearLayout(HistoryActivity.this);
         ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(50)));
         ll.setOrientation(LinearLayout.HORIZONTAL);
@@ -168,12 +169,16 @@ public class HistoryActivity extends AppCompatActivity {
         TextView tv0 = new TextView(HistoryActivity.this);
         tv0.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT));
 
-        TextView tv1 = new TextView(HistoryActivity.this);
-        tv1.setText(issueno);
-        tv1.setTextSize(20);
-        tv1.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
-        tv1.setGravity(Gravity.CENTER);
-        tv1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+        Button btn1 = new Button(HistoryActivity.this);
+        btn1.setText(issueno);
+        btn1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getData_2(issueno);
+            }
+        });
+
         TextView tv2 = new TextView(HistoryActivity.this);
         tv2.setText(gold);
         tv2.setTextSize(20);
@@ -203,13 +208,44 @@ public class HistoryActivity extends AppCompatActivity {
         tv6.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(10), LinearLayout.LayoutParams.MATCH_PARENT));
 
         ll.addView(tv0);
-        ll.addView(tv1);
+        ll.addView(btn1);
         ll.addView(tv2);
         ll.addView(tv3);
         ll.addView(tv4);
         ll.addView(tv5);
         ll.addView(tv6);
         historyList.addView(ll);
+    }
+
+    private void getData_2(final String s) {
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                getListData(s);
+                Looper.loop();
+            }
+        }.start();
+    }
+
+    private void getListData(String s) {
+        try {
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_order_dtl");
+            mu.sendCookie(cookie);
+            mu.postKeyValue("s_issueno", s);
+            JSONObject jo = mu.getJSONObjectData();
+            totalPage = jo.getInt("total_page");
+            Log.i("troy", "共有" + totalPage + "頁");
+
+            Intent it = new Intent(HistoryActivity.this, MoreListDataActivity.class);
+            it.putExtra("cookie", cookie);
+            it.putExtra("totalPage", totalPage);
+            it.putExtra("s_issueno", s);
+            startActivity(it);
+        } catch (Exception e) {
+            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Log.i("troy", e.toString());
+        }
     }
 
     private class UIHandler extends Handler {
