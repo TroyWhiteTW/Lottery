@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
     private Button btn_login, btn_agreement;
     private String cookie;
@@ -78,8 +80,8 @@ public class LoginActivity extends AppCompatActivity {
 //            Log.i("troy", cookie);
 //            String[] b = cookie.split("; ");
 //            Log.i("troy", b[0]);
-            cookie = mu.getCookie().split("; ")[0];
-            Log.i("troy", cookie);
+//            cookie = mu.getCookie().split("; ")[0];
+//            Log.i("troy", cookie);
 //            List<String> ret = mu.getHtml();
 //            for (String line : ret) {
 //                Log.i("troy", line);
@@ -111,6 +113,8 @@ public class LoginActivity extends AppCompatActivity {
 //            }
             JSONObject jo = mu.getJSONObjectData();
             Log.i("troy", jo.getString("msg"));
+            Log.i("troy", jo.getString("PHPSESSID"));
+            cookie = "PHPSESSID=" + jo.getString("PHPSESSID");
             if (jo.getInt("status") == 200) {
                 Toast.makeText(this, "成功登录", Toast.LENGTH_LONG).show();
                 Intent it = new Intent(LoginActivity.this, MainActivity.class);

@@ -23,7 +23,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class MemberActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
