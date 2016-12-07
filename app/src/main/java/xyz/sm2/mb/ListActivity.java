@@ -74,7 +74,12 @@ public class ListActivity extends AppCompatActivity {
         btn_winGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent it = new Intent(ListActivity.this, MoreListDataActivity.class);
+                it.putExtra("cookie", cookie);
+                it.putExtra("totalPage", totalPage);
+                it.putExtra("s_issueno", String.valueOf(s_issueno));
+                it.putExtra("winList", true);
+                startActivity(it);
             }
         });
 
@@ -86,6 +91,7 @@ public class ListActivity extends AppCompatActivity {
                 it.putExtra("cookie", cookie);
                 it.putExtra("totalPage", totalPage);
                 it.putExtra("s_issueno", String.valueOf(s_issueno));
+                it.putExtra("winList", false);
                 startActivity(it);
             }
         });

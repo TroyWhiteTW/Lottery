@@ -241,6 +241,7 @@ public class HistoryActivity extends AppCompatActivity {
             it.putExtra("cookie", cookie);
             it.putExtra("totalPage", totalPage);
             it.putExtra("s_issueno", s);
+            it.putExtra("winList", false);
             startActivity(it);
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();

@@ -22,6 +22,7 @@ public class MoreListDataActivity extends AppCompatActivity {
     private String cookie;
     private int totalPage;
     private String s_issueno;
+    private boolean winList = false;
     private ProgressDialog pDialog;
     private pDialogHandler pDialogHandler;
     private UIHandler handler;
@@ -45,13 +46,15 @@ public class MoreListDataActivity extends AppCompatActivity {
 
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
-        totalPage = it.getIntExtra("totalPage", 1);
+//        totalPage = it.getIntExtra("totalPage", 1);
         s_issueno = it.getStringExtra("s_issueno");
+        winList = it.getBooleanExtra("winList", false);
+
         Log.i("troy", cookie);
         Log.i("troy", "第" + s_issueno + "期");
+        Log.i("troy", "wunList：" + winList);
 
         tv_totalPages = (TextView) findViewById(R.id.tv_totalPages);
-        tv_totalPages.setText("共 " + totalPage + " 頁");
 
         btn_loadNextPage = (Button) findViewById(R.id.btn_loadNextPage);
         btn_loadNextPage.setOnClickListener(new View.OnClickListener() {
@@ -99,8 +102,13 @@ public class MoreListDataActivity extends AppCompatActivity {
             mu.sendCookie(cookie);
             mu.postKeyValue("page", page);
             mu.postKeyValue("s_issueno", s_issueno);
-
-            JSONArray ja = mu.getJSONObjectData().getJSONArray("list");
+            if (winList == true) {
+                mu.postKeyValue("doaction", "award");
+            }
+            JSONObject jo = mu.getJSONObjectData();
+            totalPage = jo.getInt("total_page");
+            Log.i("troy", "total_page：" + jo.getInt("total_page"));
+            JSONArray ja = jo.getJSONArray("list");
             int len = ja.length();
 //                Log.i("troy", "第" + j + "頁共有" + len + "筆資料");
 
@@ -161,6 +169,7 @@ public class MoreListDataActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
+            tv_totalPages.setText("共 " + totalPage + " 頁");
             if (pDialog.isShowing()) {
                 pDialog.dismiss();
             }
