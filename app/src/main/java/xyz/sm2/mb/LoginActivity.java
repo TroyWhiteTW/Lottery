@@ -76,12 +76,10 @@ public class LoginActivity extends AppCompatActivity {
             mu.postKeyValue("username", String.valueOf(login_act.getText()));
             mu.postKeyValue("password", String.valueOf(login_pw.getText()));
 //            mu.postKeyValue("useragent", "mozilla/5.0 (windows nt 6.1; wow64; trident/7.0; slcc2; .net clr 2.0.50727; .net clr 3.5.30729; .net clr 3.0.30729; .net4.0c; .net4.0e; media center pc 6.0; infopath.3; rv:11.0) like gecko");
-//            String cookie = mu.getCookie();
-//            Log.i("troy", cookie);
+            String cookie = mu.getCookie();
+            Log.i("troy", cookie);
 //            String[] b = cookie.split("; ");
 //            Log.i("troy", b[0]);
-//            cookie = mu.getCookie().split("; ")[0];
-//            Log.i("troy", cookie);
 //            List<String> ret = mu.getHtml();
 //            for (String line : ret) {
 //                Log.i("troy", line);
@@ -111,10 +109,12 @@ public class LoginActivity extends AppCompatActivity {
 //            for (String line2 : ret_4) {
 //                Log.i("troy", line2);
 //            }
+            String serverID = mu.getCookie().split("; ")[0];
+            Log.i("troy", serverID);
             JSONObject jo = mu.getJSONObjectData();
             Log.i("troy", jo.getString("msg"));
             Log.i("troy", jo.getString("PHPSESSID"));
-            cookie = "PHPSESSID=" + jo.getString("PHPSESSID");
+            cookie = "PHPSESSID=" + jo.getString("PHPSESSID") + "; " + serverID + "; path=/";
             Log.i("troy", "" + jo.getInt("status"));
             if (jo.getInt("status") == 200) {
                 Toast.makeText(this, "成功登录", Toast.LENGTH_LONG).show();
