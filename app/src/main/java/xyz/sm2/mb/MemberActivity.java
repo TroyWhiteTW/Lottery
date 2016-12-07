@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,9 +23,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class MemberActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
+    private Button btn_mode;
     private String cookie;
     private ProgressDialog pDialog;
     private UIHandler handler;
@@ -35,6 +38,10 @@ public class MemberActivity extends AppCompatActivity {
     private String[] sa;
     private ArrayList<String> list;
     private String app_net;
+    private int odd_sw;
+    private RadioButton rb_ac, rb_tr;
+    private String enter_btn;
+    private int left_show;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,17 @@ public class MemberActivity extends AppCompatActivity {
         tv_rcedits = (TextView) findViewById(R.id.rcedits);
         tv_rcedits_use = (TextView) findViewById(R.id.rcedits_use);
         tv_username = (TextView) findViewById(R.id.tv_username);
+
+        rb_ac = (RadioButton) findViewById(R.id.rb_ac);
+        rb_tr = (RadioButton) findViewById(R.id.rb_tr);
+
+        btn_mode = (Button) findViewById(R.id.btn_mode);
+        btn_mode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setMode();
+            }
+        });
 
         list = new ArrayList();
         sp0 = (Spinner) findViewById(R.id.sp0);
@@ -89,6 +107,12 @@ public class MemberActivity extends AppCompatActivity {
             String username = jo.getJSONObject("head_data").getString("username");
             String rcedits = jo.getJSONObject("head_data").getString("rcedits");
             String rcedits_use = jo.getJSONObject("head_data").getString("rcedits_use");
+            odd_sw = jo.getJSONObject("head_data").getInt("odd_sw");
+            Log.i("troy", "錄碼模式：" + odd_sw);
+            enter_btn = jo.getJSONObject("head_data").getString("enter_btn");
+            Log.i("troy", "輸入模式：" + enter_btn);
+            left_show = jo.getJSONObject("head_data").getInt("left_show");
+            Log.i("troy", "小票打印功能：" + left_show);
 
             Iterator<String> iter = jo.getJSONObject("huishui_list").getJSONObject("list").getJSONObject("1").keys();
             while (iter.hasNext()) {
@@ -112,6 +136,46 @@ public class MemberActivity extends AppCompatActivity {
             Log.i("troy", e.toString());
         }
         pDialogHandler.sendEmptyMessage(0);
+    }
+
+    private void setMode() {
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                doSetMode();
+                Looper.loop();
+            }
+        }.start();
+    }
+
+    private void doSetMode() {
+        try {
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_mem_data_act");
+            mu.sendCookie(cookie);
+            mu.postKeyValue("entermode", enter_btn);
+            if (rb_ac.isChecked()) {
+                mu.postKeyValue("isfpfrankhotzhuan", "0");
+            } else if (rb_tr.isChecked()) {
+                mu.postKeyValue("isfpfrankhotzhuan", "1");
+            }
+            mu.postKeyValue("sendmode", String.valueOf(left_show));
+//            List<String> aa = mu.getHtml();
+//            for (String line : aa) {
+//                Log.i("troy", line);
+//            }
+            JSONObject jo = mu.getJSONObjectData();
+            String a = jo.getString("ERR_TAG");
+            Log.i("troy", a);
+            String b = jo.getString("sys_msg");
+            Log.i("troy", b);
+
+            finish();
+            startActivity(getIntent());
+        } catch (Exception e) {
+            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Log.i("troy", e.toString());
+        }
     }
 
     public void setFnBtn() {
@@ -169,6 +233,13 @@ public class MemberActivity extends AppCompatActivity {
             tv_username.setText("帳號：" + username);
             tv_rcedits.setText(rcedits);
             tv_rcedits_use.setText(rcedits_use);
+            if (odd_sw == 0) {
+                rb_ac.setChecked(true);
+            } else if (odd_sw == 1) {
+                rb_tr.setChecked(true);
+            }
+
+
             adapter = new ArrayAdapter<>(MemberActivity.this, android.R.layout.simple_spinner_item, sa);
             sp0.setAdapter(adapter);
         }
