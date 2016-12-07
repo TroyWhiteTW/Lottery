@@ -76,8 +76,8 @@ public class LoginActivity extends AppCompatActivity {
             mu.postKeyValue("username", String.valueOf(login_act.getText()));
             mu.postKeyValue("password", String.valueOf(login_pw.getText()));
 //            mu.postKeyValue("useragent", "mozilla/5.0 (windows nt 6.1; wow64; trident/7.0; slcc2; .net clr 2.0.50727; .net clr 3.5.30729; .net clr 3.0.30729; .net4.0c; .net4.0e; media center pc 6.0; infopath.3; rv:11.0) like gecko");
-            String cookie = mu.getCookie();
-            Log.i("troy", cookie);
+//            String cookie = mu.getCookie();
+//            Log.i("troy", cookie);
 //            String[] b = cookie.split("; ");
 //            Log.i("troy", b[0]);
 //            List<String> ret = mu.getHtml();

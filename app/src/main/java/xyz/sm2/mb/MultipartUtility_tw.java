@@ -32,15 +32,6 @@ public class MultipartUtility_tw {
         httpConn.setRequestMethod("POST");// 設置請求方法為POST
     }
 
-    public void postActPw(String act, String pw) throws IOException {
-        String data = "username=" + act +
-                "&password=" + pw +
-                "&useragent=mozilla/5.0 (windows nt 6.1; wow64; trident/7.0; slcc2; .net clr 2.0.50727; .net clr 3.5.30729; .net clr 3.0.30729; .net4.0c; .net4.0e; media center pc 6.0; infopath.3; rv:11.0) like gecko";
-        outputStream = httpConn.getOutputStream();
-        outputStream.write(data.getBytes());
-        outputStream.flush();
-    }
-
     public void postKeyValue(String key, String value) throws IOException {
         String data = "&" + key + "=" + value;
         outputStream = httpConn.getOutputStream();
