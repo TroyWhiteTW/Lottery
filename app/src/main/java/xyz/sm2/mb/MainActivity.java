@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
     private String cookie;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         cookie = it.getStringExtra("cookie");
         Log.i("troy", cookie);
 
-//        getData();
+        getData();
         setFnBtn();
     }
 
@@ -47,19 +49,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void getTestData() {
         try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_exe_order_print");
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_head_data");
             mu.sendCookie(cookie);
-            mu.postKeyValue("idarray", "116898159");
-//            int i = mu.getResponseCode();
-//            Log.i("troy", "----" + i + "----");
-//            List<String> ret_2 = mu.getHtml();
-//            for (String line : ret_2) {
-//                Log.i("troy", line);
-//            }
-            String a = mu.getJSONObjectData().getString("list");
-            Log.i("troy", a);
-            String rec = new JSONArray(a).getJSONObject(0).getString("ticket");
-            Log.i("troy", rec);
+            int i = mu.getResponseCode();
+            Log.i("troy", "----" + i + "----");
+            List<String> ret_2 = mu.getHtml();
+            for (String line : ret_2) {
+                Log.i("troy", line);
+            }
+//            String a = mu.getJSONObjectData().getString("list");
+//            Log.i("troy", a);
+//            String rec = new JSONArray(a).getJSONObject(0).getString("ticket");
+//            Log.i("troy", rec);
 
         } catch (Exception e) {
             Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();

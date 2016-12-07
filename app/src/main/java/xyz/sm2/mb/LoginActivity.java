@@ -115,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.i("troy", jo.getString("msg"));
             Log.i("troy", jo.getString("PHPSESSID"));
             cookie = "PHPSESSID=" + jo.getString("PHPSESSID");
+            Log.i("troy", "" + jo.getInt("status"));
             if (jo.getInt("status") == 200) {
                 Toast.makeText(this, "成功登录", Toast.LENGTH_LONG).show();
                 Intent it = new Intent(LoginActivity.this, MainActivity.class);
