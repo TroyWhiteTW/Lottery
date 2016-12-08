@@ -32,21 +32,25 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        app_net = getResources().getString(R.string.app_net);
+        initial();
 
+    }
+
+    public void initial() {
+        app_net = getResources().getString(R.string.app_net);
         login_act = (AutoCompleteTextView) findViewById(R.id.login_act);
         login_pw = (EditText) findViewById(R.id.login_pw);
-
+        check_agreement = (CheckBox) findViewById(R.id.check_agreement);
         btn_agreement = (Button) findViewById(R.id.btn_agreement);
+        btn_login = (Button) findViewById(R.id.btn_login);
+
         btn_agreement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, AgreementActivity.class));
             }
         });
-        check_agreement = (CheckBox) findViewById(R.id.check_agreement);
 
-        btn_login = (Button) findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
