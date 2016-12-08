@@ -447,4 +447,11 @@ public class BTPrintActivity extends AppCompatActivity {
         }
     }
 
+    public void Toast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+    }
+
+    public void Log(String s) {
+        Log.i("troy", s);
+    }
 }

@@ -219,4 +219,12 @@ public class MoreListDataActivity extends AppCompatActivity {
         ll.addView(tv4);
         moreOrderList.addView(ll);
     }
+
+    public void Toast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+    }
+
+    public void Log(String s) {
+        Log.i("troy", s);
+    }
 }

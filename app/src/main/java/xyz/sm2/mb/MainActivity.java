@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
-        Log.i("troy", cookie);
+        Log(cookie);
 
         getData();
         setFnBtn();
@@ -52,19 +52,18 @@ public class MainActivity extends AppCompatActivity {
             MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_head_data");
             mu.sendCookie(cookie);
             int i = mu.getResponseCode();
-            Log.i("troy", "----" + i + "----");
+            Log("ResponseCod: " + i);
             List<String> ret_2 = mu.getHtml();
             for (String line : ret_2) {
-                Log.i("troy", line);
+                Log(line);
             }
 //            String a = mu.getJSONObjectData().getString("list");
 //            Log.i("troy", a);
 //            String rec = new JSONArray(a).getJSONObject(0).getString("ticket");
 //            Log.i("troy", rec);
-
         } catch (Exception e) {
-            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
-            Log.i("troy", e.toString());
+            Toast("無法與伺服器取得連線");
+            Log(e.toString());
         }
     }
 
@@ -110,6 +109,14 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void Toast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+    }
+
+    public void Log(String s) {
+        Log.i("troy", s);
     }
 
     @Override

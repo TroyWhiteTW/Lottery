@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         initial();
-
     }
 
     public void initial() {
@@ -89,12 +88,12 @@ public class LoginActivity extends AppCompatActivity {
 //                Log.i("troy", line);
 //            }
             String serverID = mu.getCookie().split("; ")[0];
-            Log.i("troy", serverID);
+            Log(serverID);
             JSONObject jo = mu.getJSONObjectData();
-            Log.i("troy", jo.getString("status"));
+            Log(jo.getString("status"));
             if (jo.getInt("status") == 200) {
-                Log.i("troy", jo.getString("msg"));
-                Log.i("troy", jo.getString("PHPSESSID"));
+                Log(jo.getString("msg"));
+                Log(jo.getString("PHPSESSID"));
                 cookie = "PHPSESSID=" + jo.getString("PHPSESSID") + "; " + serverID + "; path=/";
                 Toast("成功登录");
                 Intent it = new Intent(LoginActivity.this, MainActivity.class);
@@ -106,12 +105,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             Toast("無法與伺服器取得連線");
-            Log.i("troy", e.toString());
+            Log(e.toString());
         }
     }
 
     public void Toast(String s) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+    }
+
+    public void Log(String s) {
+        Log.i("troy", s);
     }
 
     @Override

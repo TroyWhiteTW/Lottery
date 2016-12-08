@@ -275,6 +275,14 @@ public class HistoryActivity extends AppCompatActivity {
         }
     }
 
+    public void Toast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+    }
+
+    public void Log(String s) {
+        Log.i("troy", s);
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 //        確定按下退出鍵and防止重複按下退出鍵
