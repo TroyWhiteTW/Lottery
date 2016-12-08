@@ -24,13 +24,13 @@ import org.json.JSONObject;
 
 public class HistoryActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list;
-    private String cookie;
     private int totalPage;
     private LinearLayout historyList;
     private ProgressDialog pDialog;
-    private UIHandler handler;
     private pDialogHandler pDialogHandler;
+    private String cookie;
     private String app_net;
+    private UIHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

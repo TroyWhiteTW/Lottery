@@ -25,22 +25,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MemberActivity extends AppCompatActivity {
+    private ArrayAdapter<String> adapter;
+    private ArrayList<String> list;
     private Button btn_history, btn_member, btn_game, btn_list;
     private Button btn_mode;
-    private String cookie;
-    private ProgressDialog pDialog;
-    private UIHandler handler;
-    private pDialogHandler pDialogHandler;
-    private TextView tv_rcedits, tv_rcedits_use, tv_username;
-    private Spinner sp0;
-    private ArrayAdapter<String> adapter;
-    private String[] sa;
-    private ArrayList<String> list;
-    private String app_net;
     private int odd_sw;
-    private RadioButton rb_ac, rb_tr;
-    private String enter_btn;
     private int left_show;
+    private ProgressDialog pDialog;
+    private pDialogHandler pDialogHandler;
+    private RadioButton rb_ac, rb_tr;
+    private Spinner sp0;
+    private String[] sa;
+    private String cookie;
+    private String app_net;
+    private String enter_btn;
+    private TextView tv_rcedits, tv_rcedits_use, tv_username;
+    private UIHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

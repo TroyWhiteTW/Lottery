@@ -19,19 +19,19 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MoreListDataActivity extends AppCompatActivity {
-    private String cookie;
-    private int totalPage;
-    private String s_issueno;
     private boolean winList = false;
+    private Button btn_loadNextPage;
+    private int totalPage;
+    private int whatpage = 1;
+    private LinearLayout moreOrderList;
     private ProgressDialog pDialog;
     private pDialogHandler pDialogHandler;
+    private String s_issueno;
+    private String app_net;
+    private String cookie;
+    private TextView tv_totalPages;
     private UIHandler handler;
     private UIHandler_2 handler_2;
-    private LinearLayout moreOrderList;
-    private TextView tv_totalPages;
-    private Button btn_loadNextPage;
-    private int whatpage = 1;
-    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -36,25 +36,25 @@ import java.util.Set;
 import java.util.UUID;
 
 public class BTPrintActivity extends AppCompatActivity {
-    private String cookie, ListID;
-    private static final int REQUEST_ENABLE_BT = 1;
-    private BluetoothAdapter bluetoothAdapter;
     private ArrayList<BluetoothDevice> pairedDeviceArrayList;
-    private ArrayList<String> pairedNameList;
-    private List<HashMap<String, String>> list;
-    private TextView textStatus;
-    private ListView listViewPairedDevice;
     private ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
-    private UUID myUUID;
+    private ArrayList<String> pairedNameList;
+    private BluetoothAdapter bluetoothAdapter;
     private Button btn_print;
+    private static final int REQUEST_ENABLE_BT = 1;
+    private List<HashMap<String, String>> list;
+    private ListView listViewPairedDevice;
+    private ProgressDialog pDialog;
+    private String cookie, ListID;
+    private String app_net;
+    private String rec;
+    private ScrollView sv_preview;
+    private TextView textStatus;
+    private TextView tv_preview;
     private ThreadConnectBTdevice myThreadConnectBTdevice;
     private ThreadConnected myThreadConnected;
-    private ScrollView sv_preview;
-    private TextView tv_preview;
-    private String rec;
+    private UUID myUUID;
     private UIHandler handler;
-    private ProgressDialog pDialog;
-    private String app_net;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

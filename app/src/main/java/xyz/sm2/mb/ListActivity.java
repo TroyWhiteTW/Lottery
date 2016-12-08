@@ -26,18 +26,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
+    private ArrayList<String> cancelList;
     private Button btn_history, btn_member, btn_game, btn_list;
     private Button btn_print_list, btn_winGame, btn_moreData, order_cancel;
-    private String cookie, ListID;
-    private LinearLayout orderList;
-    private ProgressDialog pDialog;
-    private UIHandler handler;
-    private pDialogHandler pDialogHandler;
     private int totalPage;
     private int s_issueno;
+    private LinearLayout orderList;
+    private ProgressDialog pDialog;
+    private pDialogHandler pDialogHandler;
     private StringBuilder sb;
-    private ArrayList<String> cancelList;
+    private String cookie, ListID;
     private String app_net;
+    private UIHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
