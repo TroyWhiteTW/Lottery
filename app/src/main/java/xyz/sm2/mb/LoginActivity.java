@@ -20,11 +20,11 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-    private Button btn_login, btn_agreement;
-    private String cookie;
     private AutoCompleteTextView login_act;
-    private EditText login_pw;
+    private Button btn_login, btn_agreement;
     private CheckBox check_agreement;
+    private EditText login_pw;
+    private String cookie;
     private String app_net;
 
     @Override
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (check_agreement.isChecked()) {
                     login();
                 } else {
-                    agreeHint();
+                    Toast("請先同意會員協議後方可登入");
                 }
             }
         });
@@ -84,55 +84,30 @@ public class LoginActivity extends AppCompatActivity {
 //            for (String line : ret) {
 //                Log.i("troy", line);
 //            }
-//
-//            MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_head_data");
-//            mu_2.sendCookie(cookie);
-//            List<String> ret_2 = mu_2.getHtml();
-//            for (String line : ret_2) {
-//                Log.i("troy", line);
-//            }
-//            String line = ret_2.get(0);
-//            JSONObject jo = new JSONObject(line);
-//            String v1 = jo.getString("username");
-//            Log.i("troy", v1);
-
-//            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_order_dtl");
-//            mu_3.sendCookie(cookie);
-//            List<String> ret_3 = mu_3.getHtml();
-//            for (String line2 : ret_3) {
-//                Log.i("troy", line2);
-//            }
-//
-//            MultipartUtility_tw mu_4 = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_get_order_history");
-//            mu_4.sendCookie(cookie);
-//            List<String> ret_4 = mu_4.getHtml();
-//            for (String line2 : ret_4) {
-//                Log.i("troy", line2);
-//            }
             String serverID = mu.getCookie().split("; ")[0];
             Log.i("troy", serverID);
             JSONObject jo = mu.getJSONObjectData();
-            Log.i("troy", jo.getString("msg"));
-            Log.i("troy", jo.getString("PHPSESSID"));
-            cookie = "PHPSESSID=" + jo.getString("PHPSESSID") + "; " + serverID + "; path=/";
-            Log.i("troy", "" + jo.getInt("status"));
+            Log.i("troy", jo.getString("status"));
             if (jo.getInt("status") == 200) {
-                Toast.makeText(this, "成功登录", Toast.LENGTH_LONG).show();
+                Log.i("troy", jo.getString("msg"));
+                Log.i("troy", jo.getString("PHPSESSID"));
+                cookie = "PHPSESSID=" + jo.getString("PHPSESSID") + "; " + serverID + "; path=/";
+                Toast("成功登录");
                 Intent it = new Intent(LoginActivity.this, MainActivity.class);
                 it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();
             } else {
-                Toast.makeText(this, "账号和密码不匹配，请重新登录。", Toast.LENGTH_LONG).show();
+                Toast("账号和密码不匹配，请重新登录。");
             }
         } catch (Exception e) {
-            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Toast("無法與伺服器取得連線");
             Log.i("troy", e.toString());
         }
     }
 
-    public void agreeHint() {
-        Toast.makeText(this, "請先同意會員協議後方可登入", Toast.LENGTH_LONG).show();
+    public void Toast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
     }
 
     @Override
