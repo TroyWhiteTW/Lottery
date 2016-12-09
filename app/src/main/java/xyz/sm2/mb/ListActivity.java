@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
     private ArrayList<String> cancelList;
-    private Button btn_history, btn_member, btn_game, btn_list;
+    private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
     private Button btn_print_list, btn_winGame, btn_moreData, order_cancel;
     private int totalPage;
     private int s_issueno;
@@ -209,7 +209,7 @@ public class ListActivity extends AppCompatActivity {
         btn_game = (Button) findViewById(R.id.btn_game_list);
         btn_member = (Button) findViewById(R.id.btn_member_list);
         btn_history = (Button) findViewById(R.id.btn_history_list);
-
+        btn_qselect = (Button) findViewById(R.id.btn_qselect_list);
         btn_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -220,6 +220,15 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(ListActivity.this, GameActivity.class);
+                it.putExtra("cookie", cookie);
+                startActivity(it);
+                finish();
+            }
+        });
+        btn_qselect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(ListActivity.this, QselectActivity.class);
                 it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();

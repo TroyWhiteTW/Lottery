@@ -27,7 +27,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class GameActivity extends AppCompatActivity {
-    private Button btn_history, btn_member, btn_game, btn_list;
+    private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
     private Button btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_0, btn_X;
     private Button clear, commit;
     private String cookie;
@@ -316,7 +316,7 @@ public class GameActivity extends AppCompatActivity {
         btn_game = (Button) findViewById(R.id.btn_game_game);
         btn_member = (Button) findViewById(R.id.btn_member_game);
         btn_history = (Button) findViewById(R.id.btn_history_game);
-
+        btn_qselect = (Button) findViewById(R.id.btn_qselect_game);
         btn_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -330,6 +330,15 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+        btn_qselect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(GameActivity.this, QselectActivity.class);
+                it.putExtra("cookie", cookie);
+                startActivity(it);
+                finish();
             }
         });
         btn_member.setOnClickListener(new View.OnClickListener() {

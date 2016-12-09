@@ -23,7 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class HistoryActivity extends AppCompatActivity {
-    private Button btn_history, btn_member, btn_game, btn_list;
+    private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
     private int totalPage;
     private LinearLayout historyList;
     private ProgressDialog pDialog;
@@ -110,7 +110,7 @@ public class HistoryActivity extends AppCompatActivity {
         btn_game = (Button) findViewById(R.id.btn_game_history);
         btn_member = (Button) findViewById(R.id.btn_member_history);
         btn_history = (Button) findViewById(R.id.btn_history_history);
-
+        btn_qselect = (Button) findViewById(R.id.btn_qselect_history);
         btn_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,6 +124,15 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(HistoryActivity.this, GameActivity.class);
+                it.putExtra("cookie", cookie);
+                startActivity(it);
+                finish();
+            }
+        });
+        btn_qselect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(HistoryActivity.this, QselectActivity.class);
                 it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();

@@ -27,7 +27,7 @@ import java.util.Iterator;
 public class MemberActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private ArrayList<String> list;
-    private Button btn_history, btn_member, btn_game, btn_list;
+    private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
     private Button btn_mode;
     private int odd_sw;
     private int left_show;
@@ -182,7 +182,7 @@ public class MemberActivity extends AppCompatActivity {
         btn_game = (Button) findViewById(R.id.btn_game_member);
         btn_member = (Button) findViewById(R.id.btn_member_member);
         btn_history = (Button) findViewById(R.id.btn_history_member);
-
+        btn_qselect = (Button) findViewById(R.id.btn_qselect_member);
         btn_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -196,6 +196,15 @@ public class MemberActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(MemberActivity.this, GameActivity.class);
+                it.putExtra("cookie", cookie);
+                startActivity(it);
+                finish();
+            }
+        });
+        btn_qselect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(MemberActivity.this, QselectActivity.class);
                 it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();

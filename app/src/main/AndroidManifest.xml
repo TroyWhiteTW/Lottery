@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="xyz.sm2.mb.LoginActivity"
+            android:name=".LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,30 +23,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="xyz.sm2.mb.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="xyz.sm2.mb.HistoryActivity"
+            android:name=".HistoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="xyz.sm2.mb.MemberActivity"
+            android:name=".MemberActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="xyz.sm2.mb.GameActivity"
+            android:name=".GameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="xyz.sm2.mb.ListActivity"
+            android:name=".ListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="xyz.sm2.mb.AgreementActivity"
+            android:name=".AgreementActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="xyz.sm2.mb.BTPrintActivity"
+            android:name=".BTPrintActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="xyz.sm2.mb.MoreListDataActivity"
+            android:name=".MoreListDataActivity"
             android:screenOrientation="portrait" />
-
+        <activity android:name=".QselectActivity"></activity>
     </application>
 
 </manifest>

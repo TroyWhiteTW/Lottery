@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btn_history, btn_member, btn_game, btn_list;
+    private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
     private String cookie;
     private String app_net;
 
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         btn_game = (Button) findViewById(R.id.btn_game_main);
         btn_member = (Button) findViewById(R.id.btn_member_main);
         btn_history = (Button) findViewById(R.id.btn_history_main);
+        btn_qselect = (Button) findViewById(R.id.btn_qselect_main);
 
         btn_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +87,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(MainActivity.this, GameActivity.class);
+                it.putExtra("cookie", cookie);
+                startActivity(it);
+                finish();
+            }
+        });
+        btn_qselect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(MainActivity.this, QselectActivity.class);
                 it.putExtra("cookie", cookie);
                 startActivity(it);
                 finish();

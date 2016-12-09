@@ -31,6 +31,16 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/btn_qselect_history"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#fffec9"
+            android:text="快選"
+            android:textStyle="bold" />
+
+        <Button
             android:id="@+id/btn_member_history"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
