@@ -1,5 +1,6 @@
 package xyz.sm2.mb;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -10,6 +11,9 @@ import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -68,7 +72,7 @@ public class BTPrintActivity extends AppCompatActivity {
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         ListID = it.getStringExtra("ListID");
-        Log.i("troy", cookie);
+        Log(cookie);
 
         textStatus = (TextView) findViewById(R.id.status);
         listViewPairedDevice = (ListView) findViewById(R.id.pairedlist);
@@ -88,11 +92,17 @@ public class BTPrintActivity extends AppCompatActivity {
             }
         });
 
+        // 以下 Android 6+
+        if (ContextCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+        }
+
         // 如果裝置沒有藍芽，顯示不支援藍芽的Toast並結束程式
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
-            Toast.makeText(this,
-                    "本機無藍芽裝置，無法使用藍芽打印功能",
-                    Toast.LENGTH_LONG).show();
+            Toast("本機無藍芽裝置，無法使用藍芽打印功能");
             finish();
             return;
         }
@@ -104,9 +114,7 @@ public class BTPrintActivity extends AppCompatActivity {
         // 如果無法取得bluetoothAdapter，顯示不支援並結束程式
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
-            Toast.makeText(this,
-                    "Bluetooth is not supported on this hardware platform",
-                    Toast.LENGTH_LONG).show();
+            Toast("此設備不支援藍芽");
             finish();
             return;
         }
@@ -120,7 +128,7 @@ public class BTPrintActivity extends AppCompatActivity {
                 byte[] bytesToSend = s.getBytes("GBK");
                 myThreadConnected.write(bytesToSend);
             } catch (Exception e) {
-                Log.i("troy", e.toString());
+                Log(e.toString());
             }
         }
     }
@@ -157,8 +165,8 @@ public class BTPrintActivity extends AppCompatActivity {
 //            handler.sendMessage(msg);
 
         } catch (Exception e) {
-            Log.i("troy", e.toString());
-            Toast.makeText(this, "無未打印資料", Toast.LENGTH_LONG).show();
+            Log(e.toString());
+            Toast("無未打印資料");
             finish();
         }
         handler.sendEmptyMessage(0);
@@ -181,10 +189,10 @@ public class BTPrintActivity extends AppCompatActivity {
             mu.sendCookie(cookie);
             List<String> b = mu.getHtml();
             for (String line : b) {
-                Log.i("troy", line);
+                Log(line);
             }
         } catch (Exception e) {
-            Log.i("troy", e.toString());
+            Log(e.toString());
         }
     }
 
@@ -269,14 +277,19 @@ public class BTPrintActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 2) {
+        }
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_ENABLE_BT) {
             if (resultCode == Activity.RESULT_OK) {
                 setup();
             } else {
-                Toast.makeText(this,
-                        "BlueTooth NOT enabled",
-                        Toast.LENGTH_LONG).show();
+                Toast("藍芽未開啟");
                 finish();
             }
         }
