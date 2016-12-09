@@ -99,7 +99,7 @@ public class HistoryActivity extends AppCompatActivity {
                 handler.sendMessage(msg);
             }
         } catch (Exception e) {
-            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Toast("無法與伺服器取得連線");
             Log.i("troy", e.toString());
         }
         pDialogHandler.sendEmptyMessage(0);
@@ -253,7 +253,7 @@ public class HistoryActivity extends AppCompatActivity {
             it.putExtra("winList", false);
             startActivity(it);
         } catch (Exception e) {
-            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Toast("無法與伺服器取得連線");
             Log.i("troy", e.toString());
         }
     }
