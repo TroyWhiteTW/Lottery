@@ -62,4 +62,12 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="暫不開放此功能"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
 </LinearLayout>
