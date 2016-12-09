@@ -267,25 +267,29 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#f4f3dd" />
+                    android:background="#f4f3dd"
+                    android:inputType="number" />
 
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#f4f3dd" />
+                    android:background="#f4f3dd"
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -299,7 +303,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -314,7 +319,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -399,7 +405,8 @@
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:inputType="number" />
 
                 </LinearLayout>
 
@@ -446,7 +453,8 @@
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:inputType="number" />
 
                 </LinearLayout>
 
@@ -500,7 +508,8 @@
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:inputType="number" />
 
                 </LinearLayout>
 
@@ -547,7 +556,8 @@
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:inputType="number" />
 
                 </LinearLayout>
 
@@ -580,7 +590,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
             </RadioGroup>
 
@@ -602,7 +613,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -616,7 +628,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -630,7 +643,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -705,7 +719,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -720,7 +735,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
             </RadioGroup>
 
@@ -798,19 +814,22 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff" />
+                    android:background="#ffffff"
+                    android:inputType="number" />
 
             </RadioGroup>
 
