@@ -25,7 +25,7 @@ public class QselectActivity extends AppCompatActivity {
     }
 
     public void setFnBtn() {
-        btn_list = (Button) findViewById(R.id.btn_qselect_qselect);
+        btn_list = (Button) findViewById(R.id.btn_list_qselect);
         btn_game = (Button) findViewById(R.id.btn_game_qselect);
         btn_member = (Button) findViewById(R.id.btn_member_qselect);
         btn_history = (Button) findViewById(R.id.btn_history_qselect);
