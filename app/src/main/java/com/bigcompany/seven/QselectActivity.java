@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -45,14 +46,8 @@ public class QselectActivity extends AppCompatActivity {
         rb_peiChu = (RadioButton) findViewById(R.id.rb_peiChu);
         rb_peiQu = (RadioButton) findViewById(R.id.rb_peiQu);
 
-        rb_dingChu.setChecked(true);
-        if (rb_dingChu.isChecked() || rb_dingQu.isChecked()) {
-            ll_dingPos.setVisibility(View.VISIBLE);
-        } else if (rb_peiChu.isChecked() || rb_peiQu.isChecked()) {
-            ll_dingPos.setVisibility(View.GONE);
-        }
-
         btnOnClick();
+        rbSetting();
     }
 
     public void btnOnClick() {
@@ -104,6 +99,41 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+    }
+
+    public void rbSetting() {
+        rb_dingChu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (rb_dingChu.isChecked()) {
+                    ll_dingPos.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        rb_dingQu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (rb_dingQu.isChecked()) {
+                    ll_dingPos.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        rb_peiChu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (rb_peiChu.isChecked()) {
+                    ll_dingPos.setVisibility(View.GONE);
+                }
+            }
+        });
+        rb_peiQu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (rb_peiQu.isChecked()) {
+                    ll_dingPos.setVisibility(View.GONE);
+                }
             }
         });
     }
