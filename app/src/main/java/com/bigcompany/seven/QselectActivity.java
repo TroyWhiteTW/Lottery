@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class QselectActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
+    private Button btn_erDing, btn_sanDing, btn_siDing, btn_erXian, btn_sanXian, btn_siXian, btn_qselectRes, btn_qselectReset;
     private String cookie;
 
     @Override
@@ -21,7 +22,71 @@ public class QselectActivity extends AppCompatActivity {
         cookie = it.getStringExtra("cookie");
         Log(cookie);
 
+        initial();
         setFnBtn();
+    }
+
+    public void initial() {
+        btn_erDing = (Button) findViewById(R.id.btn_erDing);
+        btn_sanDing = (Button) findViewById(R.id.btn_sanDing);
+        btn_siDing = (Button) findViewById(R.id.btn_siDing);
+        btn_erXian = (Button) findViewById(R.id.btn_erXian);
+        btn_sanXian = (Button) findViewById(R.id.btn_sanXian);
+        btn_siXian = (Button) findViewById(R.id.btn_siXian);
+        btn_qselectRes = (Button) findViewById(R.id.btn_qselectRes);
+        btn_qselectReset = (Button) findViewById(R.id.btn_qselectReset);
+        btnOnClick();
+    }
+
+    public void btnOnClick() {
+        btn_erDing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btn_sanDing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btn_siDing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btn_erXian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btn_sanXian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btn_siXian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btn_qselectRes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btn_qselectReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     public void setFnBtn() {

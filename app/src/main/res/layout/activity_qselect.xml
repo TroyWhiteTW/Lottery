@@ -70,7 +70,7 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,6 +80,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_erDing"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -87,6 +88,7 @@
             android:text="二字定" />
 
         <Button
+            android:id="@+id/btn_sanDing"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -94,6 +96,7 @@
             android:text="三字定" />
 
         <Button
+            android:id="@+id/btn_siDing"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -101,6 +104,7 @@
             android:text="四字定" />
 
         <Button
+            android:id="@+id/btn_erXian"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -108,6 +112,7 @@
             android:text="二字現" />
 
         <Button
+            android:id="@+id/btn_sanXian"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -115,6 +120,7 @@
             android:text="三字現" />
 
         <Button
+            android:id="@+id/btn_siXian"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -131,6 +137,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_qselectRes"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -138,6 +145,7 @@
             android:text="生成" />
 
         <Button
+            android:id="@+id/btn_qselectReset"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -351,622 +359,622 @@
             </LinearLayout>
 
             <!--<RadioGroup-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#da8c8c"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#da8c8c"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="合分"-->
-                    <!--android:textAlignment="center"-->
-                    <!--android:textStyle="bold" />-->
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="合分"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textStyle="bold" />-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="除"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="除"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="取"-->
-                    <!--android:textAlignment="center" />-->
-
-            <!--</RadioGroup>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="60dp"-->
-                <!--android:background="#d6d4d4"-->
-                <!--android:orientation="horizontal">-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<LinearLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="30dp"-->
-                        <!--android:orientation="horizontal">-->
-
-                        <!--<TextView-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1"-->
-                            <!--android:gravity="center"-->
-                            <!--android:text="1."-->
-                            <!--android:textAlignment="center"-->
-                            <!--android:textStyle="bold" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                    <!--</LinearLayout>-->
-
-                    <!--<EditText-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:inputType="number"-->
-                        <!--android:textAlignment="center" />-->
-
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<LinearLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="30dp"-->
-                        <!--android:orientation="horizontal">-->
-
-                        <!--<TextView-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1"-->
-                            <!--android:gravity="center"-->
-                            <!--android:text="2."-->
-                            <!--android:textAlignment="center"-->
-                            <!--android:textStyle="bold" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                    <!--</LinearLayout>-->
-
-                    <!--<EditText-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:inputType="number"-->
-                        <!--android:textAlignment="center" />-->
-
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="60dp"-->
-                <!--android:background="#d6d4d4"-->
-                <!--android:orientation="horizontal">-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<LinearLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="30dp"-->
-                        <!--android:orientation="horizontal">-->
-
-                        <!--<TextView-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1"-->
-                            <!--android:gravity="center"-->
-                            <!--android:text="3."-->
-                            <!--android:textAlignment="center"-->
-                            <!--android:textStyle="bold" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                    <!--</LinearLayout>-->
-
-                    <!--<EditText-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:inputType="number"-->
-                        <!--android:textAlignment="center" />-->
-
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<LinearLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="30dp"-->
-                        <!--android:orientation="horizontal">-->
-
-                        <!--<TextView-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1"-->
-                            <!--android:gravity="center"-->
-                            <!--android:text="4."-->
-                            <!--android:textAlignment="center"-->
-                            <!--android:textStyle="bold" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                        <!--<CheckBox-->
-                            <!--android:layout_width="0dp"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_weight="1" />-->
-
-                    <!--</LinearLayout>-->
-
-                    <!--<EditText-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:inputType="number"-->
-                        <!--android:textAlignment="center" />-->
-
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
-
-            <!--<RadioGroup-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#da8c8c"-->
-                <!--android:orientation="horizontal">-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="不定位合分"-->
-                    <!--android:textAlignment="center"-->
-                    <!--android:textStyle="bold" />-->
-
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="两数合"-->
-                    <!--android:textAlignment="center" />-->
-
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="#ffffff"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="取"-->
+            <!--android:textAlignment="center" />-->
 
             <!--</RadioGroup>-->
 
             <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#ffbebe"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:background="#d6d4d4"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="全转"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical">-->
 
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="#ffffff"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="上奖"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="1."-->
+            <!--android:textAlignment="center"-->
+            <!--android:textStyle="bold" />-->
 
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="#ffffff"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="排除"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
 
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="#ffffff"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
 
             <!--</LinearLayout>-->
 
             <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#ffbebe"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical">-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="乘号位置"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="2."-->
+            <!--android:textAlignment="center"-->
+            <!--android:textStyle="bold" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:background="#d6d4d4"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="3."-->
+            <!--android:textAlignment="center"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="4."-->
+            <!--android:textAlignment="center"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--</LinearLayout>-->
 
             <!--</LinearLayout>-->
 
             <!--<RadioGroup-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#da8c8c"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#da8c8c"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="除"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="不定位合分"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textStyle="bold" />-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="取"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="两数合"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="二字定含"-->
-                    <!--android:textAlignment="center"-->
-                    <!--android:textStyle="bold" />-->
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="#ffffff"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textAlignment="center" />-->
+            <!--</RadioGroup>-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="二字定复式"-->
-                    <!--android:textAlignment="center"-->
-                    <!--android:textStyle="bold" />-->
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#ffbebe"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="#ffffff"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="全转"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="上奖"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="排除"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#ffbebe"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="乘号位置"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<RadioGroup-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#da8c8c"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="除"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="取"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="二字定含"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="二字定复式"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
 
             <!--</RadioGroup>-->
 
             <!--<RadioGroup-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#da8c8c"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#da8c8c"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="除"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="除"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="取(双重)"-->
-                    <!--android:textAlignment="center" />-->
-
-            <!--</RadioGroup>-->
-
-            <!--<RadioGroup-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#da8c8c"-->
-                <!--android:orientation="horizontal">-->
-
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="除"-->
-                    <!--android:textAlignment="center" />-->
-
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="取(二兄弟)"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="取(双重)"-->
+            <!--android:textAlignment="center" />-->
 
             <!--</RadioGroup>-->
 
             <!--<RadioGroup-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#da8c8c"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#da8c8c"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="除"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="除"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="取(对数)"-->
-                    <!--android:textAlignment="center" />-->
-
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="#ffffff"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textAlignment="center" />-->
-
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="#ffffff"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textAlignment="center" />-->
-
-                <!--<EditText-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="#ffffff"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="取(二兄弟)"-->
+            <!--android:textAlignment="center" />-->
 
             <!--</RadioGroup>-->
 
             <!--<RadioGroup-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#da8c8c"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#da8c8c"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="除"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="除"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="取(单)"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="取(对数)"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
-
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#ffffff"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center" />-->
 
             <!--</RadioGroup>-->
 
             <!--<RadioGroup-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:background="#da8c8c"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#da8c8c"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="除"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="除"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<RadioButton-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="取(双)"-->
-                    <!--android:textAlignment="center" />-->
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="取(单)"-->
+            <!--android:textAlignment="center" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
 
-                <!--<CheckBox-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--</RadioGroup>-->
+
+            <!--<RadioGroup-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#da8c8c"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="除"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<RadioButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="取(双)"-->
+            <!--android:textAlignment="center" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
+
+            <!--<CheckBox-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1" />-->
 
             <!--</RadioGroup>-->
 
