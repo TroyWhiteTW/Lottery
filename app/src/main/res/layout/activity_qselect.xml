@@ -268,17 +268,19 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_dingEdit"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
                 android:orientation="horizontal"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <View
                     android:layout_width="2dp"
                     android:layout_height="match_parent" />
 
                 <EditText
+                    android:id="@+id/ed_1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -329,11 +331,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_peiEdit"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
                 android:orientation="horizontal"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <EditText
                     android:layout_width="0dp"

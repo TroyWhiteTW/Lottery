@@ -3,18 +3,25 @@ package com.bigcompany.seven;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.util.HashSet;
+
 public class QselectActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
     private Button btn_erDing, btn_sanDing, btn_siDing, btn_erXian, btn_sanXian, btn_siXian, btn_qselectRes, btn_qselectReset;
-    private LinearLayout ll_dingPos;
+    private EditText ed_1;
+    private HashSet<String> hs1;
+    private LinearLayout ll_dingPos, ll_dingEdit, ll_peiEdit;
     private RadioButton rb_dingChu, rb_dingQu, rb_peiChu, rb_peiQu;
     private String cookie;
 
@@ -32,6 +39,7 @@ public class QselectActivity extends AppCompatActivity {
     }
 
     public void initial() {
+        hs1 = new HashSet();
         btn_erDing = (Button) findViewById(R.id.btn_erDing);
         btn_sanDing = (Button) findViewById(R.id.btn_sanDing);
         btn_siDing = (Button) findViewById(R.id.btn_siDing);
@@ -40,11 +48,31 @@ public class QselectActivity extends AppCompatActivity {
         btn_siXian = (Button) findViewById(R.id.btn_siXian);
         btn_qselectRes = (Button) findViewById(R.id.btn_qselectRes);
         btn_qselectReset = (Button) findViewById(R.id.btn_qselectReset);
+        ed_1 = (EditText) findViewById(R.id.ed_1);
         ll_dingPos = (LinearLayout) findViewById(R.id.ll_dingPos);
+        ll_dingEdit = (LinearLayout) findViewById(R.id.ll_dingEdit);
+        ll_peiEdit = (LinearLayout) findViewById(R.id.ll_peiEdit);
         rb_dingChu = (RadioButton) findViewById(R.id.rb_dingChu);
         rb_dingQu = (RadioButton) findViewById(R.id.rb_dingQu);
         rb_peiChu = (RadioButton) findViewById(R.id.rb_peiChu);
         rb_peiQu = (RadioButton) findViewById(R.id.rb_peiQu);
+
+        ed_1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         btnOnClick();
         rbSetting();
@@ -109,6 +137,8 @@ public class QselectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (rb_dingChu.isChecked()) {
                     ll_dingPos.setVisibility(View.VISIBLE);
+                    ll_dingEdit.setVisibility(View.VISIBLE);
+                    ll_peiEdit.setVisibility(View.GONE);
                 }
             }
         });
@@ -117,6 +147,8 @@ public class QselectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (rb_dingQu.isChecked()) {
                     ll_dingPos.setVisibility(View.VISIBLE);
+                    ll_dingEdit.setVisibility(View.VISIBLE);
+                    ll_peiEdit.setVisibility(View.GONE);
                 }
             }
         });
@@ -125,6 +157,8 @@ public class QselectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (rb_peiChu.isChecked()) {
                     ll_dingPos.setVisibility(View.GONE);
+                    ll_dingEdit.setVisibility(View.GONE);
+                    ll_peiEdit.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -133,6 +167,8 @@ public class QselectActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (rb_peiQu.isChecked()) {
                     ll_dingPos.setVisibility(View.GONE);
+                    ll_dingEdit.setVisibility(View.GONE);
+                    ll_peiEdit.setVisibility(View.VISIBLE);
                 }
             }
         });
