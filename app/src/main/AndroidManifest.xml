@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.bigcompany.seven.LoginActivity"
+            android:name=".LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,32 +23,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.bigcompany.seven.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bigcompany.seven.HistoryActivity"
+            android:name=".HistoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bigcompany.seven.MemberActivity"
+            android:name=".MemberActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bigcompany.seven.GameActivity"
+            android:name=".GameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bigcompany.seven.ListActivity"
+            android:name=".ListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bigcompany.seven.AgreementActivity"
+            android:name=".AgreementActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bigcompany.seven.BTPrintActivity"
+            android:name=".BTPrintActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bigcompany.seven.MoreListDataActivity"
+            android:name=".MoreListDataActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.bigcompany.seven.QselectActivity"
+            android:name=".QselectActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".QselectResActivity"></activity>
     </application>
 
 </manifest>
