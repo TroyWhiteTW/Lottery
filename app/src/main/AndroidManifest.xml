@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="xyz.sm2.mb">
+    package="com.bigcompany.seven">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name="com.bigcompany.seven.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,31 +23,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.bigcompany.seven.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HistoryActivity"
+            android:name="com.bigcompany.seven.HistoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MemberActivity"
+            android:name="com.bigcompany.seven.MemberActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".GameActivity"
+            android:name="com.bigcompany.seven.GameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ListActivity"
+            android:name="com.bigcompany.seven.ListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AgreementActivity"
+            android:name="com.bigcompany.seven.AgreementActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BTPrintActivity"
+            android:name="com.bigcompany.seven.BTPrintActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MoreListDataActivity"
+            android:name="com.bigcompany.seven.MoreListDataActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".QselectActivity"
+            android:name="com.bigcompany.seven.QselectActivity"
             android:screenOrientation="portrait" />
     </application>
 

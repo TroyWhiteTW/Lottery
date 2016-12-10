@@ -1,4 +1,4 @@
-package xyz.sm2.mb;
+package com.bigcompany.seven;
 
 import android.Manifest;
 import android.app.Activity;

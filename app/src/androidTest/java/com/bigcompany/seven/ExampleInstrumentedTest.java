@@ -1,4 +1,4 @@
-package xyz.sm2.mb;
+package com.bigcompany.seven;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

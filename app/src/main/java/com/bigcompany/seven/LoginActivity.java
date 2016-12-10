@@ -1,4 +1,4 @@
-package xyz.sm2.mb;
+package com.bigcompany.seven;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,8 +16,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONObject;
-
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     private AutoCompleteTextView login_act;

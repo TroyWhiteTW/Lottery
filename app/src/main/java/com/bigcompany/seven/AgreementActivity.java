@@ -1,4 +1,4 @@
-package xyz.sm2.mb;
+package com.bigcompany.seven;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
