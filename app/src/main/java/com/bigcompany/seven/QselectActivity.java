@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class QselectActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
     private Button btn_erDing, btn_sanDing, btn_siDing, btn_erXian, btn_sanXian, btn_siXian, btn_qselectRes, btn_qselectReset;
+    private LinearLayout ll_dingPos;
     private RadioButton rb_dingChu, rb_dingQu, rb_peiChu, rb_peiQu;
     private String cookie;
 
@@ -37,11 +39,18 @@ public class QselectActivity extends AppCompatActivity {
         btn_siXian = (Button) findViewById(R.id.btn_siXian);
         btn_qselectRes = (Button) findViewById(R.id.btn_qselectRes);
         btn_qselectReset = (Button) findViewById(R.id.btn_qselectReset);
-
+        ll_dingPos = (LinearLayout) findViewById(R.id.ll_dingPos);
         rb_dingChu = (RadioButton) findViewById(R.id.rb_dingChu);
         rb_dingQu = (RadioButton) findViewById(R.id.rb_dingQu);
         rb_peiChu = (RadioButton) findViewById(R.id.rb_peiChu);
         rb_peiQu = (RadioButton) findViewById(R.id.rb_peiQu);
+
+        rb_dingChu.setChecked(true);
+        if (rb_dingChu.isChecked() || rb_dingQu.isChecked()) {
+            ll_dingPos.setVisibility(View.VISIBLE);
+        } else if (rb_peiChu.isChecked() || rb_peiQu.isChecked()) {
+            ll_dingPos.setVisibility(View.GONE);
+        }
 
         btnOnClick();
     }
