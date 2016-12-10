@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class QselectActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
     private Button btn_erDing, btn_sanDing, btn_siDing, btn_erXian, btn_sanXian, btn_siXian, btn_qselectRes, btn_qselectReset;
+    private RadioButton rb_dingChu, rb_dingQu, rb_peiChu, rb_peiQu;
     private String cookie;
 
     @Override
@@ -35,6 +37,12 @@ public class QselectActivity extends AppCompatActivity {
         btn_siXian = (Button) findViewById(R.id.btn_siXian);
         btn_qselectRes = (Button) findViewById(R.id.btn_qselectRes);
         btn_qselectReset = (Button) findViewById(R.id.btn_qselectReset);
+
+        rb_dingChu = (RadioButton) findViewById(R.id.rb_dingChu);
+        rb_dingQu = (RadioButton) findViewById(R.id.rb_dingQu);
+        rb_peiChu = (RadioButton) findViewById(R.id.rb_peiChu);
+        rb_peiQu = (RadioButton) findViewById(R.id.rb_peiQu);
+
         btnOnClick();
     }
 
@@ -78,7 +86,9 @@ public class QselectActivity extends AppCompatActivity {
         btn_qselectRes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent it = new Intent(QselectActivity.this, QselectResActivity.class);
+                it.putExtra("cookie", cookie);
+                startActivity(it);
             }
         });
         btn_qselectReset.setOnClickListener(new View.OnClickListener() {

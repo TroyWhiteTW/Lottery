@@ -70,19 +70,17 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_erDing"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="二字定" />
@@ -90,7 +88,7 @@
         <Button
             android:id="@+id/btn_sanDing"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="三字定" />
@@ -98,7 +96,7 @@
         <Button
             android:id="@+id/btn_siDing"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="四字定" />
@@ -106,7 +104,7 @@
         <Button
             android:id="@+id/btn_erXian"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="二字現" />
@@ -114,7 +112,7 @@
         <Button
             android:id="@+id/btn_sanXian"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="三字現" />
@@ -122,7 +120,7 @@
         <Button
             android:id="@+id/btn_siXian"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="四字現" />
@@ -131,15 +129,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_qselectRes"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="生成" />
@@ -147,7 +143,7 @@
         <Button
             android:id="@+id/btn_qselectReset"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="復位" />
@@ -179,6 +175,7 @@
                     android:textStyle="bold" />
 
                 <RadioButton
+                    android:id="@+id/rb_dingChu"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -187,6 +184,7 @@
                     android:textAlignment="center" />
 
                 <RadioButton
+                    android:id="@+id/rb_dingQu"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -204,6 +202,7 @@
                     android:textStyle="bold" />
 
                 <RadioButton
+                    android:id="@+id/rb_peiChu"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -212,6 +211,7 @@
                     android:textAlignment="center" />
 
                 <RadioButton
+                    android:id="@+id/rb_peiQu"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -222,10 +222,12 @@
             </RadioGroup>
 
             <LinearLayout
+                android:id="@+id/ll_dingPos"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dp"
@@ -269,7 +271,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <View
                     android:layout_width="2dp"
@@ -329,7 +332,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <EditText
                     android:layout_width="0dp"
