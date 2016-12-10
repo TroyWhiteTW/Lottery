@@ -138,15 +138,15 @@ public class GameActivity extends AppCompatActivity {
                 String b = money.getText().toString();
                 int i = a.length();
                 if (rb_allfour.isChecked() && i != 4) {
-                    toast("四字現號碼錯誤");
+                    Toast("四字現號碼錯誤");
                 } else if (a.isEmpty() || b.isEmpty() || i > 4 || i < 2) {
-                    toast("號碼或金額輸入錯誤");
+                    Toast("號碼或金額輸入錯誤");
                 } else if (Integer.parseInt(b) > rcedits - rcedits_use) {
-                    toast("信用餘額不足");
+                    Toast("信用餘額不足");
                 } else if (i == 2 && a.contains("X")) {
-                    toast("號碼或金額輸入錯誤");
+                    Toast("號碼或金額輸入錯誤");
                 } else if (i == 3 && a.contains("X")) {
-                    toast("號碼或金額輸入錯誤");
+                    Toast("號碼或金額輸入錯誤");
                 } else if (i == 4 && a.contains("X")) {
                     int x = 0;
                     if (String.valueOf(a.charAt(0)).equals("X")) x++;
@@ -155,7 +155,7 @@ public class GameActivity extends AppCompatActivity {
                     if (String.valueOf(a.charAt(3)).equals("X")) x++;
                     Log("x=" + x);
                     if (x >= 3) {
-                        toast("號碼或金額輸入錯誤");
+                        Toast("號碼或金額輸入錯誤");
                     } else {
                         sendData(a, b);
                     }
@@ -230,7 +230,7 @@ public class GameActivity extends AppCompatActivity {
 //            }
 //            handler_3.sendEmptyMessage(0);
         } catch (Exception e) {
-            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Toast("無法與伺服器取得連線");
             Log(e.toString());
         }
         pDialogHandler.sendEmptyMessage(0);
@@ -275,7 +275,7 @@ public class GameActivity extends AppCompatActivity {
             handler_3.sendEmptyMessage(0);
 
             if (fail == 1) {
-                Toast.makeText(this, "下注失敗", Toast.LENGTH_LONG).show();
+                Toast("下注失敗");
             } else {
                 MultipartUtility_tw mu_2 = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_order_dtl");
                 mu_2.sendCookie(cookie);
@@ -291,7 +291,7 @@ public class GameActivity extends AppCompatActivity {
                 b_2.putString("frank", frank);
                 msg_2.setData(b_2);
                 handler_2.sendMessage(msg_2);
-                Toast.makeText(this, "下注成功", Toast.LENGTH_LONG).show();
+                Toast("下注成功");
             }
 
             MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_head_data");
@@ -303,10 +303,10 @@ public class GameActivity extends AppCompatActivity {
             Log("rcedits_use= " + rcedits_use);
 
         } catch (IOException e) {
-            Toast.makeText(this, "無法與伺服器取得連線", Toast.LENGTH_LONG).show();
+            Toast("無法與伺服器取得連線");
             Log(e.toString());
         } catch (JSONException e) {
-            Toast.makeText(this, "資料錯誤", Toast.LENGTH_LONG).show();
+            Toast("資料錯誤");
             Log(e.toString());
         }
     }
@@ -412,15 +412,11 @@ public class GameActivity extends AppCompatActivity {
 
     public void game_open_toast(int i) {
         if (i == 0) {
-            Toast.makeText(this, "關盤中", Toast.LENGTH_LONG).show();
+            Toast("關盤中");
         } else if (i == 1) {
-            Toast.makeText(this, "開盤中", Toast.LENGTH_LONG).show();
+            Toast("開盤中");
         }
 
-    }
-
-    public void toast(String s) {
-        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
     }
 
     public void numBtn() {
