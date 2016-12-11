@@ -24,7 +24,7 @@ public class QselectActivity extends AppCompatActivity {
     private LinearLayout ll_dingPos, ll_dingEdit, ll_peiEdit;
     private RadioButton rb_dingChu, rb_dingQu, rb_peiChu, rb_peiQu;
     private String cookie;
-    private StringBuffer sb;
+    private StringBuffer sb, sb_tmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class QselectActivity extends AppCompatActivity {
     public void initial() {
         hs1 = new HashSet();
         sb = new StringBuffer();
+        sb_tmp = new StringBuffer();
         btn_erDing = (Button) findViewById(R.id.btn_erDing);
         btn_sanDing = (Button) findViewById(R.id.btn_sanDing);
         btn_siDing = (Button) findViewById(R.id.btn_siDing);
@@ -72,7 +73,9 @@ public class QselectActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                sb.setLength(0);
+                sb.append(ed_1.getText());
+                Log(sb.toString());
             }
         });
 
