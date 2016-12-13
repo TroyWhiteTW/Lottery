@@ -41,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         btn_agreement = (Button) findViewById(R.id.btn_agreement);
         btn_login = (Button) findViewById(R.id.btn_login);
 
+        check_agreement.setChecked(true);
+
         btn_agreement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
