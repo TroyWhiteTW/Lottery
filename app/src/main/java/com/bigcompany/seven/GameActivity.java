@@ -268,7 +268,7 @@ public class GameActivity extends AppCompatActivity {
                 sb_fail.append(" x ");
                 sb_fail.append(ja.getJSONObject(i).getInt("money"));
                 sb_fail.append("\n");
-                if (ja.getJSONObject(i).getString("number").equals(a)) {
+                if (ja.getJSONObject(i).getString("number").equals(a) && ja.getJSONObject(i).getString("money").equals(b)) {
                     fail = 1;
                 }
             }

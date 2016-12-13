@@ -13,10 +13,25 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp">
 
-        <TextView
-            android:id="@+id/tv_qselectres"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="快選下注" />
+
+            <TextView
+                android:id="@+id/tv_qselectres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </ScrollView>
 
