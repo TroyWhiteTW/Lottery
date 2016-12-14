@@ -36,7 +36,6 @@ public class QselectResActivity extends AppCompatActivity {
 //        erDingQian(sbTmp.substring(i, i + 1));
 //
 //    }
-        erDingAll();
 
 
         Log(String.valueOf(list.size()));
@@ -53,6 +52,26 @@ public class QselectResActivity extends AppCompatActivity {
         sb2 = new StringBuffer();
         sbTmp = new StringBuffer();
         sb.setLength(4);
+    }
+
+    //把數組放進list結構裡面使用
+    public void sbToList(String s1, String s2, String s3, String s4) {
+        sb.replace(0, 1, s1);
+        sb.replace(1, 2, s2);
+        sb.replace(2, 3, s3);
+        sb.replace(3, 4, s4);
+
+        list.add(sb.toString());
+    }
+
+    //把數組從list結構移除
+    public void sbRemoveList(String s1, String s2, String s3, String s4) {
+        sb.replace(0, 1, s1);
+        sb.replace(1, 2, s2);
+        sb.replace(2, 3, s3);
+        sb.replace(3, 4, s4);
+
+        list.remove(sb.toString());
     }
 
     //二字定全組合
@@ -112,26 +131,6 @@ public class QselectResActivity extends AppCompatActivity {
                 }
             }
         }
-    }
-
-    //把數組放進list結構裡面使用
-    public void sbToList(String s1, String s2, String s3, String s4) {
-        sb.replace(0, 1, s1);
-        sb.replace(1, 2, s2);
-        sb.replace(2, 3, s3);
-        sb.replace(3, 4, s4);
-
-        list.add(sb.toString());
-    }
-
-    //把數組從list結構移除
-    public void sbRemoveList(String s1, String s2, String s3, String s4) {
-        sb.replace(0, 1, s1);
-        sb.replace(1, 2, s2);
-        sb.replace(2, 3, s3);
-        sb.replace(3, 4, s4);
-
-        list.remove(sb.toString());
     }
 
     //二字定取千位
@@ -1108,6 +1107,31 @@ public class QselectResActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    //三字定全組合
+    public void sanDingAll() {
+
+    }
+
+    //四字定全組合
+    public void siDingAll() {
+
+    }
+
+    //二字現全組合
+    public void erXianAll() {
+
+    }
+
+    //三字現全組合
+    public void sanXianAll() {
+
+    }
+
+    //四字現全組合
+    public void siXianAll() {
+
     }
 
     public void Toast(String s) {
