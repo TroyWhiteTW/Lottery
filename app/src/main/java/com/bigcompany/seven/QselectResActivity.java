@@ -1116,7 +1116,20 @@ public class QselectResActivity extends AppCompatActivity {
 
     //四字定全組合
     public void siDingAll() {
-
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 9; c++) {
+                    for (int d = 0; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        sbToList(s1, s2, s3, s4);
+                    }
+                }
+            }
+        }
     }
 
     //二字現全組合
