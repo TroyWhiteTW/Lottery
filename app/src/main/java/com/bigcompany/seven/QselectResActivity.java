@@ -36,6 +36,8 @@ public class QselectResActivity extends AppCompatActivity {
 //        erDingQian(sbTmp.substring(i, i + 1));
 //
 //    }
+        erDingAll();
+
 
         Log(String.valueOf(list.size()));
         for (String s : list) {
@@ -53,8 +55,8 @@ public class QselectResActivity extends AppCompatActivity {
         sb.setLength(4);
     }
 
-    //全組合
-    public void all() {
+    //二字定全組合
+    public void erDingAll() {
         String s1, s2, s3, s4;
         for (int a = 0; a <= 10; a++) {
             for (int b = 0; b <= 10; b++) {
@@ -91,8 +93,20 @@ public class QselectResActivity extends AppCompatActivity {
 
                         } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
 
-                        } else {
+                        } else if (s1.equals("X") && s2.equals("X")) {
                             sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s3.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s3.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else {
+
                         }
                     }
                 }
@@ -110,6 +124,16 @@ public class QselectResActivity extends AppCompatActivity {
         list.add(sb.toString());
     }
 
+    //把數組從list結構移除
+    public void sbRemoveList(String s1, String s2, String s3, String s4) {
+        sb.replace(0, 1, s1);
+        sb.replace(1, 2, s2);
+        sb.replace(2, 3, s3);
+        sb.replace(3, 4, s4);
+
+        list.remove(sb.toString());
+    }
+
     //二字定取千位
     public void erDingQuQian(String s) {
         String s1, s2, s3, s4;
@@ -117,7 +141,6 @@ public class QselectResActivity extends AppCompatActivity {
         for (int b = 0; b <= 10; b++) {
             for (int c = 0; c <= 10; c++) {
                 for (int d = 0; d <= 10; d++) {
-
                     if (b == 10) {
                         s2 = "X";
                     } else {
@@ -143,8 +166,6 @@ public class QselectResActivity extends AppCompatActivity {
                     } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
 
                     } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
-
-                    } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
 
                     } else if (s3.equals("X") && s4.equals("X")) {
                         sbToList(s1, s2, s3, s4);
@@ -310,6 +331,20 @@ public class QselectResActivity extends AppCompatActivity {
         sbToList(s1, s2, s3, s4);
     }
 
+    //二字定取千+十
+    public void erDingQuQianShi(String s1, String s3) {
+        String s2 = "X";
+        String s4 = "X";
+        sbToList(s1, s2, s3, s4);
+    }
+
+    //二字定取千+個
+    public void erDingQuQianGe(String s1, String s4) {
+        String s2 = "X";
+        String s3 = "X";
+        sbToList(s1, s2, s3, s4);
+    }
+
     //二字定取百+十
     public void erDingQuBaiShi(String s2, String s3) {
         String s1 = "X";
@@ -318,16 +353,16 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //二字定取百+個
-    public void erDingQuShiGe(String s3, String s4) {
+    public void erDingQuBaiGe(String s2, String s4) {
         String s1 = "X";
-        String s2 = "X";
+        String s3 = "X";
         sbToList(s1, s2, s3, s4);
     }
 
-    //二字定取千+個
-    public void erDingQuQianGe(String s1, String s4) {
+    //二字定取百+個
+    public void erDingQuShiGe(String s3, String s4) {
+        String s1 = "X";
         String s2 = "X";
-        String s3 = "X";
         sbToList(s1, s2, s3, s4);
     }
 
@@ -464,6 +499,608 @@ public class QselectResActivity extends AppCompatActivity {
                             sbToList(s1, s2, s3, s4);
                         } else if (s1.equals("X") && s2.equals("X") && s3.equals(s_2) && s4.equals(s_1)) {
                             sbToList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除千位
+    public void erDingChuQian(String s) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s1.equals(s) && s3.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s) && s2.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s) && s2.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s2.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s3.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s4.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除百位
+    public void erDingChuBai(String s) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s2.equals(s) && s3.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s) && s1.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s) && s1.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s1.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s3.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s4.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除十位
+    public void erDingChuShi(String s) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s3.equals(s) && s1.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals(s) && s1.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals(s) && s2.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s1.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s2.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s4.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除個位
+    public void erDingChuGe(String s) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s4.equals(s) && s1.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals(s) && s1.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals(s) && s2.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s1.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s2.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s3.equals("X")) { //錯誤刪除
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除千+百
+    public void erDingChuQianBai(String s_1, String s_2) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s1.equals(s_1) && s2.equals(s_2) && s3.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s1.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除千+十
+    public void erDingChuQianShi(String s_1, String s_3) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s1.equals(s_1) && s2.equals("X") && s3.equals(s_3) && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s1.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除千+個
+    public void erDingChuQianGe(String s_1, String s_4) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s1.equals(s_1) && s2.equals("X") && s3.equals("X") && s4.equals(s_4)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s1.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除百+十
+    public void erDingChuBaiShi(String s_2, String s_3) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals(s_2) && s3.equals(s_3) && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s1.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s1.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除百+個
+    public void erDingChuBaiGe(String s_2, String s_4) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals(s_2) && s3.equals("X") && s4.equals(s_4)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s1.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s1.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //二字定除十+個
+    public void erDingChuShiGe(String s_3, String s_4) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
+
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals(s_3) && s4.equals(s_4)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s1.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals("X") && s4.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s1.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s2.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s4.equals("X") && s3.equals("X")) {
+                            sbRemoveList(s1, s2, s3, s4);
                         } else {
 
                         }
