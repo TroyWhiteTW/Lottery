@@ -28,14 +28,14 @@ public class QselectResActivity extends AppCompatActivity {
 
         initial();
 
-//        sbTmp.append("0369");
-//        Log(sbTmp.toString());
-//        Log(sbTmp.substring(0, 1));
-//        for (int i = 0; i < sbTmp.length(); i++) {
+//    sbTmp.append("0369");
+//    Log(sbTmp.toString());
+//    Log(sbTmp.substring(0, 1));
+//    for (int i = 0; i < sbTmp.length(); i++) {
 //
-//            erDingQian(sbTmp.substring(i, i + 1));
+//        erDingQian(sbTmp.substring(i, i + 1));
 //
-//        }
+//    }
 
         Log(String.valueOf(list.size()));
         for (String s : list) {
@@ -53,6 +53,7 @@ public class QselectResActivity extends AppCompatActivity {
         sb.setLength(4);
     }
 
+    //全組合
     public void all() {
         String s1, s2, s3, s4;
         for (int a = 0; a <= 10; a++) {
@@ -91,12 +92,7 @@ public class QselectResActivity extends AppCompatActivity {
                         } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
 
                         } else {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         }
                     }
                 }
@@ -104,6 +100,17 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
+    //把數組放進list結構裡面使用
+    public void sbToList(String s1, String s2, String s3, String s4) {
+        sb.replace(0, 1, s1);
+        sb.replace(1, 2, s2);
+        sb.replace(2, 3, s3);
+        sb.replace(3, 4, s4);
+
+        list.add(sb.toString());
+    }
+
+    //二字定取千位
     public void erDingQuQian(String s) {
         String s1, s2, s3, s4;
         s1 = s;
@@ -140,26 +147,11 @@ public class QselectResActivity extends AppCompatActivity {
                     } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
 
                     } else if (s3.equals("X") && s4.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else if (s2.equals("X") && s4.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else if (s2.equals("X") && s3.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else {
 
                     }
@@ -168,6 +160,7 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
+    //二字定取百位
     public void erDingQuBai(String s) {
         String s1, s2, s3, s4;
         s2 = s;
@@ -202,26 +195,11 @@ public class QselectResActivity extends AppCompatActivity {
                     } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
 
                     } else if (s1.equals("X") && s3.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else if (s1.equals("X") && s4.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else if (s3.equals("X") && s4.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else {
 
                     }
@@ -230,6 +208,7 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
+    //二字定取十位
     public void erDingQuShi(String s) {
         String s1, s2, s3, s4;
         s3 = s;
@@ -264,26 +243,11 @@ public class QselectResActivity extends AppCompatActivity {
                     } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
 
                     } else if (s1.equals("X") && s2.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else if (s1.equals("X") && s4.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else if (s2.equals("X") && s4.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else {
 
                     }
@@ -292,6 +256,7 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
+    //二字定取個位
     public void erDingQuGe(String s) {
         String s1, s2, s3, s4;
         s4 = s;
@@ -325,26 +290,11 @@ public class QselectResActivity extends AppCompatActivity {
                     } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
 
                     } else if (s1.equals("X") && s2.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else if (s1.equals("X") && s3.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else if (s2.equals("X") && s3.equals("X")) {
-                        sb.replace(0, 1, s1);
-                        sb.replace(1, 2, s2);
-                        sb.replace(2, 3, s3);
-                        sb.replace(3, 4, s4);
-
-                        list.add(sb.toString());
+                        sbToList(s1, s2, s3, s4);
                     } else {
 
                     }
@@ -353,50 +303,35 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
+    //二字定取千+百
     public void erDingQuQianBai(String s1, String s2) {
         String s3 = "X";
         String s4 = "X";
-        sb.replace(0, 1, s1);
-        sb.replace(1, 2, s2);
-        sb.replace(2, 3, s3);
-        sb.replace(3, 4, s4);
-
-        list.add(sb.toString());
+        sbToList(s1, s2, s3, s4);
     }
 
+    //二字定取百+十
     public void erDingQuBaiShi(String s2, String s3) {
         String s1 = "X";
         String s4 = "X";
-        sb.replace(0, 1, s1);
-        sb.replace(1, 2, s2);
-        sb.replace(2, 3, s3);
-        sb.replace(3, 4, s4);
-
-        list.add(sb.toString());
+        sbToList(s1, s2, s3, s4);
     }
 
+    //二字定取百+個
     public void erDingQuShiGe(String s3, String s4) {
         String s1 = "X";
         String s2 = "X";
-        sb.replace(0, 1, s1);
-        sb.replace(1, 2, s2);
-        sb.replace(2, 3, s3);
-        sb.replace(3, 4, s4);
-
-        list.add(sb.toString());
+        sbToList(s1, s2, s3, s4);
     }
 
+    //二字定取千+個
     public void erDingQuQianGe(String s1, String s4) {
         String s2 = "X";
         String s3 = "X";
-        sb.replace(0, 1, s1);
-        sb.replace(1, 2, s2);
-        sb.replace(2, 3, s3);
-        sb.replace(3, 4, s4);
-
-        list.add(sb.toString());
+        sbToList(s1, s2, s3, s4);
     }
 
+    //二字定配一位
     public void erPeiQu_1(String s) {
         String s1, s2, s3, s4;
         for (int a = 0; a <= 10; a++) {
@@ -435,89 +370,29 @@ public class QselectResActivity extends AppCompatActivity {
                         } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
 
                         } else if (s1.equals(s) && s2.equals("X") && s3.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals(s) && s2.equals("X") && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals(s) && s3.equals("X") && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s2.equals(s) && s1.equals("X") && s3.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s2.equals(s) && s1.equals("X") && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s2.equals(s) && s3.equals("X") && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s3.equals(s) && s1.equals("X") && s2.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s3.equals(s) && s1.equals("X") && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s3.equals(s) && s2.equals("X") && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s4.equals(s) && s1.equals("X") && s2.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s4.equals(s) && s1.equals("X") && s3.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s4.equals(s) && s2.equals("X") && s3.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else {
 
                         }
@@ -527,6 +402,7 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
+    //二字定配二位
     public void erPeiQu_2(String s_1, String s_2) {
         String s1, s2, s3, s4;
         for (int a = 0; a <= 10; a++) {
@@ -565,89 +441,29 @@ public class QselectResActivity extends AppCompatActivity {
                         } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
 
                         } else if (s1.equals(s_1) && s2.equals(s_2) && s3.equals("X") && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals(s_1) && s2.equals("X") && s3.equals(s_2) && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals(s_1) && s2.equals("X") && s3.equals("X") && s4.equals(s_2)) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals(s_2) && s2.equals(s_1) && s3.equals("X") && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals("X") && s2.equals(s_1) && s3.equals(s_2) && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals("X") && s2.equals(s_1) && s3.equals("X") && s4.equals(s_2)) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals(s_2) && s2.equals("X") && s3.equals(s_1) && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals("X") && s2.equals(s_2) && s3.equals(s_1) && s4.equals("X")) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals("X") && s2.equals("X") && s3.equals(s_1) && s4.equals(s_2)) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals(s_2) && s2.equals("X") && s3.equals("X") && s4.equals(s_1)) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals("X") && s2.equals(s_2) && s3.equals("X") && s4.equals(s_1)) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else if (s1.equals("X") && s2.equals("X") && s3.equals(s_2) && s4.equals(s_1)) {
-                            sb.replace(0, 1, s1);
-                            sb.replace(1, 2, s2);
-                            sb.replace(2, 3, s3);
-                            sb.replace(3, 4, s4);
-
-                            list.add(sb.toString());
+                            sbToList(s1, s2, s3, s4);
                         } else {
 
                         }
