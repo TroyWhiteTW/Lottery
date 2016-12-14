@@ -25,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
@@ -263,13 +264,16 @@ public class GameActivity extends AppCompatActivity {
 //            }
             JSONArray ja = mu.getJSONObjectData().getJSONObject("fail_dtl").getJSONArray("l");
             int len = ja.length();
-            for (int i = 0; i < len; i++) {
-                sb_fail.append(ja.getJSONObject(i).getString("number"));
-                sb_fail.append(" x ");
-                sb_fail.append(ja.getJSONObject(i).getInt("money"));
-                sb_fail.append("\n");
-                if (ja.getJSONObject(i).getString("number").equals(a) && ja.getJSONObject(i).getString("money").equals(b)) {
-                    fail = 1;
+            Log.i("troy", "共有" + len + "筆資料");
+            if (len != 0) {
+                for (int i = 0; i < len; i++) {
+                    sb_fail.append(ja.getJSONObject(i).getString("number"));
+                    sb_fail.append(" x ");
+                    sb_fail.append(ja.getJSONObject(i).getInt("money"));
+                    sb_fail.append("\n");
+                    if (ja.getJSONObject(i).getString("number").equals(a) && ja.getJSONObject(i).getString("money").equals(b)) {
+                        fail = 1;
+                    }
                 }
             }
             handler_3.sendEmptyMessage(0);

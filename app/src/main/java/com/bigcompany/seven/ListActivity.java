@@ -24,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
     private ArrayList<String> cancelList;
@@ -176,26 +177,28 @@ public class ListActivity extends AppCompatActivity {
             JSONArray ja = jo.getJSONArray("list");
             int len = ja.length();
             Log.i("troy", "共有" + len + "筆資料");
-            ListID = ja.getJSONObject(0).getString("id");
+            if (len != 0) {
+                ListID = ja.getJSONObject(0).getString("id");
 
-            for (int i = 0; i < len; i++) {
-                JSONObject rec = ja.getJSONObject(i);
-                String number = rec.getString("number");
-                String money = rec.getString("money");
-                String frank = rec.getString("frank");
-                int cancel_able = rec.getInt("cancel_able");
-                String id = rec.getString("id");
+                for (int i = 0; i < len; i++) {
+                    JSONObject rec = ja.getJSONObject(i);
+                    String number = rec.getString("number");
+                    String money = rec.getString("money");
+                    String frank = rec.getString("frank");
+                    int cancel_able = rec.getInt("cancel_able");
+                    String id = rec.getString("id");
 
-                Message msg = new Message();
-                Bundle b = new Bundle();
-                b.putString("number", number);
-                b.putString("money", money);
-                b.putString("frank", frank);
-                b.putInt("cancel_able", cancel_able);
-                b.putInt("i", i);
-                b.putString("id", id);
-                msg.setData(b);
-                handler.sendMessage(msg);
+                    Message msg = new Message();
+                    Bundle b = new Bundle();
+                    b.putString("number", number);
+                    b.putString("money", money);
+                    b.putString("frank", frank);
+                    b.putInt("cancel_able", cancel_able);
+                    b.putInt("i", i);
+                    b.putString("id", id);
+                    msg.setData(b);
+                    handler.sendMessage(msg);
+                }
             }
         } catch (Exception e) {
             Toast("無法與伺服器取得連線");
