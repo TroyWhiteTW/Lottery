@@ -1424,43 +1424,69 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字定除千+百
+    public void sanDingChuQianBai(String s1, String s2) {
 
+    }
 
     //三字定除千+十
+    public void sanDingChuQianShi(String s1, String s3) {
 
+    }
 
     //三字定除千+個
+    public void sanDingChuQianGe(String s1, String s4) {
 
+    }
 
     //三字定除百+十
+    public void sanDingChuBaiShi(String s2, String s3) {
 
+    }
 
     //三字定除百+個
+    public void sanDingChuBaiGe(String s2, String s4) {
 
+    }
 
     //三字定除十+個
+    public void sanDingChuShiGe(String s3, String s4) {
 
+    }
 
     //三字定除千+百+十
+    public void sanDingChuQianBaiShi(String s1, String s2, String s3) {
 
+    }
 
     //三字定除千+百+個
+    public void sanDingChuQianBaiGe(String s1, String s2, String s4) {
 
+    }
 
     //三字定除千+十+個
+    public void sanDingChuQianShiGe(String s1, String s3, String s4) {
 
+    }
 
     //三自訂除百+十+個
+    public void sanDingChuBaiShiGe(String s2, String s3, String s4) {
 
+    }
 
     //三字定配除一位
+    public void sanDingPeiChu1() {
 
+    }
 
     //三字定配除二位
+    public void sanDingPeiChu2() {
 
+    }
 
     //三字定配除三位
+    public void sanDingPeiChu3() {
 
+    }
 
     //四字定全組合
     public void siDingAll() {
@@ -1501,37 +1527,59 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //四字定取千+百
+    public void siDingQuQianBai(String s1, String s2) {
 
+    }
 
     //四字定取千+十
+    public void siDingQuQianShi(String s1, String s3) {
 
+    }
 
     //四字定取千+個
+    public void siDingQuQianGe(String s1, String s4) {
 
+    }
 
     //四字定取百+十
+    public void siDingQuBaiShi(String s2, String s3) {
 
+    }
 
     //四字定取百+個
+    public void siDingQuBaiGe(String s2, String s4) {
 
+    }
 
     //四字定取十+個
+    public void siDingQuShiGe(String s3, String s4) {
 
+    }
 
     //四字定取千+百+十
+    public void siDingQuQianBaiShi(String s1, String s2, String s3) {
 
+    }
 
     //四字定取千+百+個
+    public void siDingQuQianBaiGe(String s1, String s2, String s4) {
 
+    }
 
     //四字定取千+十+個
+    public void siDingQuQianShiGe(String s1, String s3, String s4) {
 
+    }
 
     //四字定取百+十+個
+    public void siDingQuBaiShiGe(String s2, String s3, String s4) {
 
+    }
 
     //四字定取千+百+十+個
+    public void siDingQuQianBaiShiGe(String s1, String s2, String s3, String s4) {
 
+    }
 
     //四字定配取一位
     public void siDingPeiQu1() {
@@ -1574,49 +1622,79 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //四字定除千+百
+    public void siDingChuQianBai(String s1, String s2) {
 
+    }
 
     //四字定除千+十
+    public void siDingChuQianShi(String s1, String s3) {
 
+    }
 
     //四字定除千+個
+    public void siDingChuQianGe(String s1, String s4) {
 
+    }
 
     //四字定除百+十
+    public void siDingChuBaiShi(String s2, String s3) {
 
+    }
 
     //四字定除百+個
+    public void siDingChuBaiGe(String s2, String s4) {
 
+    }
 
     //四字定除十+個
+    public void siDingChuShiGe(String s3, String s4) {
 
+    }
 
     //四字定除千+百+十
+    public void siDingChuQianBaiShi(String s1, String s2, String s3) {
 
+    }
 
     //四字定除千+百+個
+    public void siDingChuQianBaiGe(String s1, String s2, String s4) {
 
+    }
 
     //四字定除千+十+個
+    public void siDingChuQianShiGe(String s1, String s3, String s4) {
 
+    }
 
     //四字定除百+十+個
+    public void siDingChuBaiShiGe(String s2, String s3, String s4) {
 
+    }
 
     //四字定除千+百+十+個
+    public void siDingChuQianBaiShiGe(String s1, String s2, String s3, String s4) {
 
+    }
 
     //四字定配除一位
+    public void siDingPeiChu1() {
 
+    }
 
     //四字定配除二位
+    public void siDingPeiChu2() {
 
+    }
 
     //四字定配除三位
+    public void siDingPeiChu3() {
 
+    }
 
     //四字定配除四位
+    public void siDingPeiChu4() {
 
+    }
 
     //二字現全組合
     public void erXianAll() {
