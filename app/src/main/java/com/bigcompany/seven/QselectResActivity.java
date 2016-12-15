@@ -36,7 +36,7 @@ public class QselectResActivity extends AppCompatActivity {
 //        erDingQian(sbTmp.substring(i, i + 1));
 //
 //    }
-        sanXianAll();
+        sanDingQian("1");
 
         Log(String.valueOf(list.size()));
         for (String s : list) {
@@ -1173,6 +1173,155 @@ public class QselectResActivity extends AppCompatActivity {
                         } else {
 
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    //三字定取千
+    public void sanDingQian(String s) {
+        String s1, s2, s3, s4;
+        s1 = s;
+        for (int b = 0; b <= 10; b++) {
+            for (int c = 0; c <= 10; c++) {
+                for (int d = 0; d <= 10; d++) {
+                    if (b == 10) {
+                        s2 = "X";
+                    } else {
+                        s2 = String.valueOf(b);
+                    }
+                    if (c == 10) {
+                        s3 = "X";
+                    } else {
+                        s3 = String.valueOf(c);
+                    }
+                    if (d == 10) {
+                        s4 = "X";
+                    } else {
+                        s4 = String.valueOf(d);
+                    }
+
+                    if (!s2.equals("X") && !s3.equals("X") && s4.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else if (!s2.equals("X") && s3.equals("X") && !s4.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else if (s2.equals("X") && !s3.equals("X") && !s4.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else {
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    //三字定取百
+    public void sanDingBai(String s) {
+        String s1, s2, s3, s4;
+        s2 = s;
+        for (int a = 0; a <= 10; a++) {
+            for (int c = 0; c <= 10; c++) {
+                for (int d = 0; d <= 10; d++) {
+                    if (a == 10) {
+                        s1 = "X";
+                    } else {
+                        s1 = String.valueOf(a);
+                    }
+                    if (c == 10) {
+                        s3 = "X";
+                    } else {
+                        s3 = String.valueOf(c);
+                    }
+                    if (d == 10) {
+                        s4 = "X";
+                    } else {
+                        s4 = String.valueOf(d);
+                    }
+
+                    if (!s1.equals("X") && !s3.equals("X") && s4.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else if (!s1.equals("X") && s3.equals("X") && !s4.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else if (s1.equals("X") && !s3.equals("X") && !s4.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else {
+
+                    }
+                }
+            }
+        }
+    }
+
+    //三字定取十
+    public void sanDingShi(String s) {
+        String s1, s2, s3, s4;
+        s3 = s;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int d = 0; d <= 10; d++) {
+                    if (a == 10) {
+                        s1 = "X";
+                    } else {
+                        s1 = String.valueOf(a);
+                    }
+                    if (b == 10) {
+                        s2 = "X";
+                    } else {
+                        s2 = String.valueOf(b);
+                    }
+                    if (d == 10) {
+                        s4 = "X";
+                    } else {
+                        s4 = String.valueOf(d);
+                    }
+
+                    if (!s1.equals("X") && !s2.equals("X") && s4.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else if (!s1.equals("X") && s2.equals("X") && !s4.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else if (s1.equals("X") && !s2.equals("X") && !s4.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else {
+
+                    }
+                }
+            }
+        }
+    }
+
+    //三字定取個
+    public void sanDingGe(String s) {
+        String s1, s2, s3, s4;
+        s4 = s;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    if (a == 10) {
+                        s1 = "X";
+                    } else {
+                        s1 = String.valueOf(a);
+                    }
+                    if (b == 10) {
+                        s2 = "X";
+                    } else {
+                        s2 = String.valueOf(b);
+                    }
+                    if (c == 10) {
+                        s3 = "X";
+                    } else {
+                        s3 = String.valueOf(c);
+                    }
+
+                    if (!s1.equals("X") && !s2.equals("X") && s3.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else if (!s1.equals("X") && s2.equals("X") && !s3.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else if (s1.equals("X") && !s2.equals("X") && !s3.equals("X")) {
+                        sbToList(s1, s2, s3, s4);
+                    } else {
+
                     }
                 }
             }
