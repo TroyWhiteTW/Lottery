@@ -36,7 +36,7 @@ public class QselectResActivity extends AppCompatActivity {
 //        erDingQian(sbTmp.substring(i, i + 1));
 //
 //    }
-        sanDingQian("1");
+
 
         Log(String.valueOf(list.size()));
         for (String s : list) {
@@ -380,8 +380,8 @@ public class QselectResActivity extends AppCompatActivity {
         sbToList(s1, s2, s3, s4);
     }
 
-    //二字定配一位
-    public void erPeiQu_1(String s) {
+    //二字定配取一位
+    public void erPeiQu1(String s) {
         String s1, s2, s3, s4;
         for (int a = 0; a <= 10; a++) {
             for (int b = 0; b <= 10; b++) {
@@ -451,8 +451,8 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
-    //二字定配二位
-    public void erPeiQu_2(String s_1, String s_2) {
+    //二字定配取二位
+    public void erPeiQu2(String s_1, String s_2) {
         String s1, s2, s3, s4;
         for (int a = 0; a <= 10; a++) {
             for (int b = 0; b <= 10; b++) {
@@ -1124,6 +1124,16 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
+    //二字定配除一位
+    public void erDingPeiChu1() {
+
+    }
+
+    //二字定配除二位
+    public void erDingPeiChu2() {
+
+    }
+
     //三字定全組合
     public void sanDingAll() {
         String s1, s2, s3, s4;
@@ -1180,7 +1190,7 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字定取千
-    public void sanDingQian(String s) {
+    public void sanDingQuQian(String s) {
         String s1, s2, s3, s4;
         s1 = s;
         for (int b = 0; b <= 10; b++) {
@@ -1218,7 +1228,7 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字定取百
-    public void sanDingBai(String s) {
+    public void sanDingQuBai(String s) {
         String s1, s2, s3, s4;
         s2 = s;
         for (int a = 0; a <= 10; a++) {
@@ -1255,7 +1265,7 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字定取十
-    public void sanDingShi(String s) {
+    public void sanDingQuShi(String s) {
         String s1, s2, s3, s4;
         s3 = s;
         for (int a = 0; a <= 10; a++) {
@@ -1292,7 +1302,7 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字定取個
-    public void sanDingGe(String s) {
+    public void sanDingQuGe(String s) {
         String s1, s2, s3, s4;
         s4 = s;
         for (int a = 0; a <= 10; a++) {
@@ -1328,6 +1338,130 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
+    //三字定取千+百
+    public void sanDingQuQianBai(String s1, String s2) {
+
+    }
+
+    //三字定取千+十
+    public void sanDingQuQianShi(String s1, String s3) {
+
+    }
+
+    //三字定取千+個
+    public void sanDingQuQianGe(String s1, String s4) {
+
+    }
+
+    //三字定取百+十
+    public void sanDingQuBaiShi(String s2, String s3) {
+
+    }
+
+    //三字定取百+個
+    public void sanDingQuBaiGe(String s2, String s4) {
+
+    }
+
+    //三字定取十+個
+    public void sanDingQuShiGe(String s3, String s4) {
+
+    }
+
+    //三字定取千+百+十
+    public void sanDingQuQianBaiShi(String s1, String s2, String s3) {
+
+    }
+
+    //三字定取千+百+個
+    public void sanDingQuQianBaiGe(String s1, String s2, String s4) {
+
+    }
+
+    //三字定取千+十+個
+    public void sanDingQuQianShiGe(String s1, String s3, String s4) {
+
+    }
+
+    //三字定取百+十+個
+    public void sanDingQuBaiShiGe(String s2, String s3, String s4) {
+
+    }
+
+    //三字定配取一位
+    public void sanDingPeiQu1() {
+
+    }
+
+    //三字定配取二位
+    public void sanDingPeiQu2() {
+
+    }
+
+    //三字定配取三位
+    public void sanDingPeiQu3() {
+
+    }
+
+    //三字定除千
+    public void sanDingChuQian(String s) {
+
+    }
+
+    //三字定除百
+    public void sanDingChuBai(String s) {
+
+    }
+
+    //三字定除十
+    public void sanDingChuShi(String s) {
+
+    }
+
+    //三字定除個
+    public void sanDingChuGe(String s) {
+
+    }
+
+    //三字定除千+百
+
+
+    //三字定除千+十
+
+
+    //三字定除千+個
+
+
+    //三字定除百+十
+
+
+    //三字定除百+個
+
+
+    //三字定除十+個
+
+
+    //三字定除千+百+十
+
+
+    //三字定除千+百+個
+
+
+    //三字定除千+十+個
+
+
+    //三自訂除百+十+個
+
+
+    //三字定配除一位
+
+
+    //三字定配除二位
+
+
+    //三字定配除三位
+
+
     //四字定全組合
     public void siDingAll() {
         String s1, s2, s3, s4;
@@ -1346,6 +1480,144 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
+    //四字定取千
+    public void siDingQuQian(String s) {
+
+    }
+
+    //四字定取百
+    public void siDingQuBai(String s) {
+
+    }
+
+    //四字定取十
+    public void siDingQuShi(String s) {
+
+    }
+
+    //四字定取個
+    public void siDingQuGe(String s) {
+
+    }
+
+    //四字定取千+百
+
+
+    //四字定取千+十
+
+
+    //四字定取千+個
+
+
+    //四字定取百+十
+
+
+    //四字定取百+個
+
+
+    //四字定取十+個
+
+
+    //四字定取千+百+十
+
+
+    //四字定取千+百+個
+
+
+    //四字定取千+十+個
+
+
+    //四字定取百+十+個
+
+
+    //四字定取千+百+十+個
+
+
+    //四字定配取一位
+    public void siDingPeiQu1() {
+
+    }
+
+    //四字定配取二位
+    public void siDingPeiQu2() {
+
+    }
+
+    //四字定配取三位
+    public void siDingPeiQu3() {
+
+    }
+
+    //四字定配取四位
+    public void siDingPeiQu4() {
+
+    }
+
+    //四字定除千
+    public void siDingChuQian(String s) {
+
+    }
+
+    //四字定除百
+    public void siDingChuBai(String s) {
+
+    }
+
+    //四字定除十
+    public void siDingChuShi(String s) {
+
+    }
+
+    //四字定除個
+    public void siDingChuGe(String s) {
+
+    }
+
+    //四字定除千+百
+
+
+    //四字定除千+十
+
+
+    //四字定除千+個
+
+
+    //四字定除百+十
+
+
+    //四字定除百+個
+
+
+    //四字定除十+個
+
+
+    //四字定除千+百+十
+
+
+    //四字定除千+百+個
+
+
+    //四字定除千+十+個
+
+
+    //四字定除百+十+個
+
+
+    //四字定除千+百+十+個
+
+
+    //四字定配除一位
+
+
+    //四字定配除二位
+
+
+    //四字定配除三位
+
+
+    //四字定配除四位
+
+
     //二字現全組合
     public void erXianAll() {
         String s1, s2;
@@ -1356,6 +1628,26 @@ public class QselectResActivity extends AppCompatActivity {
                 sbToList(s1, s2);
             }
         }
+    }
+
+    //二字現配取一位
+    public void erXianPeiQu1() {
+
+    }
+
+    //二字現配取二位
+    public void erXianPeiQu2() {
+
+    }
+
+    //二字現配除一位
+    public void erXianPeiChu1() {
+
+    }
+
+    //二字現配除二位
+    public void erXianPeiChu2() {
+
     }
 
     //三字現全組合
@@ -1371,6 +1663,36 @@ public class QselectResActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    //三字現配取一位
+    public void sanXianPeiQu1() {
+
+    }
+
+    //三字現配取二位
+    public void sanXianPeiQu2() {
+
+    }
+
+    //三字現配取三位
+    public void sanXianPeiQu3() {
+
+    }
+
+    //三字現配除一位
+    public void sanXianPeiChu1() {
+
+    }
+
+    //三字現配除二位
+    public void sanXianPeiChu2() {
+
+    }
+
+    //三字現配除三位
+    public void sanXianPeiChu3() {
+
     }
 
     //四字現全組合
@@ -1389,6 +1711,46 @@ public class QselectResActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    //四字現配取一位
+    public void siXianPeiQu1() {
+
+    }
+
+    //四字現配取二位
+    public void siXianPeiQu2() {
+
+    }
+
+    //四字現配取三位
+    public void siXianPeiQu3() {
+
+    }
+
+    //四字現配取四位
+    public void siXianPeiQu4() {
+
+    }
+
+    //四字現配除一位
+    public void siXianPeiChu1() {
+
+    }
+
+    //四字現配除二位
+    public void siXianPeiChu2() {
+
+    }
+
+    //四字現配除三位
+    public void siXianPeiChu3() {
+
+    }
+
+    //四字現配除四位
+    public void siXianPeiChu4() {
+
     }
 
     public void Toast(String s) {
