@@ -36,7 +36,7 @@ public class QselectResActivity extends AppCompatActivity {
 //        erDingQian(sbTmp.substring(i, i + 1));
 //
 //    }
-
+        sanXianAll();
 
         Log(String.valueOf(list.size()));
         for (String s : list) {
@@ -60,6 +60,21 @@ public class QselectResActivity extends AppCompatActivity {
         sb.replace(1, 2, s2);
         sb.replace(2, 3, s3);
         sb.replace(3, 4, s4);
+
+        list.add(sb.toString());
+    }
+
+    public void sbToList(String s1, String s2) {
+        sb.replace(0, 1, s1);
+        sb.replace(1, 2, s2);
+
+        list.add(sb.toString());
+    }
+
+    public void sbToList(String s1, String s2, String s3) {
+        sb.replace(0, 1, s1);
+        sb.replace(1, 2, s2);
+        sb.replace(2, 3, s3);
 
         list.add(sb.toString());
     }
@@ -1111,7 +1126,57 @@ public class QselectResActivity extends AppCompatActivity {
 
     //三字定全組合
     public void sanDingAll() {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
 
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (!s1.equals("X") && !s2.equals("X") && !s3.equals("X") && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (!s1.equals("X") && !s2.equals("X") && s3.equals("X") && !s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (!s1.equals("X") && s2.equals("X") && !s3.equals("X") && !s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && !s2.equals("X") && !s3.equals("X") && !s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字定全組合
@@ -1134,17 +1199,47 @@ public class QselectResActivity extends AppCompatActivity {
 
     //二字現全組合
     public void erXianAll() {
-
+        String s1, s2;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                s1 = String.valueOf(a);
+                s2 = String.valueOf(b);
+                sbToList(s1, s2);
+            }
+        }
     }
 
     //三字現全組合
     public void sanXianAll() {
-
+        String s1, s2, s3;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 9; c++) {
+                    s1 = String.valueOf(a);
+                    s2 = String.valueOf(b);
+                    s3 = String.valueOf(c);
+                    sbToList(s1, s2, s3);
+                }
+            }
+        }
     }
 
     //四字現全組合
     public void siXianAll() {
-
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 9; c++) {
+                    for (int d = 0; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        sbToList(s1, s2, s3, s4);
+                    }
+                }
+            }
+        }
     }
 
     public void Toast(String s) {
