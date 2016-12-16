@@ -36,8 +36,8 @@ public class QselectResActivity extends AppCompatActivity {
 //        erDingQian(sbTmp.substring(i, i + 1));
 //
 //    }
-        siDingAll();
-        siDingChuShi("1");
+        siXianPeiQu1("1");
+
 
         Log(String.valueOf(list.size()));
         for (String s : list) {
@@ -86,6 +86,21 @@ public class QselectResActivity extends AppCompatActivity {
         sb.replace(1, 2, s2);
         sb.replace(2, 3, s3);
         sb.replace(3, 4, s4);
+
+        list.remove(sb.toString());
+    }
+
+    public void sbRemoveList(String s1, String s2) {
+        sb.replace(0, 1, s1);
+        sb.replace(1, 2, s2);
+
+        list.remove(sb.toString());
+    }
+
+    public void sbRemoveList(String s1, String s2, String s3) {
+        sb.replace(0, 1, s1);
+        sb.replace(1, 2, s2);
+        sb.replace(2, 3, s3);
 
         list.remove(sb.toString());
     }
@@ -1939,52 +1954,110 @@ public class QselectResActivity extends AppCompatActivity {
 
     //四字定取千+百
     public void siDingQuQianBai(String s1, String s2) {
-
+        String s3, s4;
+        for (int c = 0; c <= 9; c++) {
+            for (int d = 0; d <= 9; d++) {
+                s3 = String.valueOf(c);
+                s4 = String.valueOf(d);
+                sbToList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定取千+十
     public void siDingQuQianShi(String s1, String s3) {
-
+        String s2, s4;
+        for (int b = 0; b <= 9; b++) {
+            for (int d = 0; d <= 9; d++) {
+                s2 = String.valueOf(b);
+                s4 = String.valueOf(d);
+                sbToList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定取千+個
     public void siDingQuQianGe(String s1, String s4) {
-
+        String s2, s3;
+        for (int b = 0; b <= 9; b++) {
+            for (int c = 0; c <= 9; c++) {
+                s2 = String.valueOf(b);
+                s3 = String.valueOf(c);
+                sbToList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定取百+十
     public void siDingQuBaiShi(String s2, String s3) {
-
+        String s1, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int d = 0; d <= 9; d++) {
+                s1 = String.valueOf(a);
+                s4 = String.valueOf(d);
+                sbToList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定取百+個
     public void siDingQuBaiGe(String s2, String s4) {
-
+        String s1, s3;
+        for (int a = 0; a <= 9; a++) {
+            for (int c = 0; c <= 9; c++) {
+                s1 = String.valueOf(a);
+                s3 = String.valueOf(c);
+                sbToList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定取十+個
     public void siDingQuShiGe(String s3, String s4) {
-
+        String s1, s2;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                s1 = String.valueOf(a);
+                s2 = String.valueOf(b);
+                sbToList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定取千+百+十
     public void siDingQuQianBaiShi(String s1, String s2, String s3) {
-
+        String s4;
+        for (int d = 0; d <= 9; d++) {
+            s4 = String.valueOf(d);
+            sbToList(s1, s2, s3, s4);
+        }
     }
 
     //四字定取千+百+個
     public void siDingQuQianBaiGe(String s1, String s2, String s4) {
-
+        String s3;
+        for (int c = 0; c <= 9; c++) {
+            s3 = String.valueOf(c);
+            sbToList(s1, s2, s3, s4);
+        }
     }
 
     //四字定取千+十+個
     public void siDingQuQianShiGe(String s1, String s3, String s4) {
-
+        String s2;
+        for (int b = 0; b <= 9; b++) {
+            s2 = String.valueOf(b);
+            sbToList(s1, s2, s3, s4);
+        }
     }
 
     //四字定取百+十+個
     public void siDingQuBaiShiGe(String s2, String s3, String s4) {
-
+        String s1;
+        for (int a = 0; a <= 9; a++) {
+            s1 = String.valueOf(a);
+            sbToList(s1, s2, s3, s4);
+        }
     }
 
     //四字定取千+百+十+個
@@ -2078,52 +2151,110 @@ public class QselectResActivity extends AppCompatActivity {
 
     //四字定除千+百
     public void siDingChuQianBai(String s1, String s2) {
-
+        String s3, s4;
+        for (int c = 0; c <= 9; c++) {
+            for (int d = 0; d <= 9; d++) {
+                s3 = String.valueOf(c);
+                s4 = String.valueOf(d);
+                sbRemoveList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定除千+十
     public void siDingChuQianShi(String s1, String s3) {
-
+        String s2, s4;
+        for (int b = 0; b <= 9; b++) {
+            for (int d = 0; d <= 9; d++) {
+                s2 = String.valueOf(b);
+                s4 = String.valueOf(d);
+                sbRemoveList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定除千+個
     public void siDingChuQianGe(String s1, String s4) {
-
+        String s2, s3;
+        for (int b = 0; b <= 9; b++) {
+            for (int c = 0; c <= 9; c++) {
+                s2 = String.valueOf(b);
+                s3 = String.valueOf(c);
+                sbRemoveList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定除百+十
     public void siDingChuBaiShi(String s2, String s3) {
-
+        String s1, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int d = 0; d <= 9; d++) {
+                s1 = String.valueOf(a);
+                s4 = String.valueOf(d);
+                sbRemoveList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定除百+個
     public void siDingChuBaiGe(String s2, String s4) {
-
+        String s1, s3;
+        for (int a = 0; a <= 9; a++) {
+            for (int c = 0; c <= 9; c++) {
+                s1 = String.valueOf(a);
+                s3 = String.valueOf(c);
+                sbRemoveList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定除十+個
     public void siDingChuShiGe(String s3, String s4) {
-
+        String s1, s2;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                s1 = String.valueOf(a);
+                s2 = String.valueOf(b);
+                sbRemoveList(s1, s2, s3, s4);
+            }
+        }
     }
 
     //四字定除千+百+十
     public void siDingChuQianBaiShi(String s1, String s2, String s3) {
-
+        String s4;
+        for (int d = 0; d <= 9; d++) {
+            s4 = String.valueOf(d);
+            sbRemoveList(s1, s2, s3, s4);
+        }
     }
 
     //四字定除千+百+個
     public void siDingChuQianBaiGe(String s1, String s2, String s4) {
-
+        String s3;
+        for (int c = 0; c <= 9; c++) {
+            s3 = String.valueOf(c);
+            sbRemoveList(s1, s2, s3, s4);
+        }
     }
 
     //四字定除千+十+個
     public void siDingChuQianShiGe(String s1, String s3, String s4) {
-
+        String s2;
+        for (int b = 0; b <= 9; b++) {
+            s2 = String.valueOf(b);
+            sbRemoveList(s1, s2, s3, s4);
+        }
     }
 
     //四字定除百+十+個
     public void siDingChuBaiShiGe(String s2, String s3, String s4) {
-
+        String s1;
+        for (int a = 0; a <= 9; a++) {
+            s1 = String.valueOf(a);
+            sbRemoveList(s1, s2, s3, s4);
+        }
     }
 
     //四字定除千+百+十+個
@@ -2164,23 +2295,57 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //二字現配取一位
-    public void erXianPeiQu1() {
-
+    public void erXianPeiQu1(String s) {
+        String s1, s2;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                s1 = String.valueOf(a);
+                s2 = String.valueOf(b);
+                if (s1.equals(s) || s2.equals(s)) {
+                    sbToList(s1, s2);
+                }
+            }
+        }
     }
 
     //二字現配取二位
-    public void erXianPeiQu2() {
-
+    public void erXianPeiQu2(String s_1, String s_2) {
+        String s1, s2;
+        if (Integer.valueOf(s_1) > Integer.valueOf(s_2)) {
+            s1 = s_2;
+            s2 = s_1;
+        } else {
+            s1 = s_1;
+            s2 = s_2;
+        }
+        sbToList(s1, s2);
     }
 
     //二字現配除一位
-    public void erXianPeiChu1() {
-
+    public void erXianPeiChu1(String s) {
+        String s1, s2;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                s1 = String.valueOf(a);
+                s2 = String.valueOf(b);
+                if (s1.equals(s) || s2.equals(s)) {
+                    sbRemoveList(s1, s2);
+                }
+            }
+        }
     }
 
     //二字現配除二位
-    public void erXianPeiChu2() {
-
+    public void erXianPeiChu2(String s_1, String s_2) {
+        String s1, s2;
+        if (Integer.valueOf(s_1) > Integer.valueOf(s_2)) {
+            s1 = s_2;
+            s2 = s_1;
+        } else {
+            s1 = s_1;
+            s2 = s_2;
+        }
+        sbRemoveList(s1, s2);
     }
 
     //三字現全組合
@@ -2199,8 +2364,20 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字現配取一位
-    public void sanXianPeiQu1() {
-
+    public void sanXianPeiQu1(String s) {
+        String s1, s2, s3;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    s1 = String.valueOf(a);
+                    s2 = String.valueOf(b);
+                    s3 = String.valueOf(c);
+                    if (s1.equals(s) || s2.equals(s) || s3.equals(s)) {
+                        sbToList(s1, s2, s3);
+                    }
+                }
+            }
+        }
     }
 
     //三字現配取二位
@@ -2214,8 +2391,20 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字現配除一位
-    public void sanXianPeiChu1() {
-
+    public void sanXianPeiChu1(String s) {
+        String s1, s2, s3;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    s1 = String.valueOf(a);
+                    s2 = String.valueOf(b);
+                    s3 = String.valueOf(c);
+                    if (s1.equals(s) || s2.equals(s) || s3.equals(s)) {
+                        sbRemoveList(s1, s2, s3);
+                    }
+                }
+            }
+        }
     }
 
     //三字現配除二位
@@ -2247,8 +2436,23 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //四字現配取一位
-    public void siXianPeiQu1() {
-
+    public void siXianPeiQu1(String s) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    for (int d = c; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s) || s2.equals(s) || s3.equals(s) || s4.equals(s)) {
+                            sbToList(s1, s2, s3, s4);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字現配取二位
@@ -2267,8 +2471,23 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //四字現配除一位
-    public void siXianPeiChu1() {
-
+    public void siXianPeiChu1(String s) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    for (int d = c; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s) || s2.equals(s) || s3.equals(s) || s4.equals(s)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字現配除二位
