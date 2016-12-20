@@ -217,7 +217,7 @@
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dp"
@@ -263,7 +263,7 @@
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <View
                     android:layout_width="2dp"
@@ -276,6 +276,7 @@
                     android:layout_weight="1"
                     android:background="#ffffff"
                     android:inputType="number"
+                    android:maxLength="1"
                     android:textAlignment="center" />
 
                 <View
@@ -288,6 +289,7 @@
                     android:layout_weight="1"
                     android:background="#f4f3dd"
                     android:inputType="number"
+                    android:maxLength="1"
                     android:textAlignment="center" />
 
                 <View
@@ -300,6 +302,7 @@
                     android:layout_weight="1"
                     android:background="#ffffff"
                     android:inputType="number"
+                    android:maxLength="1"
                     android:textAlignment="center" />
 
                 <View
@@ -312,6 +315,7 @@
                     android:layout_weight="1"
                     android:background="#f4f3dd"
                     android:inputType="number"
+                    android:maxLength="1"
                     android:textAlignment="center" />
 
                 <View
@@ -326,7 +330,7 @@
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <EditText
                     android:layout_width="0dp"
@@ -334,6 +338,7 @@
                     android:layout_weight="2"
                     android:background="#ffffff"
                     android:inputType="number"
+                    android:maxLength="1"
                     android:textAlignment="center" />
 
                 <TextView
@@ -351,10 +356,136 @@
                     android:layout_weight="2"
                     android:background="#ffffff"
                     android:inputType="number"
+                    android:maxLength="1"
                     android:textAlignment="center" />
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#d6d4d4"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="#ffffff"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="配"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="#ffffff"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="配"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="#ffffff"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#d6d4d4"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="#ffffff"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="配"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="#ffffff"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="配"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="#ffffff"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="配"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="#ffffff"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
             <!--<RadioGroup-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="30dp"-->
