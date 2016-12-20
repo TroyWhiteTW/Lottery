@@ -36,8 +36,8 @@ public class QselectResActivity extends AppCompatActivity {
 //        erDingQian(sbTmp.substring(i, i + 1));
 //
 //    }
-        sanDingAll();
-        sanDingPeiChu1("1");
+//        sanDingAll();
+        sanDingPeiQu2("1", "1");
 
 
         Log(String.valueOf(list.size()));
@@ -1669,8 +1669,98 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字定配取二位
-    public void sanDingPeiQu2() {
+    public void sanDingPeiQu2(String s_1, String s_2) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 10; a++) {
+            for (int b = 0; b <= 10; b++) {
+                for (int c = 0; c <= 10; c++) {
+                    for (int d = 0; d <= 10; d++) {
+                        if (a == 10) {
+                            s1 = "X";
+                        } else {
+                            s1 = String.valueOf(a);
+                        }
+                        if (b == 10) {
+                            s2 = "X";
+                        } else {
+                            s2 = String.valueOf(b);
+                        }
+                        if (c == 10) {
+                            s3 = "X";
+                        } else {
+                            s3 = String.valueOf(c);
+                        }
+                        if (d == 10) {
+                            s4 = "X";
+                        } else {
+                            s4 = String.valueOf(d);
+                        }
 
+                        if (s1.equals("X") && s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s2.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s3.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s4.equals("X")) {
+
+                        } else if (s1.equals("X") && s2.equals("X") && s3.equals("X")) {
+
+                        } else if (!s1.equals("X") && s2.equals(s_1) && s3.equals(s_2) && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (!s1.equals("X") && s2.equals(s_1) && s3.equals("X") && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (!s1.equals("X") && s2.equals("X") && s3.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && !s2.equals("X") && s3.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && !s2.equals("X") && s3.equals(s_2) && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && !s2.equals("X") && s3.equals("X") && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals("X") && !s3.equals("X") && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s2.equals(s_1) && !s3.equals("X") && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2) && !s3.equals("X") && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2) && s3.equals("X") && !s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals("X") && s3.equals(s_2) && !s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s2.equals(s_1) && s3.equals(s_2) && !s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (!s1.equals("X") && s2.equals(s_2) && s3.equals(s_1) && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (!s1.equals("X") && s2.equals(s_2) && s3.equals("X") && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (!s1.equals("X") && s2.equals("X") && s3.equals(s_2) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && !s2.equals("X") && s3.equals(s_2) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && !s2.equals("X") && s3.equals(s_1) && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && !s2.equals("X") && s3.equals("X") && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals("X") && !s3.equals("X") && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s2.equals(s_2) && !s3.equals("X") && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_1) && !s3.equals("X") && s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_1) && s3.equals("X") && !s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals("X") && s3.equals(s_1) && !s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals("X") && s2.equals(s_2) && s3.equals(s_1) && !s4.equals("X")) {
+                            sbToList(s1, s2, s3, s4);
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //三字定配取三位
