@@ -37,7 +37,7 @@ public class QselectResActivity extends AppCompatActivity {
 //
 //    }
 //        siXianAll();
-        siDingPeiQu1("1");
+        sanXianPeiQu2("2", "3");
 
         Log(String.valueOf(list.size()));
         for (String s : list) {
@@ -3451,15 +3451,7 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //二字現配取二位
-    public void erXianPeiQu2(String s_1, String s_2) {
-        String s1, s2;
-        if (Integer.valueOf(s_1) > Integer.valueOf(s_2)) {
-            s1 = s_2;
-            s2 = s_1;
-        } else {
-            s1 = s_1;
-            s2 = s_2;
-        }
+    public void erXianPeiQu2(String s1, String s2) {
         sbToList(s1, s2);
     }
 
@@ -3478,15 +3470,7 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //二字現配除二位
-    public void erXianPeiChu2(String s_1, String s_2) {
-        String s1, s2;
-        if (Integer.valueOf(s_1) > Integer.valueOf(s_2)) {
-            s1 = s_2;
-            s2 = s_1;
-        } else {
-            s1 = s_1;
-            s2 = s_2;
-        }
+    public void erXianPeiChu2(String s1, String s2) {
         sbRemoveList(s1, s2);
     }
 
@@ -3523,13 +3507,29 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字現配取二位
-    public void sanXianPeiQu2() {
+    public void sanXianPeiQu2(String s_1, String s_2) {
+        String s1, s2, s3;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    s1 = String.valueOf(a);
+                    s2 = String.valueOf(b);
+                    s3 = String.valueOf(c);
+                    if (s2.equals(s_1) && s3.equals(s_2)) {
+                        sbToList(s1, s2, s3);
+                    } else if (s1.equals(s_1) && s2.equals(s_2)) {
+                        sbToList(s1, s2, s3);
+                    } else {
 
+                    }
+                }
+            }
+        }
     }
 
     //三字現配取三位
-    public void sanXianPeiQu3() {
-
+    public void sanXianPeiQu3(String s1, String s2, String s3) {
+        sbToList(s1, s2, s3);
     }
 
     //三字現配除一位
@@ -3550,13 +3550,29 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //三字現配除二位
-    public void sanXianPeiChu2() {
+    public void sanXianPeiChu2(String s_1, String s_2) {
+        String s1, s2, s3;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    s1 = String.valueOf(a);
+                    s2 = String.valueOf(b);
+                    s3 = String.valueOf(c);
+                    if (s2.equals(s_1) && s3.equals(s_2)) {
+                        sbRemoveList(s1, s2, s3);
+                    } else if (s1.equals(s_1) && s2.equals(s_2)) {
+                        sbRemoveList(s1, s2, s3);
+                    } else {
 
+                    }
+                }
+            }
+        }
     }
 
     //三字現配除三位
-    public void sanXianPeiChu3() {
-
+    public void sanXianPeiChu3(String s1, String s2, String s3) {
+        sbRemoveList(s1, s2, s3);
     }
 
     //四字現全組合
