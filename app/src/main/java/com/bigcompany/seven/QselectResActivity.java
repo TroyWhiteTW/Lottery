@@ -36,9 +36,8 @@ public class QselectResActivity extends AppCompatActivity {
 //        erDingQian(sbTmp.substring(i, i + 1));
 //
 //    }
-//        sanDingAll();
-        siDingPeiQu4("1", "2", "3", "4");
-
+//        siXianAll();
+        siDingPeiQu1("1");
 
         Log(String.valueOf(list.size()));
         for (String s : list) {
@@ -2849,18 +2848,135 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //四字定配取一位
-    public void siDingPeiQu1() {
-
+    public void siDingPeiQu1(String s) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 9; c++) {
+                    for (int d = 0; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s) || s2.equals(s) || s3.equals(s) || s4.equals(s)) {
+                            sbToList(s1, s2, s3, s4);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字定配取二位
-    public void siDingPeiQu2() {
+    public void siDingPeiQu2(String s_1, String s_2) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 9; c++) {
+                    for (int d = 0; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s2.equals(s_1) && s3.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s3.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_2) && s3.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_2) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s3.equals(s_2) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s3.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else {
 
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字定配取三位
-    public void siDingPeiQu3() {
+    public void siDingPeiQu3(String s_1, String s_2, String s_3) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 9; c++) {
+                    for (int d = 0; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s_3) && s2.equals(s_1) && s3.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s2.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s3.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_3) && s3.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_3) && s3.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_3) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_3) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s3.equals(s_3) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2) && s3.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2) && s4.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_2) && s4.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s3.equals(s_2) && s4.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s2.equals(s_2) && s3.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s2.equals(s_2) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s3.equals(s_2) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_3) && s3.equals(s_2) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_3) && s3.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_3) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s3.equals(s_3) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_2) && s3.equals(s_3) && s4.equals(s_1)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_1) && s3.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_1) && s4.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s3.equals(s_1) && s4.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_2) && s3.equals(s_1) && s4.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else {
 
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字定配取四位
@@ -3109,18 +3225,135 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //四字定配除一位
-    public void siDingPeiChu1() {
-
+    public void siDingPeiChu1(String s) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 9; c++) {
+                    for (int d = 0; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s) || s2.equals(s) || s3.equals(s) || s4.equals(s)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字定配除二位
-    public void siDingPeiChu2() {
+    public void siDingPeiChu2(String s_1, String s_2) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 9; c++) {
+                    for (int d = 0; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s2.equals(s_1) && s3.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals(s_1) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_2) && s3.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_2) && s4.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals(s_2) && s4.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s3.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s4.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
 
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字定配除三位
-    public void siDingPeiChu3() {
+    public void siDingPeiChu3(String s_1, String s_2, String s_3) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = 0; b <= 9; b++) {
+                for (int c = 0; c <= 9; c++) {
+                    for (int d = 0; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s_3) && s2.equals(s_1) && s3.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s2.equals(s_1) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s3.equals(s_1) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_3) && s3.equals(s_1) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_3) && s3.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_3) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_3) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s3.equals(s_3) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2) && s3.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2) && s4.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_2) && s4.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s3.equals(s_2) && s4.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s2.equals(s_2) && s3.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s2.equals(s_2) && s4.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_3) && s3.equals(s_2) && s4.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_3) && s3.equals(s_2) && s4.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_3) && s3.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_3) && s4.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s3.equals(s_3) && s4.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_2) && s3.equals(s_3) && s4.equals(s_1)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_1) && s3.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s2.equals(s_1) && s4.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_2) && s3.equals(s_1) && s4.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_2) && s3.equals(s_1) && s4.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
 
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字定配除四位
