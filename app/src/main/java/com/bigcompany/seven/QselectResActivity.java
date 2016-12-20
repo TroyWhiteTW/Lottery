@@ -37,7 +37,7 @@ public class QselectResActivity extends AppCompatActivity {
 //
 //    }
 //        siXianAll();
-        sanXianPeiQu2("2", "3");
+        siXianPeiQu3("1", "3", "5");
 
         Log(String.valueOf(list.size()));
         for (String s : list) {
@@ -3519,6 +3519,8 @@ public class QselectResActivity extends AppCompatActivity {
                         sbToList(s1, s2, s3);
                     } else if (s1.equals(s_1) && s2.equals(s_2)) {
                         sbToList(s1, s2, s3);
+                    } else if (s1.equals(s_1) && s3.equals(s_2)) {
+                        sbToList(s1, s2, s3);
                     } else {
 
                     }
@@ -3561,6 +3563,8 @@ public class QselectResActivity extends AppCompatActivity {
                     if (s2.equals(s_1) && s3.equals(s_2)) {
                         sbRemoveList(s1, s2, s3);
                     } else if (s1.equals(s_1) && s2.equals(s_2)) {
+                        sbRemoveList(s1, s2, s3);
+                    } else if (s1.equals(s_1) && s3.equals(s_2)) {
                         sbRemoveList(s1, s2, s3);
                     } else {
 
@@ -3614,18 +3618,68 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //四字現配取二位
-    public void siXianPeiQu2() {
+    public void siXianPeiQu2(String s_1, String s_2) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    for (int d = c; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s_1) && s2.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s3.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s3.equals(s_1) && s4.equals(s_2)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else {
 
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字現配取三位
-    public void siXianPeiQu3() {
+    public void siXianPeiQu3(String s_1, String s_2, String s_3) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    for (int d = c; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s_1) && s2.equals(s_2) && s3.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2) && s4.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_2) && s4.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s3.equals(s_2) && s4.equals(s_3)) {
+                            sbToList(s1, s2, s3, s4);
+                        } else {
 
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字現配取四位
-    public void siXianPeiQu4() {
-
+    public void siXianPeiQu4(String s1, String s2, String s3, String s4) {
+        sbToList(s1, s2, s3, s4);
     }
 
     //四字現配除一位
@@ -3649,18 +3703,68 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //四字現配除二位
-    public void siXianPeiChu2() {
+    public void siXianPeiChu2(String s_1, String s_2) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    for (int d = c; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s_1) && s2.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s3.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s3.equals(s_1) && s4.equals(s_2)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
 
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字現配除三位
-    public void siXianPeiChu3() {
+    public void siXianPeiChu3(String s_1, String s_2, String s_3) {
+        String s1, s2, s3, s4;
+        for (int a = 0; a <= 9; a++) {
+            for (int b = a; b <= 9; b++) {
+                for (int c = b; c <= 9; c++) {
+                    for (int d = c; d <= 9; d++) {
+                        s1 = String.valueOf(a);
+                        s2 = String.valueOf(b);
+                        s3 = String.valueOf(c);
+                        s4 = String.valueOf(d);
+                        if (s1.equals(s_1) && s2.equals(s_2) && s3.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s2.equals(s_2) && s4.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s1.equals(s_1) && s3.equals(s_2) && s4.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else if (s2.equals(s_1) && s3.equals(s_2) && s4.equals(s_3)) {
+                            sbRemoveList(s1, s2, s3, s4);
+                        } else {
 
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //四字現配除四位
-    public void siXianPeiChu4() {
-
+    public void siXianPeiChu4(String s1, String s2, String s3, String s4) {
+        sbRemoveList(s1, s2, s3, s4);
     }
 
     public void Toast(String s) {
