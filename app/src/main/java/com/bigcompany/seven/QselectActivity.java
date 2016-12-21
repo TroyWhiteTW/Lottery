@@ -15,6 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class QselectActivity extends AppCompatActivity {
@@ -23,8 +24,10 @@ public class QselectActivity extends AppCompatActivity {
     private EditText et_qian, et_bai, et_shi, et_ge;
     private EditText et_21, et_22, et_31, et_32, et_33, et_41, et_42, et_43, et_44;
     private int gameStyle = 0;
-    private LinearLayout ll_dingPos, ll_dingEdit, ll_peiEdit;
+    private LinearLayout ll_dingPos, ll_dingEdit, ll_peiEdit_2, ll_peiEdit_3, ll_peiEdit_4;
+    private RadioGroup rg_dingBasic, rg_peiBasic;
     private RadioButton rb_dingChu, rb_dingQu, rb_peiChu, rb_peiQu;
+    private RadioButton rb_pei_chu, rb_pei_qu;
     private String cookie;
 
     @Override
@@ -38,6 +41,8 @@ public class QselectActivity extends AppCompatActivity {
 
         initial();
         setFnBtn();
+
+        changeGameStyle();
     }
 
     public void initial() {
@@ -64,12 +69,17 @@ public class QselectActivity extends AppCompatActivity {
         et_44 = (EditText) findViewById(R.id.et_44);
         ll_dingPos = (LinearLayout) findViewById(R.id.ll_dingPos);
         ll_dingEdit = (LinearLayout) findViewById(R.id.ll_dingEdit);
-        ll_peiEdit = (LinearLayout) findViewById(R.id.ll_peiEdit);
+        ll_peiEdit_2 = (LinearLayout) findViewById(R.id.ll_peiEdit_2);
+        ll_peiEdit_3 = (LinearLayout) findViewById(R.id.ll_peiEdit_3);
+        ll_peiEdit_4 = (LinearLayout) findViewById(R.id.ll_peiEdit_4);
+        rg_dingBasic = (RadioGroup) findViewById(R.id.rg_dingBasic);
+        rg_peiBasic = (RadioGroup) findViewById(R.id.rg_peiBasic);
         rb_dingChu = (RadioButton) findViewById(R.id.rb_dingChu);
         rb_dingQu = (RadioButton) findViewById(R.id.rb_dingQu);
         rb_peiChu = (RadioButton) findViewById(R.id.rb_peiChu);
         rb_peiQu = (RadioButton) findViewById(R.id.rb_peiQu);
-
+        rb_pei_chu = (RadioButton) findViewById(R.id.rb_pei_chu);
+        rb_pei_qu = (RadioButton) findViewById(R.id.rb_pei_qu);
 
         btnOnClick();
         rbSetting();
@@ -80,42 +90,42 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gameStyle = 21;
-                Log("gameStyle=" + gameStyle);
+                changeGameStyle();
             }
         });
         btn_sanDing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 gameStyle = 31;
-                Log("gameStyle=" + gameStyle);
+                changeGameStyle();
             }
         });
         btn_siDing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 gameStyle = 41;
-                Log("gameStyle=" + gameStyle);
+                changeGameStyle();
             }
         });
         btn_erXian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 gameStyle = 22;
-                Log("gameStyle=" + gameStyle);
+                changeGameStyle();
             }
         });
         btn_sanXian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 gameStyle = 32;
-                Log("gameStyle=" + gameStyle);
+                changeGameStyle();
             }
         });
         btn_siXian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 gameStyle = 42;
-                Log("gameStyle=" + gameStyle);
+                changeGameStyle();
             }
         });
         btn_qselectRes.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +151,9 @@ public class QselectActivity extends AppCompatActivity {
                 if (rb_dingChu.isChecked()) {
                     ll_dingPos.setVisibility(View.VISIBLE);
                     ll_dingEdit.setVisibility(View.VISIBLE);
-                    ll_peiEdit.setVisibility(View.GONE);
+                    ll_peiEdit_2.setVisibility(View.GONE);
+                    ll_peiEdit_3.setVisibility(View.GONE);
+                    ll_peiEdit_4.setVisibility(View.GONE);
                 }
             }
         });
@@ -151,7 +163,9 @@ public class QselectActivity extends AppCompatActivity {
                 if (rb_dingQu.isChecked()) {
                     ll_dingPos.setVisibility(View.VISIBLE);
                     ll_dingEdit.setVisibility(View.VISIBLE);
-                    ll_peiEdit.setVisibility(View.GONE);
+                    ll_peiEdit_2.setVisibility(View.GONE);
+                    ll_peiEdit_3.setVisibility(View.GONE);
+                    ll_peiEdit_4.setVisibility(View.GONE);
                 }
             }
         });
@@ -161,7 +175,28 @@ public class QselectActivity extends AppCompatActivity {
                 if (rb_peiChu.isChecked()) {
                     ll_dingPos.setVisibility(View.GONE);
                     ll_dingEdit.setVisibility(View.GONE);
-                    ll_peiEdit.setVisibility(View.VISIBLE);
+                    switch (gameStyle) {
+                        case 21:
+                            ll_peiEdit_2.setVisibility(View.VISIBLE);
+                            ll_peiEdit_3.setVisibility(View.GONE);
+                            ll_peiEdit_4.setVisibility(View.GONE);
+                            break;
+                        case 31:
+                            ll_peiEdit_2.setVisibility(View.GONE);
+                            ll_peiEdit_3.setVisibility(View.VISIBLE);
+                            ll_peiEdit_4.setVisibility(View.GONE);
+                            break;
+                        case 41:
+                            ll_peiEdit_2.setVisibility(View.GONE);
+                            ll_peiEdit_3.setVisibility(View.GONE);
+                            ll_peiEdit_4.setVisibility(View.VISIBLE);
+                            break;
+                        default:
+                            ll_peiEdit_2.setVisibility(View.GONE);
+                            ll_peiEdit_3.setVisibility(View.GONE);
+                            ll_peiEdit_4.setVisibility(View.GONE);
+                            break;
+                    }
                 }
             }
         });
@@ -171,10 +206,112 @@ public class QselectActivity extends AppCompatActivity {
                 if (rb_peiQu.isChecked()) {
                     ll_dingPos.setVisibility(View.GONE);
                     ll_dingEdit.setVisibility(View.GONE);
-                    ll_peiEdit.setVisibility(View.VISIBLE);
+                    switch (gameStyle) {
+                        case 21:
+                            ll_peiEdit_2.setVisibility(View.VISIBLE);
+                            ll_peiEdit_3.setVisibility(View.GONE);
+                            ll_peiEdit_4.setVisibility(View.GONE);
+                            break;
+                        case 31:
+                            ll_peiEdit_2.setVisibility(View.GONE);
+                            ll_peiEdit_3.setVisibility(View.VISIBLE);
+                            ll_peiEdit_4.setVisibility(View.GONE);
+                            break;
+                        case 41:
+                            ll_peiEdit_2.setVisibility(View.GONE);
+                            ll_peiEdit_3.setVisibility(View.GONE);
+                            ll_peiEdit_4.setVisibility(View.VISIBLE);
+                            break;
+                        default:
+                            ll_peiEdit_2.setVisibility(View.GONE);
+                            ll_peiEdit_3.setVisibility(View.GONE);
+                            ll_peiEdit_4.setVisibility(View.GONE);
+                            break;
+                    }
                 }
             }
         });
+    }
+
+    public void changeGameStyle() {
+        switch (gameStyle) {
+            case 0:
+                rg_dingBasic.setVisibility(View.GONE);
+                rg_peiBasic.setVisibility(View.GONE);
+                ll_dingPos.setVisibility(View.GONE);
+                ll_dingEdit.setVisibility(View.GONE);
+                ll_peiEdit_2.setVisibility(View.GONE);
+                ll_peiEdit_3.setVisibility(View.GONE);
+                ll_peiEdit_4.setVisibility(View.GONE);
+                break;
+            case 21:
+                rg_dingBasic.setVisibility(View.VISIBLE);
+                rg_peiBasic.setVisibility(View.GONE);
+                ll_dingPos.setVisibility(View.GONE);
+                ll_dingEdit.setVisibility(View.GONE);
+                ll_peiEdit_2.setVisibility(View.GONE);
+                ll_peiEdit_3.setVisibility(View.GONE);
+                ll_peiEdit_4.setVisibility(View.GONE);
+                break;
+            case 31:
+                rg_dingBasic.setVisibility(View.VISIBLE);
+                rg_peiBasic.setVisibility(View.GONE);
+                ll_dingPos.setVisibility(View.GONE);
+                ll_dingEdit.setVisibility(View.GONE);
+                ll_peiEdit_2.setVisibility(View.GONE);
+                ll_peiEdit_3.setVisibility(View.GONE);
+                ll_peiEdit_4.setVisibility(View.GONE);
+                break;
+            case 41:
+                rg_dingBasic.setVisibility(View.VISIBLE);
+                rg_peiBasic.setVisibility(View.GONE);
+                ll_dingPos.setVisibility(View.GONE);
+                ll_dingEdit.setVisibility(View.GONE);
+                ll_peiEdit_2.setVisibility(View.GONE);
+                ll_peiEdit_3.setVisibility(View.GONE);
+                ll_peiEdit_4.setVisibility(View.GONE);
+                break;
+            case 22:
+                rg_dingBasic.setVisibility(View.GONE);
+                rg_peiBasic.setVisibility(View.VISIBLE);
+                ll_dingPos.setVisibility(View.GONE);
+                ll_dingEdit.setVisibility(View.GONE);
+                ll_peiEdit_2.setVisibility(View.GONE);
+                ll_peiEdit_3.setVisibility(View.GONE);
+                ll_peiEdit_4.setVisibility(View.GONE);
+                break;
+            case 32:
+                rg_dingBasic.setVisibility(View.GONE);
+                rg_peiBasic.setVisibility(View.VISIBLE);
+                ll_dingPos.setVisibility(View.GONE);
+                ll_dingEdit.setVisibility(View.GONE);
+                ll_peiEdit_2.setVisibility(View.GONE);
+                ll_peiEdit_3.setVisibility(View.GONE);
+                ll_peiEdit_4.setVisibility(View.GONE);
+                break;
+            case 42:
+                rg_dingBasic.setVisibility(View.GONE);
+                rg_peiBasic.setVisibility(View.VISIBLE);
+                ll_dingPos.setVisibility(View.GONE);
+                ll_dingEdit.setVisibility(View.GONE);
+                ll_peiEdit_2.setVisibility(View.GONE);
+                ll_peiEdit_3.setVisibility(View.GONE);
+                ll_peiEdit_4.setVisibility(View.GONE);
+                break;
+            default:
+                rg_dingBasic.setVisibility(View.GONE);
+                rg_peiBasic.setVisibility(View.GONE);
+                ll_dingPos.setVisibility(View.GONE);
+                ll_dingEdit.setVisibility(View.GONE);
+                ll_peiEdit_2.setVisibility(View.GONE);
+                ll_peiEdit_3.setVisibility(View.GONE);
+                ll_peiEdit_4.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    public void reset() {
+
     }
 
     public void setFnBtn() {

@@ -150,6 +150,7 @@
             android:orientation="vertical">
 
             <RadioGroup
+                android:id="@+id/rg_dingBasic"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#da8c8c"
@@ -211,13 +212,48 @@
 
             </RadioGroup>
 
+            <RadioGroup
+                android:id="@+id/rg_peiBasic"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#da8c8c"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="配數"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/rb_pei_chu"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="除"
+                    android:textAlignment="center" />
+
+                <RadioButton
+                    android:id="@+id/rb_pei_qu"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="取"
+                    android:textAlignment="center" />
+
+            </RadioGroup>
+
             <LinearLayout
                 android:id="@+id/ll_dingPos"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
@@ -262,8 +298,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:orientation="horizontal">
 
                 <View
                     android:layout_width="2dp"
@@ -332,8 +367,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/et_21"
@@ -371,8 +405,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/et_31"
@@ -429,8 +462,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#d6d4d4"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/et_41"
