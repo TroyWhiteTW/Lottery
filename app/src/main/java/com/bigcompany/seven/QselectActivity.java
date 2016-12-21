@@ -234,84 +234,55 @@ public class QselectActivity extends AppCompatActivity {
     }
 
     public void changeGameStyle() {
+        reset();
         switch (gameStyle) {
             case 0:
                 rg_dingBasic.setVisibility(View.GONE);
                 rg_peiBasic.setVisibility(View.GONE);
-                ll_dingPos.setVisibility(View.GONE);
-                ll_dingEdit.setVisibility(View.GONE);
-                ll_peiEdit_2.setVisibility(View.GONE);
-                ll_peiEdit_3.setVisibility(View.GONE);
-                ll_peiEdit_4.setVisibility(View.GONE);
                 break;
             case 21:
                 rg_dingBasic.setVisibility(View.VISIBLE);
                 rg_peiBasic.setVisibility(View.GONE);
-                ll_dingPos.setVisibility(View.GONE);
-                ll_dingEdit.setVisibility(View.GONE);
-                ll_peiEdit_2.setVisibility(View.GONE);
-                ll_peiEdit_3.setVisibility(View.GONE);
-                ll_peiEdit_4.setVisibility(View.GONE);
                 break;
             case 31:
                 rg_dingBasic.setVisibility(View.VISIBLE);
                 rg_peiBasic.setVisibility(View.GONE);
-                ll_dingPos.setVisibility(View.GONE);
-                ll_dingEdit.setVisibility(View.GONE);
-                ll_peiEdit_2.setVisibility(View.GONE);
-                ll_peiEdit_3.setVisibility(View.GONE);
-                ll_peiEdit_4.setVisibility(View.GONE);
                 break;
             case 41:
                 rg_dingBasic.setVisibility(View.VISIBLE);
                 rg_peiBasic.setVisibility(View.GONE);
-                ll_dingPos.setVisibility(View.GONE);
-                ll_dingEdit.setVisibility(View.GONE);
-                ll_peiEdit_2.setVisibility(View.GONE);
-                ll_peiEdit_3.setVisibility(View.GONE);
-                ll_peiEdit_4.setVisibility(View.GONE);
                 break;
             case 22:
                 rg_dingBasic.setVisibility(View.GONE);
                 rg_peiBasic.setVisibility(View.VISIBLE);
-                ll_dingPos.setVisibility(View.GONE);
-                ll_dingEdit.setVisibility(View.GONE);
-                ll_peiEdit_2.setVisibility(View.GONE);
-                ll_peiEdit_3.setVisibility(View.GONE);
-                ll_peiEdit_4.setVisibility(View.GONE);
                 break;
             case 32:
                 rg_dingBasic.setVisibility(View.GONE);
                 rg_peiBasic.setVisibility(View.VISIBLE);
-                ll_dingPos.setVisibility(View.GONE);
-                ll_dingEdit.setVisibility(View.GONE);
-                ll_peiEdit_2.setVisibility(View.GONE);
-                ll_peiEdit_3.setVisibility(View.GONE);
-                ll_peiEdit_4.setVisibility(View.GONE);
                 break;
             case 42:
                 rg_dingBasic.setVisibility(View.GONE);
                 rg_peiBasic.setVisibility(View.VISIBLE);
-                ll_dingPos.setVisibility(View.GONE);
-                ll_dingEdit.setVisibility(View.GONE);
-                ll_peiEdit_2.setVisibility(View.GONE);
-                ll_peiEdit_3.setVisibility(View.GONE);
-                ll_peiEdit_4.setVisibility(View.GONE);
                 break;
             default:
                 rg_dingBasic.setVisibility(View.GONE);
                 rg_peiBasic.setVisibility(View.GONE);
-                ll_dingPos.setVisibility(View.GONE);
-                ll_dingEdit.setVisibility(View.GONE);
-                ll_peiEdit_2.setVisibility(View.GONE);
-                ll_peiEdit_3.setVisibility(View.GONE);
-                ll_peiEdit_4.setVisibility(View.GONE);
                 break;
         }
     }
 
     public void reset() {
-
+        rb_dingChu.setSelected(false);
+        rb_dingQu.setSelected(false);
+        rb_peiChu.setSelected(false);
+        rb_peiQu.setSelected(false);
+        rb_pei_chu.setSelected(false);
+        rb_pei_qu.setSelected(false);
+        ll_dingPos.setVisibility(View.GONE);
+        ll_dingEdit.setVisibility(View.GONE);
+        ll_peiEdit_2.setVisibility(View.GONE);
+        ll_peiEdit_3.setVisibility(View.GONE);
+        ll_peiEdit_4.setVisibility(View.GONE);
     }
 
     public void setFnBtn() {
