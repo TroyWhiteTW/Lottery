@@ -272,12 +272,18 @@ public class QselectActivity extends AppCompatActivity {
     }
 
     public void reset() {
-        rb_dingChu.setSelected(false);
-        rb_dingQu.setSelected(false);
-        rb_peiChu.setSelected(false);
-        rb_peiQu.setSelected(false);
-        rb_pei_chu.setSelected(false);
-        rb_pei_qu.setSelected(false);
+        rb_dingChu.setChecked(true);
+        rb_dingQu.setChecked(true);
+        rb_peiChu.setChecked(true);
+        rb_peiQu.setChecked(true);
+        rb_pei_chu.setChecked(true);
+        rb_pei_qu.setChecked(true);
+        rb_dingChu.setChecked(false);
+        rb_dingQu.setChecked(false);
+        rb_peiChu.setChecked(false);
+        rb_peiQu.setChecked(false);
+        rb_pei_chu.setChecked(false);
+        rb_pei_qu.setChecked(false);
         ll_dingPos.setVisibility(View.GONE);
         ll_dingEdit.setVisibility(View.GONE);
         ll_peiEdit_2.setVisibility(View.GONE);
