@@ -17,17 +17,15 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import java.util.HashSet;
-
 public class QselectActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
     private Button btn_erDing, btn_sanDing, btn_siDing, btn_erXian, btn_sanXian, btn_siXian, btn_qselectRes, btn_qselectReset;
-    private EditText ed_1;
-    private HashSet<String> hs1;
+    private EditText et_qian, et_bai, et_shi, et_ge;
+    private EditText et_21, et_22, et_31, et_32, et_33, et_41, et_42, et_43, et_44;
+    private int gameStyle = 0;
     private LinearLayout ll_dingPos, ll_dingEdit, ll_peiEdit;
     private RadioButton rb_dingChu, rb_dingQu, rb_peiChu, rb_peiQu;
     private String cookie;
-    private StringBuffer sb, sb_tmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +41,6 @@ public class QselectActivity extends AppCompatActivity {
     }
 
     public void initial() {
-        hs1 = new HashSet();
-        sb = new StringBuffer();
-        sb_tmp = new StringBuffer();
         btn_erDing = (Button) findViewById(R.id.btn_erDing);
         btn_sanDing = (Button) findViewById(R.id.btn_sanDing);
         btn_siDing = (Button) findViewById(R.id.btn_siDing);
@@ -54,7 +49,19 @@ public class QselectActivity extends AppCompatActivity {
         btn_siXian = (Button) findViewById(R.id.btn_siXian);
         btn_qselectRes = (Button) findViewById(R.id.btn_qselectRes);
         btn_qselectReset = (Button) findViewById(R.id.btn_qselectReset);
-        ed_1 = (EditText) findViewById(R.id.ed_1);
+        et_qian = (EditText) findViewById(R.id.et_qian);
+        et_bai = (EditText) findViewById(R.id.et_bai);
+        et_shi = (EditText) findViewById(R.id.et_shi);
+        et_ge = (EditText) findViewById(R.id.et_ge);
+        et_21 = (EditText) findViewById(R.id.et_21);
+        et_22 = (EditText) findViewById(R.id.et_22);
+        et_31 = (EditText) findViewById(R.id.et_31);
+        et_32 = (EditText) findViewById(R.id.et_32);
+        et_33 = (EditText) findViewById(R.id.et_33);
+        et_41 = (EditText) findViewById(R.id.et_41);
+        et_42 = (EditText) findViewById(R.id.et_42);
+        et_43 = (EditText) findViewById(R.id.et_43);
+        et_44 = (EditText) findViewById(R.id.et_44);
         ll_dingPos = (LinearLayout) findViewById(R.id.ll_dingPos);
         ll_dingEdit = (LinearLayout) findViewById(R.id.ll_dingEdit);
         ll_peiEdit = (LinearLayout) findViewById(R.id.ll_peiEdit);
@@ -63,22 +70,6 @@ public class QselectActivity extends AppCompatActivity {
         rb_peiChu = (RadioButton) findViewById(R.id.rb_peiChu);
         rb_peiQu = (RadioButton) findViewById(R.id.rb_peiQu);
 
-        ed_1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
 
         btnOnClick();
         rbSetting();
@@ -88,37 +79,43 @@ public class QselectActivity extends AppCompatActivity {
         btn_erDing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                gameStyle = 21;
+                Log("gameStyle=" + gameStyle);
             }
         });
         btn_sanDing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                gameStyle = 31;
+                Log("gameStyle=" + gameStyle);
             }
         });
         btn_siDing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                gameStyle = 41;
+                Log("gameStyle=" + gameStyle);
             }
         });
         btn_erXian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                gameStyle = 22;
+                Log("gameStyle=" + gameStyle);
             }
         });
         btn_sanXian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                gameStyle = 32;
+                Log("gameStyle=" + gameStyle);
             }
         });
         btn_siXian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                gameStyle = 42;
+                Log("gameStyle=" + gameStyle);
             }
         });
         btn_qselectRes.setOnClickListener(new View.OnClickListener() {
