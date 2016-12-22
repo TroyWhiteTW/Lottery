@@ -212,7 +212,7 @@ public class QselectActivity extends AppCompatActivity {
         rb_pei_chu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (rb_pei_chu.isChecked()){
+                if (rb_pei_chu.isChecked()) {
                     reset();
                     switch (gameStyle) {
                         case 22:
@@ -234,7 +234,7 @@ public class QselectActivity extends AppCompatActivity {
         rb_pei_qu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (rb_pei_qu.isChecked()){
+                if (rb_pei_qu.isChecked()) {
                     reset();
                     switch (gameStyle) {
                         case 22:
@@ -257,18 +257,6 @@ public class QselectActivity extends AppCompatActivity {
     }
 
     public void changeGameStyle() {
-//        rb_dingChu.setChecked(true);
-//        rb_dingQu.setChecked(true);
-//        rb_peiChu.setChecked(true);
-//        rb_peiQu.setChecked(true);
-//        rb_pei_chu.setChecked(true);
-//        rb_pei_qu.setChecked(true);
-//        rb_dingChu.setChecked(false);
-//        rb_dingQu.setChecked(false);
-//        rb_peiChu.setChecked(false);
-//        rb_peiQu.setChecked(false);
-//        rb_pei_chu.setChecked(false);
-//        rb_pei_qu.setChecked(false);
         reset();
         switch (gameStyle) {
             case 0:
@@ -307,6 +295,8 @@ public class QselectActivity extends AppCompatActivity {
     }
 
     public void reset() {
+        rg_dingBasic.clearCheck();
+        rg_peiBasic.clearCheck();
         ll_dingPos.setVisibility(View.GONE);
         ll_dingEdit.setVisibility(View.GONE);
         ll_peiEdit_2.setVisibility(View.GONE);
