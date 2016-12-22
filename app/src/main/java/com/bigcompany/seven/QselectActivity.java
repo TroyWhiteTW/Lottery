@@ -23,7 +23,8 @@ public class QselectActivity extends AppCompatActivity {
     private Button btn_erDing, btn_sanDing, btn_siDing, btn_erXian, btn_sanXian, btn_siXian, btn_qselectRes, btn_qselectReset;
     private EditText et_qian, et_bai, et_shi, et_ge;
     private EditText et_21, et_22, et_31, et_32, et_33, et_41, et_42, et_43, et_44;
-    private int gameStyle = 0;
+    private int gameStyle = 0;//classID: 1=二定位; 2=三定位; 3=四定位; 4=二字現; 5=三字現; 6=四字現
+    private int gameSet = 0;
     private LinearLayout ll_dingPos, ll_dingEdit, ll_peiEdit_2, ll_peiEdit_3, ll_peiEdit_4;
     private RadioGroup rg_dingBasic, rg_peiBasic;
     private RadioButton rb_dingChu, rb_dingQu, rb_peiChu, rb_peiQu;
@@ -85,61 +86,104 @@ public class QselectActivity extends AppCompatActivity {
         rbSetting();
     }
 
+    public void gameSet() {
+        if (rb_dingChu.isChecked()) gameSet = 1;
+        if (rb_dingQu.isChecked()) gameSet = 2;
+        if (rb_peiChu.isChecked()) gameSet = 3;
+        if (rb_peiQu.isChecked()) gameSet = 4;
+        if (rb_pei_chu.isChecked()) gameSet = 5;
+        if (rb_pei_qu.isChecked()) gameSet = 6;
+        Log("gameSet=" + gameSet);
+    }
+
     public void btnOnClick() {
         btn_erDing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameStyle = 21;
+                gameStyle = 1;
                 changeGameStyle();
             }
         });
         btn_sanDing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameStyle = 31;
+                gameStyle = 2;
                 changeGameStyle();
             }
         });
         btn_siDing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameStyle = 41;
+                gameStyle = 3;
                 changeGameStyle();
             }
         });
         btn_erXian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameStyle = 22;
+                gameStyle = 4;
                 changeGameStyle();
             }
         });
         btn_sanXian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameStyle = 32;
+                gameStyle = 5;
                 changeGameStyle();
             }
         });
         btn_siXian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameStyle = 42;
+                gameStyle = 6;
                 changeGameStyle();
             }
         });
         btn_qselectRes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(QselectActivity.this, QselectResActivity.class);
-                it.putExtra("cookie", cookie);
-                startActivity(it);
+                gameSet();
+                if (gameSet != 0) {
+                    Intent it = new Intent(QselectActivity.this, QselectResActivity.class);
+                    it.putExtra("cookie", cookie);
+                    it.putExtra("gameStyle", gameStyle);
+                    it.putExtra("gameSet", gameSet);
+                    it.putExtra("et_qian", et_qian.getText().toString());
+                    it.putExtra("et_bai", et_bai.getText().toString());
+                    it.putExtra("et_shi", et_shi.getText().toString());
+                    it.putExtra("et_ge", et_ge.getText().toString());
+                    it.putExtra("et_21", et_21.getText().toString());
+                    it.putExtra("et_22", et_22.getText().toString());
+                    it.putExtra("et_31", et_31.getText().toString());
+                    it.putExtra("et_32", et_32.getText().toString());
+                    it.putExtra("et_33", et_33.getText().toString());
+                    it.putExtra("et_41", et_41.getText().toString());
+                    it.putExtra("et_42", et_42.getText().toString());
+                    it.putExtra("et_43", et_43.getText().toString());
+                    it.putExtra("et_44", et_44.getText().toString());
+//                    Log("et_qian=" + et_qian.getText().toString());
+//                    Log("et_bai=" + et_bai.getText().toString());
+//                    Log("et_shi=" + et_shi.getText().toString());
+//                    Log("et_ge=" + et_ge.getText().toString());
+//                    Log("et_21=" + et_21.getText().toString());
+//                    Log("et_22=" + et_22.getText().toString());
+//                    Log("et_31=" + et_31.getText().toString());
+//                    Log("et_32=" + et_32.getText().toString());
+//                    Log("et_33=" + et_33.getText().toString());
+//                    Log("et_41=" + et_41.getText().toString());
+//                    Log("et_42=" + et_42.getText().toString());
+//                    Log("et_43=" + et_43.getText().toString());
+//                    Log("et_44=" + et_44.getText().toString());
+                    startActivity(it);
+                } else {
+                    Toast("下注資料輸入錯誤");
+                }
             }
         });
         btn_qselectReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clearEditText();
             }
         });
     }
@@ -171,13 +215,13 @@ public class QselectActivity extends AppCompatActivity {
                 if (rb_peiChu.isChecked()) {
                     reset();
                     switch (gameStyle) {
-                        case 21:
+                        case 1:
                             ll_peiEdit_2.setVisibility(View.VISIBLE);
                             break;
-                        case 31:
+                        case 2:
                             ll_peiEdit_3.setVisibility(View.VISIBLE);
                             break;
-                        case 41:
+                        case 3:
                             ll_peiEdit_4.setVisibility(View.VISIBLE);
                             break;
                         default:
@@ -193,13 +237,13 @@ public class QselectActivity extends AppCompatActivity {
                 if (rb_peiQu.isChecked()) {
                     reset();
                     switch (gameStyle) {
-                        case 21:
+                        case 1:
                             ll_peiEdit_2.setVisibility(View.VISIBLE);
                             break;
-                        case 31:
+                        case 2:
                             ll_peiEdit_3.setVisibility(View.VISIBLE);
                             break;
-                        case 41:
+                        case 3:
                             ll_peiEdit_4.setVisibility(View.VISIBLE);
                             break;
                         default:
@@ -215,13 +259,13 @@ public class QselectActivity extends AppCompatActivity {
                 if (rb_pei_chu.isChecked()) {
                     reset();
                     switch (gameStyle) {
-                        case 22:
+                        case 4:
                             ll_peiEdit_2.setVisibility(View.VISIBLE);
                             break;
-                        case 32:
+                        case 5:
                             ll_peiEdit_3.setVisibility(View.VISIBLE);
                             break;
-                        case 42:
+                        case 6:
                             ll_peiEdit_4.setVisibility(View.VISIBLE);
                             break;
                         default:
@@ -237,13 +281,13 @@ public class QselectActivity extends AppCompatActivity {
                 if (rb_pei_qu.isChecked()) {
                     reset();
                     switch (gameStyle) {
-                        case 22:
+                        case 4:
                             ll_peiEdit_2.setVisibility(View.VISIBLE);
                             break;
-                        case 32:
+                        case 5:
                             ll_peiEdit_3.setVisibility(View.VISIBLE);
                             break;
-                        case 42:
+                        case 6:
                             ll_peiEdit_4.setVisibility(View.VISIBLE);
                             break;
                         default:
@@ -263,27 +307,27 @@ public class QselectActivity extends AppCompatActivity {
                 rg_dingBasic.setVisibility(View.GONE);
                 rg_peiBasic.setVisibility(View.GONE);
                 break;
-            case 21:
+            case 1:
                 rg_dingBasic.setVisibility(View.VISIBLE);
                 rg_peiBasic.setVisibility(View.GONE);
                 break;
-            case 31:
+            case 2:
                 rg_dingBasic.setVisibility(View.VISIBLE);
                 rg_peiBasic.setVisibility(View.GONE);
                 break;
-            case 41:
+            case 3:
                 rg_dingBasic.setVisibility(View.VISIBLE);
                 rg_peiBasic.setVisibility(View.GONE);
                 break;
-            case 22:
+            case 4:
                 rg_dingBasic.setVisibility(View.GONE);
                 rg_peiBasic.setVisibility(View.VISIBLE);
                 break;
-            case 32:
+            case 5:
                 rg_dingBasic.setVisibility(View.GONE);
                 rg_peiBasic.setVisibility(View.VISIBLE);
                 break;
-            case 42:
+            case 6:
                 rg_dingBasic.setVisibility(View.GONE);
                 rg_peiBasic.setVisibility(View.VISIBLE);
                 break;
@@ -302,6 +346,10 @@ public class QselectActivity extends AppCompatActivity {
         ll_peiEdit_2.setVisibility(View.GONE);
         ll_peiEdit_3.setVisibility(View.GONE);
         ll_peiEdit_4.setVisibility(View.GONE);
+        clearEditText();
+    }
+
+    public void clearEditText() {
         et_qian.setText("");
         et_bai.setText("");
         et_shi.setText("");

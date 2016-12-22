@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,9 +14,13 @@ import java.util.LinkedList;
 import java.util.TreeSet;
 
 public class QselectResActivity extends AppCompatActivity {
+    private Button btn_sendGameSet;
+    private int gameStyle;//classID: 1=二定位; 2=三定位; 3=四定位; 4=二字現; 5=三字現; 6=四字現
+    private int gameSet;
+    private String et_qian, et_bai, et_shi, et_ge, et_21, et_22, et_31, et_32, et_33, et_41, et_42, et_43, et_44;
     private String cookie;
-    private StringBuffer sb, sb2, sbTmp;
-    private TextView tv_qselectres;
+    private StringBuffer sb, sb2;
+    private TextView tv_qselectres, tv_howMany, tv_totalMoney;
     private TreeSet<String> list = new TreeSet<>();
 
     @Override
@@ -24,22 +30,42 @@ public class QselectResActivity extends AppCompatActivity {
 
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
-        Log(cookie);
+        gameStyle = it.getIntExtra("gameStyle", 0);
+        gameSet = it.getIntExtra("gameSet", 0);
+        et_qian = it.getStringExtra("et_qian");
+        et_bai = it.getStringExtra("et_bai");
+        et_shi = it.getStringExtra("et_shi");
+        et_ge = it.getStringExtra("et_ge");
+        et_21 = it.getStringExtra("et_21");
+        et_22 = it.getStringExtra("et_22");
+        et_31 = it.getStringExtra("et_31");
+        et_32 = it.getStringExtra("et_32");
+        et_33 = it.getStringExtra("et_33");
+        et_41 = it.getStringExtra("et_41");
+        et_42 = it.getStringExtra("et_42");
+        et_43 = it.getStringExtra("et_43");
+        et_44 = it.getStringExtra("et_44");
+//        Log(cookie);
+//        Log("et_qian=" + et_qian);
+//        Log("et_bai=" + et_bai);
+//        Log("et_shi=" + et_shi);
+//        Log("et_ge=" + et_ge);
+//        Log("et_21=" + et_21);
+//        Log("et_22=" + et_22);
+//        Log("et_31=" + et_31);
+//        Log("et_32=" + et_32);
+//        Log("et_33=" + et_33);
+//        Log("et_41=" + et_41);
+//        Log("et_42=" + et_42);
+//        Log("et_43=" + et_43);
+//        Log("et_44=" + et_44);
 
         initial();
 
-//    sbTmp.append("0369");
-//    Log(sbTmp.toString());
-//    Log(sbTmp.substring(0, 1));
-//    for (int i = 0; i < sbTmp.length(); i++) {
-//
-//        erDingQian(sbTmp.substring(i, i + 1));
-//
-//    }
-//        siXianAll();
-        siXianPeiQu3("1", "3", "5");
+        gameSet();
 
         Log(String.valueOf(list.size()));
+        tv_howMany.setText("筆數：" + list.size());
         for (String s : list) {
             sb2.append(s);
             sb2.append("\n");
@@ -48,11 +74,115 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     public void initial() {
-        tv_qselectres = (TextView) findViewById(R.id.tv_qselectres);
         sb = new StringBuffer();
         sb2 = new StringBuffer();
-        sbTmp = new StringBuffer();
+
+        btn_sendGameSet = (Button) findViewById(R.id.btn_sendGameSet);
+        tv_qselectres = (TextView) findViewById(R.id.tv_qselectres);
+        tv_howMany = (TextView) findViewById(R.id.tv_howMany);
+        tv_totalMoney = (TextView) findViewById(R.id.tv_totalMoney);
+
         sb.setLength(4);
+        btn_sendGameSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    public void gameSet() {
+        switch (gameStyle) {
+            case 1:
+                switch (gameSet) {
+                    case 1:
+                        erDingAll();
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingChuQian(et_qian);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        erDingAll();
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 2:
+                switch (gameSet) {
+                    case 1:
+                        sanDingAll();
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        sanDingAll();
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 3:
+                switch (gameSet) {
+                    case 1:
+                        siDingAll();
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingChuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
+                        break;
+                    case 2:
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingQuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
+                        break;
+                    case 3:
+                        siDingAll();
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 4:
+                switch (gameSet) {
+                    case 5:
+                        erXianAll();
+                        break;
+                    case 6:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 5:
+                switch (gameSet) {
+                    case 5:
+                        sanXianAll();
+                        break;
+                    case 6:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 6:
+                switch (gameSet) {
+                    case 5:
+                        siXianAll();
+                        break;
+                    case 6:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     //把數組放進list結構裡面使用
