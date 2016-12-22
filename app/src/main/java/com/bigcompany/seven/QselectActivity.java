@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class QselectActivity extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class QselectActivity extends AppCompatActivity {
     private RadioButton rb_dingChu, rb_dingQu, rb_peiChu, rb_peiQu;
     private RadioButton rb_pei_chu, rb_pei_qu;
     private String cookie;
+    private TextView tv_gameStyle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class QselectActivity extends AppCompatActivity {
         et_42 = (EditText) findViewById(R.id.et_42);
         et_43 = (EditText) findViewById(R.id.et_43);
         et_44 = (EditText) findViewById(R.id.et_44);
+        tv_gameStyle = (TextView) findViewById(R.id.tv_gameStyle);
         ll_dingPos = (LinearLayout) findViewById(R.id.ll_dingPos);
         ll_dingEdit = (LinearLayout) findViewById(R.id.ll_dingEdit);
         ll_peiEdit_2 = (LinearLayout) findViewById(R.id.ll_peiEdit_2);
@@ -101,6 +104,7 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gameStyle = 1;
+                tv_gameStyle.setText("---二字定---");
                 changeGameStyle();
             }
         });
@@ -108,6 +112,7 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gameStyle = 2;
+                tv_gameStyle.setText("---三字定---");
                 changeGameStyle();
             }
         });
@@ -115,6 +120,7 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gameStyle = 3;
+                tv_gameStyle.setText("---四字定---");
                 changeGameStyle();
             }
         });
@@ -122,6 +128,7 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gameStyle = 4;
+                tv_gameStyle.setText("---二字現---");
                 changeGameStyle();
             }
         });
@@ -129,6 +136,7 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gameStyle = 5;
+                tv_gameStyle.setText("---三字現---");
                 changeGameStyle();
             }
         });
@@ -136,6 +144,7 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gameStyle = 6;
+                tv_gameStyle.setText("---四字現---");
                 changeGameStyle();
             }
         });
@@ -144,23 +153,80 @@ public class QselectActivity extends AppCompatActivity {
             public void onClick(View view) {
                 gameSet();
                 if (gameSet != 0) {
-                    Intent it = new Intent(QselectActivity.this, QselectResActivity.class);
-                    it.putExtra("cookie", cookie);
-                    it.putExtra("gameStyle", gameStyle);
-                    it.putExtra("gameSet", gameSet);
-                    it.putExtra("et_qian", et_qian.getText().toString());
-                    it.putExtra("et_bai", et_bai.getText().toString());
-                    it.putExtra("et_shi", et_shi.getText().toString());
-                    it.putExtra("et_ge", et_ge.getText().toString());
-                    it.putExtra("et_21", et_21.getText().toString());
-                    it.putExtra("et_22", et_22.getText().toString());
-                    it.putExtra("et_31", et_31.getText().toString());
-                    it.putExtra("et_32", et_32.getText().toString());
-                    it.putExtra("et_33", et_33.getText().toString());
-                    it.putExtra("et_41", et_41.getText().toString());
-                    it.putExtra("et_42", et_42.getText().toString());
-                    it.putExtra("et_43", et_43.getText().toString());
-                    it.putExtra("et_44", et_44.getText().toString());
+                    switch (gameStyle) {
+                        case 0:
+                            Toast("下注資料輸入錯誤");
+                            break;
+                        case 1:
+                            if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                Toast("下注資料輸入錯誤");
+                            } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
+                                Toast("下注資料輸入錯誤");
+                            } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                Toast("下注資料輸入錯誤");
+                            } else if (!et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                Toast("下注資料輸入錯誤");
+                            } else if (et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                Toast("下注資料輸入錯誤");
+                            } else {
+                                toResActivity();
+                            }
+                            break;
+                        case 2:
+                            if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                Toast("下注資料輸入錯誤");
+                            } else {
+                                toResActivity();
+                            }
+                            break;
+                        case 3:
+                            toResActivity();
+                            break;
+                        case 4:
+                            toResActivity();
+                            break;
+                        case 5:
+                            toResActivity();
+                            break;
+                        case 6:
+                            toResActivity();
+                            break;
+                        default:
+                            Toast("下注資料輸入錯誤");
+                            break;
+                    }
+                } else {
+                    Toast("下注資料輸入錯誤");
+                }
+
+            }
+        });
+        btn_qselectReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearEditText();
+            }
+        });
+    }
+
+    public void toResActivity() {
+        Intent it = new Intent(QselectActivity.this, QselectResActivity.class);
+        it.putExtra("cookie", cookie);
+        it.putExtra("gameStyle", gameStyle);
+        it.putExtra("gameSet", gameSet);
+        it.putExtra("et_qian", et_qian.getText().toString());
+        it.putExtra("et_bai", et_bai.getText().toString());
+        it.putExtra("et_shi", et_shi.getText().toString());
+        it.putExtra("et_ge", et_ge.getText().toString());
+        it.putExtra("et_21", et_21.getText().toString());
+        it.putExtra("et_22", et_22.getText().toString());
+        it.putExtra("et_31", et_31.getText().toString());
+        it.putExtra("et_32", et_32.getText().toString());
+        it.putExtra("et_33", et_33.getText().toString());
+        it.putExtra("et_41", et_41.getText().toString());
+        it.putExtra("et_42", et_42.getText().toString());
+        it.putExtra("et_43", et_43.getText().toString());
+        it.putExtra("et_44", et_44.getText().toString());
 //                    Log("et_qian=" + et_qian.getText().toString());
 //                    Log("et_bai=" + et_bai.getText().toString());
 //                    Log("et_shi=" + et_shi.getText().toString());
@@ -174,18 +240,7 @@ public class QselectActivity extends AppCompatActivity {
 //                    Log("et_42=" + et_42.getText().toString());
 //                    Log("et_43=" + et_43.getText().toString());
 //                    Log("et_44=" + et_44.getText().toString());
-                    startActivity(it);
-                } else {
-                    Toast("下注資料輸入錯誤");
-                }
-            }
-        });
-        btn_qselectReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearEditText();
-            }
-        });
+        startActivity(it);
     }
 
     public void rbSetting() {

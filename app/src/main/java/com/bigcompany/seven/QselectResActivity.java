@@ -64,7 +64,6 @@ public class QselectResActivity extends AppCompatActivity {
 
         gameSet();
 
-        Log(String.valueOf(list.size()));
         tv_howMany.setText("筆數：" + list.size());
         for (String s : list) {
             sb2.append(s);
@@ -99,8 +98,48 @@ public class QselectResActivity extends AppCompatActivity {
                         erDingAll();
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
                             erDingChuQian(et_qian);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingChuBai(et_bai);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingChuShi(et_shi);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            erDingChuGe(et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingChuQianBai(et_qian, et_bai);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingChuQianShi(et_qian, et_shi);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            erDingChuQianGe(et_qian, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingChuBaiShi(et_bai, et_shi);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            erDingChuBaiGe(et_bai, et_ge);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            erDingChuShiGe(et_shi, et_ge);
                         break;
                     case 2:
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingQuQian(et_qian);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingQuBai(et_bai);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingQuShi(et_shi);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            erDingQuGe(et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingQuQianBai(et_qian, et_bai);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingQuQianShi(et_qian, et_shi);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            erDingQuQianGe(et_qian, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            erDingQuBaiShi(et_bai, et_shi);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            erDingQuBaiGe(et_bai, et_ge);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            erDingQuShiGe(et_shi, et_ge);
                         break;
                     case 3:
                         erDingAll();
@@ -115,8 +154,68 @@ public class QselectResActivity extends AppCompatActivity {
                 switch (gameSet) {
                     case 1:
                         sanDingAll();
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingChuQian(et_qian);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingChuBai(et_bai);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingChuShi(et_shi);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingChuGe(et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingChuQianBai(et_qian, et_bai);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingChuQianShi(et_qian, et_shi);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingChuQianGe(et_qian, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingChuBaiShi(et_bai, et_shi);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingChuBaiGe(et_bai, et_ge);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingChuShiGe(et_shi, et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingChuQianBaiShi(et_qian, et_bai, et_shi);
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingChuQianBaiGe(et_qian, et_bai, et_ge);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingChuQianShiGe(et_qian, et_shi, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingChuBaiShiGe(et_bai, et_shi, et_ge);
                         break;
                     case 2:
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingQuQian(et_qian);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingQuBai(et_bai);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingQuShi(et_shi);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingQuGe(et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingQuQianBai(et_qian, et_bai);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingQuQianShi(et_qian, et_shi);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingQuQianGe(et_qian, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingQuBaiShi(et_bai, et_shi);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingQuBaiGe(et_bai, et_ge);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingQuShiGe(et_shi, et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            sanDingQuQianBaiShi(et_qian, et_bai, et_shi);
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingQuQianBaiGe(et_qian, et_bai, et_ge);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingQuQianShiGe(et_qian, et_shi, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            sanDingQuBaiShiGe(et_bai, et_shi, et_ge);
                         break;
                     case 3:
                         sanDingAll();
@@ -131,10 +230,72 @@ public class QselectResActivity extends AppCompatActivity {
                 switch (gameSet) {
                     case 1:
                         siDingAll();
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingChuQian(et_qian);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingChuBai(et_bai);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingChuShi(et_shi);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingChuGe(et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingChuQianBai(et_qian, et_bai);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingChuQianShi(et_qian, et_shi);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingChuQianGe(et_qian, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingChuBaiShi(et_bai, et_shi);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingChuBaiGe(et_bai, et_ge);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingChuShiGe(et_shi, et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingChuQianBaiShi(et_qian, et_bai, et_shi);
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingChuQianBaiGe(et_qian, et_bai, et_ge);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingChuQianShiGe(et_qian, et_shi, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingChuBaiShiGe(et_bai, et_shi, et_ge);
+
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
                             siDingChuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
                         break;
                     case 2:
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingQuQian(et_qian);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingQuBai(et_bai);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingQuShi(et_shi);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingQuGe(et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingQuQianBai(et_qian, et_bai);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingQuQianShi(et_qian, et_shi);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingQuQianGe(et_qian, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingQuBaiShi(et_bai, et_shi);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingQuBaiGe(et_bai, et_ge);
+                        if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingQuShiGe(et_shi, et_ge);
+
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
+                            siDingQuQianBaiShi(et_qian, et_bai, et_shi);
+                        if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingQuQianBaiGe(et_qian, et_bai, et_ge);
+                        if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingQuQianShiGe(et_qian, et_shi, et_ge);
+                        if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
+                            siDingQuBaiShiGe(et_bai, et_shi, et_ge);
+
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
                             siDingQuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
                         break;
