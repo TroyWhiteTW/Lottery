@@ -149,11 +149,9 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (rb_dingChu.isChecked()) {
+                    reset();
                     ll_dingPos.setVisibility(View.VISIBLE);
                     ll_dingEdit.setVisibility(View.VISIBLE);
-                    ll_peiEdit_2.setVisibility(View.GONE);
-                    ll_peiEdit_3.setVisibility(View.GONE);
-                    ll_peiEdit_4.setVisibility(View.GONE);
                 }
             }
         });
@@ -161,11 +159,9 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (rb_dingQu.isChecked()) {
+                    reset();
                     ll_dingPos.setVisibility(View.VISIBLE);
                     ll_dingEdit.setVisibility(View.VISIBLE);
-                    ll_peiEdit_2.setVisibility(View.GONE);
-                    ll_peiEdit_3.setVisibility(View.GONE);
-                    ll_peiEdit_4.setVisibility(View.GONE);
                 }
             }
         });
@@ -173,28 +169,19 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (rb_peiChu.isChecked()) {
-                    ll_dingPos.setVisibility(View.GONE);
-                    ll_dingEdit.setVisibility(View.GONE);
+                    reset();
                     switch (gameStyle) {
                         case 21:
                             ll_peiEdit_2.setVisibility(View.VISIBLE);
-                            ll_peiEdit_3.setVisibility(View.GONE);
-                            ll_peiEdit_4.setVisibility(View.GONE);
                             break;
                         case 31:
-                            ll_peiEdit_2.setVisibility(View.GONE);
                             ll_peiEdit_3.setVisibility(View.VISIBLE);
-                            ll_peiEdit_4.setVisibility(View.GONE);
                             break;
                         case 41:
-                            ll_peiEdit_2.setVisibility(View.GONE);
-                            ll_peiEdit_3.setVisibility(View.GONE);
                             ll_peiEdit_4.setVisibility(View.VISIBLE);
                             break;
                         default:
-                            ll_peiEdit_2.setVisibility(View.GONE);
-                            ll_peiEdit_3.setVisibility(View.GONE);
-                            ll_peiEdit_4.setVisibility(View.GONE);
+                            reset();
                             break;
                     }
                 }
@@ -204,36 +191,84 @@ public class QselectActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (rb_peiQu.isChecked()) {
-                    ll_dingPos.setVisibility(View.GONE);
-                    ll_dingEdit.setVisibility(View.GONE);
+                    reset();
                     switch (gameStyle) {
                         case 21:
                             ll_peiEdit_2.setVisibility(View.VISIBLE);
-                            ll_peiEdit_3.setVisibility(View.GONE);
-                            ll_peiEdit_4.setVisibility(View.GONE);
                             break;
                         case 31:
-                            ll_peiEdit_2.setVisibility(View.GONE);
                             ll_peiEdit_3.setVisibility(View.VISIBLE);
-                            ll_peiEdit_4.setVisibility(View.GONE);
                             break;
                         case 41:
-                            ll_peiEdit_2.setVisibility(View.GONE);
-                            ll_peiEdit_3.setVisibility(View.GONE);
                             ll_peiEdit_4.setVisibility(View.VISIBLE);
                             break;
                         default:
-                            ll_peiEdit_2.setVisibility(View.GONE);
-                            ll_peiEdit_3.setVisibility(View.GONE);
-                            ll_peiEdit_4.setVisibility(View.GONE);
+                            reset();
                             break;
                     }
                 }
             }
         });
+        rb_pei_chu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (rb_pei_chu.isChecked()){
+                    reset();
+                    switch (gameStyle) {
+                        case 22:
+                            ll_peiEdit_2.setVisibility(View.VISIBLE);
+                            break;
+                        case 32:
+                            ll_peiEdit_3.setVisibility(View.VISIBLE);
+                            break;
+                        case 42:
+                            ll_peiEdit_4.setVisibility(View.VISIBLE);
+                            break;
+                        default:
+                            reset();
+                            break;
+                    }
+                }
+            }
+        });
+        rb_pei_qu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (rb_pei_qu.isChecked()){
+                    reset();
+                    switch (gameStyle) {
+                        case 22:
+                            ll_peiEdit_2.setVisibility(View.VISIBLE);
+                            break;
+                        case 32:
+                            ll_peiEdit_3.setVisibility(View.VISIBLE);
+                            break;
+                        case 42:
+                            ll_peiEdit_4.setVisibility(View.VISIBLE);
+                            break;
+                        default:
+                            reset();
+                            break;
+                    }
+                }
+
+            }
+        });
     }
 
     public void changeGameStyle() {
+//        rb_dingChu.setChecked(true);
+//        rb_dingQu.setChecked(true);
+//        rb_peiChu.setChecked(true);
+//        rb_peiQu.setChecked(true);
+//        rb_pei_chu.setChecked(true);
+//        rb_pei_qu.setChecked(true);
+//        rb_dingChu.setChecked(false);
+//        rb_dingQu.setChecked(false);
+//        rb_peiChu.setChecked(false);
+//        rb_peiQu.setChecked(false);
+//        rb_pei_chu.setChecked(false);
+//        rb_pei_qu.setChecked(false);
         reset();
         switch (gameStyle) {
             case 0:
@@ -272,23 +307,24 @@ public class QselectActivity extends AppCompatActivity {
     }
 
     public void reset() {
-        rb_dingChu.setChecked(true);
-        rb_dingQu.setChecked(true);
-        rb_peiChu.setChecked(true);
-        rb_peiQu.setChecked(true);
-        rb_pei_chu.setChecked(true);
-        rb_pei_qu.setChecked(true);
-        rb_dingChu.setChecked(false);
-        rb_dingQu.setChecked(false);
-        rb_peiChu.setChecked(false);
-        rb_peiQu.setChecked(false);
-        rb_pei_chu.setChecked(false);
-        rb_pei_qu.setChecked(false);
         ll_dingPos.setVisibility(View.GONE);
         ll_dingEdit.setVisibility(View.GONE);
         ll_peiEdit_2.setVisibility(View.GONE);
         ll_peiEdit_3.setVisibility(View.GONE);
         ll_peiEdit_4.setVisibility(View.GONE);
+        et_qian.setText("");
+        et_bai.setText("");
+        et_shi.setText("");
+        et_ge.setText("");
+        et_21.setText("");
+        et_22.setText("");
+        et_31.setText("");
+        et_32.setText("");
+        et_33.setText("");
+        et_41.setText("");
+        et_42.setText("");
+        et_43.setText("");
+        et_44.setText("");
     }
 
     public void setFnBtn() {
