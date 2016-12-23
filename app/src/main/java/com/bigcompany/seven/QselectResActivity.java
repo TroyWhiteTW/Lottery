@@ -1,11 +1,13 @@
 package com.bigcompany.seven;
 
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,17 +16,21 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
 public class QselectResActivity extends AppCompatActivity {
     private ArrayList<String> al;
     private Button btn_sendGameSet;
+    private EditText et_perMoney;
     private int gameStyle;//classID: 1=二定位; 2=三定位; 3=四定位; 4=二字現; 5=三字現; 6=四字現
     private int gameSet;
     private String et_qian, et_bai, et_shi, et_ge, et_21, et_22, et_31, et_32, et_33, et_41, et_42, et_43, et_44;
     private String cookie;
-    private StringBuffer sb, sb2;
+    private String app_net;
+    private String selectlogs;
+    private StringBuffer sb, sb2, sb3;
     private TextView tv_qselectres, tv_howMany, tv_totalMoney;
     private TreeSet<String> list = new TreeSet<>();
 
@@ -32,6 +38,8 @@ public class QselectResActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qselect_res);
+
+        app_net = getResources().getString(R.string.app_net);
 
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
@@ -74,14 +82,20 @@ public class QselectResActivity extends AppCompatActivity {
             sb2.append(s);
             sb2.append("\n");
         }
+        for (String s : list) {
+            sb3.append(s);
+            sb3.append(",");
+        }
         tv_qselectres.setText(sb2.toString());
     }
 
     public void initial() {
         sb = new StringBuffer();
         sb2 = new StringBuffer();
+        sb3 = new StringBuffer();
 
         btn_sendGameSet = (Button) findViewById(R.id.btn_sendGameSet);
+        et_perMoney = (EditText) findViewById(R.id.et_perMoney);
         tv_qselectres = (TextView) findViewById(R.id.tv_qselectres);
         tv_howMany = (TextView) findViewById(R.id.tv_howMany);
         tv_totalMoney = (TextView) findViewById(R.id.tv_totalMoney);
@@ -90,9 +104,275 @@ public class QselectResActivity extends AppCompatActivity {
         btn_sendGameSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                switch (gameStyle) {
+                    case 1:
+                        switch (gameSet) {
+                            case 1:
+                                selectlogs = "1,0," +
+                                        et_qian +
+                                        "," +
+                                        et_bai +
+                                        "," +
+                                        et_shi +
+                                        "," +
+                                        et_ge +
+                                        ",|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|||";
+                                break;
+                            case 2:
+                                selectlogs = "0,1," +
+                                        et_qian +
+                                        "," +
+                                        et_bai +
+                                        "," +
+                                        et_shi +
+                                        "," +
+                                        et_ge +
+                                        ",|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|||";
+                                break;
+                            case 3:
+                                selectlogs = "|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|" +
+                                        "1,0," +
+                                        et_21 +
+                                        "," +
+                                        et_22 +
+                                        ",,,0,0,0,0,||";
+                                break;
+                            case 4:
+                                selectlogs = "|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|" +
+                                        "0,1," +
+                                        et_21 +
+                                        "," +
+                                        et_22 +
+                                        ",,,0,0,0,0,||";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (gameSet) {
+                            case 1:
+                                selectlogs = "1,0," +
+                                        et_qian +
+                                        "," +
+                                        et_bai +
+                                        "," +
+                                        et_shi +
+                                        "," +
+                                        et_ge +
+                                        ",|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|||";
+                                break;
+                            case 2:
+                                selectlogs = "0,1," +
+                                        et_qian +
+                                        "," +
+                                        et_bai +
+                                        "," +
+                                        et_shi +
+                                        "," +
+                                        et_ge +
+                                        ",|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|||";
+                                break;
+                            case 3:
+                                selectlogs = "|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|" +
+                                        "1,0," +
+                                        et_31 +
+                                        "," +
+                                        et_32 +
+                                        "," +
+                                        et_33 +
+                                        ",,0,0,0,0,||";
+                                break;
+                            case 4:
+                                selectlogs = "|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|" +
+                                        "0,1," +
+                                        et_31 +
+                                        "," +
+                                        et_32 +
+                                        "," +
+                                        et_33 +
+                                        ",,0,0,0,0,||";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (gameSet) {
+                            case 1:
+                                selectlogs = "1,0," +
+                                        et_qian +
+                                        "," +
+                                        et_bai +
+                                        "," +
+                                        et_shi +
+                                        "," +
+                                        et_ge +
+                                        ",|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|||";
+                                break;
+                            case 2:
+                                selectlogs = "0,1," +
+                                        et_qian +
+                                        "," +
+                                        et_bai +
+                                        "," +
+                                        et_shi +
+                                        "," +
+                                        et_ge +
+                                        ",|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|||";
+                                break;
+                            case 3:
+                                selectlogs = "|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|" +
+                                        "1,0," +
+                                        et_41 +
+                                        "," +
+                                        et_42 +
+                                        "," +
+                                        et_43 +
+                                        "," +
+                                        et_44 +
+                                        ",0,0,0,0,||";
+                                break;
+                            case 4:
+                                selectlogs = "|0,1,0,0,0,0,,0,0,0,0,,0,0,0,0,,0,0,0,0,,|0,0,,||,,,|0,0,0,0,|0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,0,0,|0,0,0,0,0,0,|" +
+                                        "0,1," +
+                                        et_41 +
+                                        "," +
+                                        et_42 +
+                                        "," +
+                                        et_43 +
+                                        "," +
+                                        et_44 +
+                                        ",0,0,0,0,||";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (gameSet) {
+                            case 5:
+                                selectlogs = "||0,0,,||||0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,|0,0,0,0,|" +
+                                        "1,0," +
+                                        et_21 +
+                                        "," +
+                                        et_22 +
+                                        ",,,0,0,0,0,||";
+                                break;
+                            case 6:
+                                selectlogs = "||0,0,,||||0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,|0,0,0,0,|" +
+                                        "0,1," +
+                                        et_21 +
+                                        "," +
+                                        et_22 +
+                                        ",,,0,0,0,0,||";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 5:
+                        switch (gameSet) {
+                            case 5:
+                                selectlogs = "||0,0,,||||0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,|0,0,0,0,|" +
+                                        "1,0," +
+                                        et_31 +
+                                        "," +
+                                        et_32 +
+                                        "," +
+                                        et_33 +
+                                        ",,0,0,0,0,||";
+                                break;
+                            case 6:
+                                selectlogs = "||0,0,,||||0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,|0,0,0,0,|" +
+                                        "0,1," +
+                                        et_31 +
+                                        "," +
+                                        et_32 +
+                                        "," +
+                                        et_33 +
+                                        ",,0,0,0,0,||";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 6:
+                        switch (gameSet) {
+                            case 5:
+                                selectlogs = "||0,0,,||||0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,|0,0,0,0,|" +
+                                        "1,0," +
+                                        et_41 +
+                                        "," +
+                                        et_42 +
+                                        "," +
+                                        et_43 +
+                                        "," +
+                                        et_44 +
+                                        ",0,0,0,0,||";
+                                break;
+                            case 6:
+                                selectlogs = "||0,0,,||||0,0,,,|0,0,||||0,0,|||0,0,,,,|0,0,0,0,|0,0,0,0,|" +
+                                        "0,1," +
+                                        et_41 +
+                                        "," +
+                                        et_42 +
+                                        "," +
+                                        et_43 +
+                                        "," +
+                                        et_44 +
+                                        ",0,0,0,0,||";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                Log(selectlogs);
+                Log(et_perMoney.getText().toString());
+                Log(sb3.toString());
+                Log(String.valueOf(gameStyle));
+                sendData();
             }
         });
+    }
+
+    public void sendData() {
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                doSendData();
+                Looper.loop();
+            }
+        }.start();
+    }
+
+    public void doSendData() {
+        try {
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_soonselect");
+            mu.sendCookie(cookie);
+            mu.postKeyValue("post_money", et_perMoney.getText().toString());
+            mu.postKeyValue("post_number_money", sb3.toString());
+            mu.postKeyValue("selectlogsclassid", String.valueOf(gameStyle));
+            mu.postKeyValue("selectlogs", selectlogs);
+            List<String> ret = mu.getHtml();
+            for (String line : ret) {
+                Log(line);
+            }
+            Toast("下注完成");
+            finish();
+        } catch (Exception e) {
+            Toast("無法與伺服器取得連線");
+            Log(e.toString());
+        }
+        if (!et_perMoney.getText().toString().equals("")) {
+
+        } else {
+            Toast("未輸入金額");
+        }
     }
 
     public void sortEditTextString_2() {

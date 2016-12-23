@@ -38,8 +38,7 @@
             android:layout_weight="1"
             android:backgroundTint="#fffec9"
             android:text="快選"
-            android:textStyle="bold"
-            android:visibility="gone" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_member_list"
