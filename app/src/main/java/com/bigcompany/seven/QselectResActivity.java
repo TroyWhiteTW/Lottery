@@ -9,11 +9,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.TreeSet;
 
 public class QselectResActivity extends AppCompatActivity {
+    private ArrayList<String> al;
     private Button btn_sendGameSet;
     private int gameStyle;//classID: 1=二定位; 2=三定位; 3=四定位; 4=二字現; 5=三字現; 6=四字現
     private int gameSet;
@@ -90,6 +95,78 @@ public class QselectResActivity extends AppCompatActivity {
         });
     }
 
+    public void sortEditTextString_2() {
+        HashMap<Integer, String> hashMap = new HashMap<>();
+        if (!et_21.equals("")) hashMap.put(0, et_21);
+        if (!et_22.equals("")) hashMap.put(1, et_22);
+        ArrayList<Map.Entry<Integer, String>> entryList = new ArrayList<>(hashMap.entrySet());
+        Comparator<Map.Entry> sortByValue = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList, sortByValue);
+        LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>();
+        for (Map.Entry e : entryList)
+            linkedHashMap.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap = " + linkedHashMap.toString());
+
+        al = new ArrayList<>(linkedHashMap.values());
+        for (int i = 0; i < linkedHashMap.size(); i++) {
+            Log("al[" + i + "] = " + al.get(i));
+        }
+    }
+
+    public void sortEditTextString_3() {
+        HashMap<Integer, String> hashMap = new HashMap<>();
+        if (!et_31.equals("")) hashMap.put(0, et_31);
+        if (!et_32.equals("")) hashMap.put(1, et_32);
+        if (!et_33.equals("")) hashMap.put(2, et_33);
+        ArrayList<Map.Entry<Integer, String>> entryList = new ArrayList<>(hashMap.entrySet());
+        Comparator<Map.Entry> sortByValue = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList, sortByValue);
+        LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>();
+        for (Map.Entry e : entryList)
+            linkedHashMap.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap = " + linkedHashMap.toString());
+
+        al = new ArrayList<>(linkedHashMap.values());
+        for (int i = 0; i < linkedHashMap.size(); i++) {
+            Log("al[" + i + "] = " + al.get(i));
+        }
+    }
+
+    public void sortEditTextString_4() {
+        HashMap<Integer, String> hashMap = new HashMap<>();
+        if (!et_41.equals("")) hashMap.put(0, et_41);
+        if (!et_42.equals("")) hashMap.put(1, et_42);
+        if (!et_43.equals("")) hashMap.put(2, et_43);
+        if (!et_44.equals("")) hashMap.put(3, et_44);
+        ArrayList<Map.Entry<Integer, String>> entryList = new ArrayList<>(hashMap.entrySet());
+        Comparator<Map.Entry> sortByValue = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList, sortByValue);
+        LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>();
+        for (Map.Entry e : entryList)
+            linkedHashMap.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap = " + linkedHashMap.toString());
+
+        al = new ArrayList<>(linkedHashMap.values());
+        for (int i = 0; i < linkedHashMap.size(); i++) {
+            Log("al[" + i + "] = " + al.get(i));
+        }
+    }
+
     public void gameSet() {
         switch (gameStyle) {
             case 1:
@@ -142,9 +219,31 @@ public class QselectResActivity extends AppCompatActivity {
                             erDingQuShiGe(et_shi, et_ge);
                         break;
                     case 3:
+                        sortEditTextString_2();
                         erDingAll();
+                        switch (al.size()) {
+                            case 1:
+                                erDingPeiChu1(al.get(0));
+                                break;
+                            case 2:
+                                erDingPeiChu2(al.get(0), al.get(1));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 4:
+                        sortEditTextString_2();
+                        switch (al.size()) {
+                            case 1:
+                                erDingPeiQu1(al.get(0));
+                                break;
+                            case 2:
+                                erDingPeiQu2(al.get(0), al.get(1));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     default:
                         break;
@@ -218,9 +317,37 @@ public class QselectResActivity extends AppCompatActivity {
                             sanDingQuBaiShiGe(et_bai, et_shi, et_ge);
                         break;
                     case 3:
+                        sortEditTextString_3();
                         sanDingAll();
+                        switch (al.size()) {
+                            case 1:
+                                sanDingPeiChu1(al.get(0));
+                                break;
+                            case 2:
+                                sanDingPeiChu2(al.get(0), al.get(1));
+                                break;
+                            case 3:
+                                sanDingPeiChu3(al.get(0), al.get(1), al.get(2));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 4:
+                        sortEditTextString_3();
+                        switch (al.size()) {
+                            case 1:
+                                sanDingPeiQu1(al.get(0));
+                                break;
+                            case 2:
+                                sanDingPeiQu2(al.get(0), al.get(1));
+                                break;
+                            case 3:
+                                sanDingPeiQu3(al.get(0), al.get(1), al.get(2));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     default:
                         break;
@@ -300,9 +427,43 @@ public class QselectResActivity extends AppCompatActivity {
                             siDingQuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
                         break;
                     case 3:
+                        sortEditTextString_4();
                         siDingAll();
+                        switch (al.size()) {
+                            case 1:
+                                siDingPeiChu1(al.get(0));
+                                break;
+                            case 2:
+                                siDingPeiChu2(al.get(0), al.get(1));
+                                break;
+                            case 3:
+                                siDingPeiChu3(al.get(0), al.get(1), al.get(2));
+                                break;
+                            case 4:
+                                siDingPeiChu4(al.get(0), al.get(1), al.get(2), al.get(3));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 4:
+                        sortEditTextString_4();
+                        switch (al.size()) {
+                            case 1:
+                                siDingPeiQu1(al.get(0));
+                                break;
+                            case 2:
+                                siDingPeiQu2(al.get(0), al.get(1));
+                                break;
+                            case 3:
+                                siDingPeiQu3(al.get(0), al.get(1), al.get(2));
+                                break;
+                            case 4:
+                                siDingPeiQu4(al.get(0), al.get(1), al.get(2), al.get(3));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     default:
                         break;
@@ -311,9 +472,31 @@ public class QselectResActivity extends AppCompatActivity {
             case 4:
                 switch (gameSet) {
                     case 5:
+                        sortEditTextString_2();
                         erXianAll();
+                        switch (al.size()) {
+                            case 1:
+                                erXianPeiChu1(al.get(0));
+                                break;
+                            case 2:
+                                erXianPeiChu2(al.get(0), al.get(1));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 6:
+                        sortEditTextString_2();
+                        switch (al.size()) {
+                            case 1:
+                                erXianPeiQu1(al.get(0));
+                                break;
+                            case 2:
+                                erXianPeiQu2(al.get(0), al.get(1));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     default:
                         break;
@@ -322,9 +505,37 @@ public class QselectResActivity extends AppCompatActivity {
             case 5:
                 switch (gameSet) {
                     case 5:
+                        sortEditTextString_3();
                         sanXianAll();
+                        switch (al.size()) {
+                            case 1:
+                                sanXianPeiChu1(al.get(0));
+                                break;
+                            case 2:
+                                sanXianPeiChu2(al.get(0), al.get(1));
+                                break;
+                            case 3:
+                                sanXianPeiChu3(al.get(0), al.get(1), al.get(2));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 6:
+                        sortEditTextString_3();
+                        switch (al.size()) {
+                            case 1:
+                                sanXianPeiQu1(al.get(0));
+                                break;
+                            case 2:
+                                sanXianPeiQu2(al.get(0), al.get(1));
+                                break;
+                            case 3:
+                                sanXianPeiQu3(al.get(0), al.get(1), al.get(2));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     default:
                         break;
@@ -333,9 +544,43 @@ public class QselectResActivity extends AppCompatActivity {
             case 6:
                 switch (gameSet) {
                     case 5:
+                        sortEditTextString_4();
                         siXianAll();
+                        switch (al.size()) {
+                            case 1:
+                                siXianPeiChu1(al.get(0));
+                                break;
+                            case 2:
+                                siXianPeiChu2(al.get(0), al.get(1));
+                                break;
+                            case 3:
+                                siXianPeiChu3(al.get(0), al.get(1), al.get(2));
+                                break;
+                            case 4:
+                                siXianPeiChu4(al.get(0), al.get(1), al.get(2), al.get(3));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 6:
+                        sortEditTextString_4();
+                        switch (al.size()) {
+                            case 1:
+                                siXianPeiQu1(al.get(0));
+                                break;
+                            case 2:
+                                siXianPeiQu2(al.get(0), al.get(1));
+                                break;
+                            case 3:
+                                siXianPeiQu3(al.get(0), al.get(1), al.get(2));
+                                break;
+                            case 4:
+                                siXianPeiQu4(al.get(0), al.get(1), al.get(2), al.get(3));
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     default:
                         break;
@@ -688,7 +933,7 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //二字定配取一位
-    public void erPeiQu1(String s) {
+    public void erDingPeiQu1(String s) {
         String s1, s2, s3, s4;
         for (int a = 0; a <= 10; a++) {
             for (int b = 0; b <= 10; b++) {
@@ -759,7 +1004,7 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     //二字定配取二位
-    public void erPeiQu2(String s_1, String s_2) {
+    public void erDingPeiQu2(String s_1, String s_2) {
         String s1, s2, s3, s4;
         for (int a = 0; a <= 10; a++) {
             for (int b = 0; b <= 10; b++) {

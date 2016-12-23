@@ -158,41 +158,153 @@ public class QselectActivity extends AppCompatActivity {
                             Toast("下注資料輸入錯誤");
                             break;
                         case 1:
-                            if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
-                                Toast("下注資料輸入錯誤");
-                            } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
-                                Toast("下注資料輸入錯誤");
-                            } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
-                                Toast("下注資料輸入錯誤");
-                            } else if (!et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
-                                Toast("下注資料輸入錯誤");
-                            } else if (et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
-                                Toast("下注資料輸入錯誤");
-                            } else {
-                                toResActivity();
+                            switch (gameSet) {
+                                case 1:
+                                    if (et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                case 2:
+                                    if (et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                case 3:
+                                    if (et_21.getText().toString().isEmpty() && et_22.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                case 4:
+                                    if (et_21.getText().toString().isEmpty() && et_22.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                default:
+                                    break;
                             }
                             break;
                         case 2:
-                            if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                            switch (gameSet) {
+                                case 1:
+                                    if (et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                case 2:
+                                    if (et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else if (!et_qian.getText().toString().isEmpty() && !et_bai.getText().toString().isEmpty() && !et_shi.getText().toString().isEmpty() && !et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                case 3:
+                                    if (et_31.getText().toString().isEmpty() && et_32.getText().toString().isEmpty() && et_33.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                case 4:
+                                    if (et_31.getText().toString().isEmpty() && et_32.getText().toString().isEmpty() && et_33.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            switch (gameSet) {
+                                case 1:
+                                    if (et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                case 2:
+                                    if (et_qian.getText().toString().isEmpty() && et_bai.getText().toString().isEmpty() && et_shi.getText().toString().isEmpty() && et_ge.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                case 3:
+                                    if (et_41.getText().toString().isEmpty() && et_42.getText().toString().isEmpty() && et_43.getText().toString().isEmpty() && et_44.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                case 4:
+                                    if (et_41.getText().toString().isEmpty() && et_42.getText().toString().isEmpty() && et_43.getText().toString().isEmpty() && et_44.getText().toString().isEmpty()) {
+                                        Toast("下注資料輸入錯誤");
+                                    } else {
+                                        toResActivity();
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case 4:
+                            if (et_21.getText().toString().isEmpty() && et_22.getText().toString().isEmpty()) {
                                 Toast("下注資料輸入錯誤");
                             } else {
                                 toResActivity();
                             }
                             break;
-                        case 3:
-                            toResActivity();
-                            break;
-                        case 4:
-                            toResActivity();
-                            break;
                         case 5:
-                            toResActivity();
+                            if (et_31.getText().toString().isEmpty() && et_32.getText().toString().isEmpty() && et_33.getText().toString().isEmpty()) {
+                                Toast("下注資料輸入錯誤");
+                            } else {
+                                toResActivity();
+                            }
                             break;
                         case 6:
-                            toResActivity();
+                            if (et_41.getText().toString().isEmpty() && et_42.getText().toString().isEmpty() && et_43.getText().toString().isEmpty() && et_44.getText().toString().isEmpty()) {
+                                Toast("下注資料輸入錯誤");
+                            } else {
+                                toResActivity();
+                            }
                             break;
                         default:
-                            Toast("下注資料輸入錯誤");
                             break;
                     }
                 } else {
