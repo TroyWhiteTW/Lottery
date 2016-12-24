@@ -215,21 +215,6 @@ public class GameActivity extends AppCompatActivity {
             msg_2.setData(b_2);
             handler_2.sendMessage(msg_2);
 
-//            MultipartUtility_tw mu_3 = new MultipartUtility_tw("http://"+app_net+"/mobile/wap_ajax.php?action=app_soonsend");
-//            mu.sendCookie(cookie);
-////            List<String> aa = mu.getHtml();
-////            for (String line : aa) {
-////                Log.i("troy", line);
-////            }
-//            JSONArray ja = mu_3.getJSONObjectData().getJSONObject("fail_dtl").getJSONArray("l");
-//            int len = ja.length();
-//            for (int i = 0; i < len; i++) {
-//                sb_fail.append(ja.getJSONObject(i).getString("number"));
-//                sb_fail.append(" x ");
-//                sb_fail.append(ja.getJSONObject(i).getInt("money"));
-//                sb_fail.append("\n");
-//            }
-//            handler_3.sendEmptyMessage(0);
         } catch (Exception e) {
             Toast("無法與伺服器取得連線");
             Log(e.toString());
@@ -420,7 +405,6 @@ public class GameActivity extends AppCompatActivity {
         } else if (i == 1) {
             Toast("開盤中");
         }
-
     }
 
     public void numBtn() {

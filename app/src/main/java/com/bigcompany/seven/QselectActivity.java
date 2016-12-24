@@ -1,8 +1,12 @@
 package com.bigcompany.seven;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,8 +20,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONObject;
 
 public class QselectActivity extends AppCompatActivity {
     private Button btn_history, btn_member, btn_game, btn_list, btn_qselect;
@@ -27,23 +34,39 @@ public class QselectActivity extends AppCompatActivity {
     private int gameStyle = 0;//classID: 1=二定位; 2=三定位; 3=四定位; 4=二字現; 5=三字現; 6=四字現
     private int gameSet = 0;
     private LinearLayout ll_dingPos, ll_dingEdit, ll_peiEdit_2, ll_peiEdit_3, ll_peiEdit_4;
+    private ProgressDialog pDialog;
+    private pDialogHandler pDialogHandler;
     private RadioGroup rg_dingBasic, rg_peiBasic;
     private RadioButton rb_dingChu, rb_dingQu, rb_peiChu, rb_peiQu;
     private RadioButton rb_pei_chu, rb_pei_qu;
     private String cookie;
-    private TextView tv_gameStyle;
+    private String app_net;
+    private ScrollView sv_qselect;
+    private TextView tv_gameStyle, game_open_false, game_open_true;
+    private UIHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qselect);
 
+        app_net = getResources().getString(R.string.app_net);
+
         Intent it = getIntent();
         cookie = it.getStringExtra("cookie");
         Log(cookie);
 
+        handler = new UIHandler();
+        pDialogHandler = new pDialogHandler();
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setTitle("Loading Data");
+        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
         initial();
         setFnBtn();
+
+        getData();
 
         changeGameStyle();
     }
@@ -71,6 +94,8 @@ public class QselectActivity extends AppCompatActivity {
         et_43 = (EditText) findViewById(R.id.et_43);
         et_44 = (EditText) findViewById(R.id.et_44);
         tv_gameStyle = (TextView) findViewById(R.id.tv_gameStyle);
+        game_open_false = (TextView) findViewById(R.id.game_open_false);
+        game_open_true = (TextView) findViewById(R.id.game_open_true);
         ll_dingPos = (LinearLayout) findViewById(R.id.ll_dingPos);
         ll_dingEdit = (LinearLayout) findViewById(R.id.ll_dingEdit);
         ll_peiEdit_2 = (LinearLayout) findViewById(R.id.ll_peiEdit_2);
@@ -84,9 +109,82 @@ public class QselectActivity extends AppCompatActivity {
         rb_peiQu = (RadioButton) findViewById(R.id.rb_peiQu);
         rb_pei_chu = (RadioButton) findViewById(R.id.rb_pei_chu);
         rb_pei_qu = (RadioButton) findViewById(R.id.rb_pei_qu);
+        sv_qselect = (ScrollView) findViewById(R.id.sv_qselect);
 
         btnOnClick();
         rbSetting();
+    }
+
+    public void getData() {
+        pDialog.show();
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                getGameData();
+                Looper.loop();
+            }
+        }.start();
+    }
+
+    public void getGameData() {
+        try {
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_head_data");
+            mu.sendCookie(cookie);
+//            List<String> aa = mu.getHtml();
+//            for (String line : aa) {
+//                Log.i("troy", line);
+//            }
+            JSONObject jo = mu.getJSONObjectData();
+
+            Message msg = new Message();
+            Bundle b = new Bundle();
+            b.putInt("game_open", jo.getInt("game_open"));
+            msg.setData(b);
+            handler.sendMessage(msg);
+
+        } catch (Exception e) {
+            Toast("無法與伺服器取得連線");
+            Log(e.toString());
+        }
+        pDialogHandler.sendEmptyMessage(0);
+    }
+
+    private class UIHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            int game_open_code = msg.getData().getInt("game_open");
+            if (game_open_code == 0) {
+                game_open_toast(0);
+                game_open_false.setVisibility(View.VISIBLE);
+                sv_qselect.setVisibility(View.GONE);
+            } else if (game_open_code == 1) {
+                game_open_toast(1);
+                game_open_true.setVisibility(View.VISIBLE);
+                sv_qselect.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    private class pDialogHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            if (pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
+        }
+    }
+
+    public void game_open_toast(int i) {
+        if (i == 0) {
+            Toast("關盤中");
+        } else if (i == 1) {
+            Toast("開盤中");
+        }
     }
 
     public void gameSet() {

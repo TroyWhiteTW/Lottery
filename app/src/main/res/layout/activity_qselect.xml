@@ -62,94 +62,20 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_erDing"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="二字定" />
-
-        <Button
-            android:id="@+id/btn_sanDing"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="三字定" />
-
-        <Button
-            android:id="@+id/btn_siDing"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="四字定" />
-
-        <Button
-            android:id="@+id/btn_erXian"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="二字現" />
-
-        <Button
-            android:id="@+id/btn_sanXian"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="三字現" />
-
-        <Button
-            android:id="@+id/btn_siXian"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="四字現" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_qselectRes"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="生成" />
-
-        <Button
-            android:id="@+id/btn_qselectReset"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="復位" />
-
-    </LinearLayout>
-
     <TextView
-        android:id="@+id/tv_gameStyle"
+        android:id="@+id/game_open_false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
+        android:background="#f16060"
         android:gravity="center"
+        android:text="關盤中"
         android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:visibility="gone" />
 
     <ScrollView
+        android:id="@+id/sv_qselect"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -157,6 +83,105 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/game_open_true"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#f16060"
+                android:gravity="center"
+                android:text="開盤中"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_erDing"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="二字定" />
+
+                <Button
+                    android:id="@+id/btn_sanDing"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="三字定" />
+
+                <Button
+                    android:id="@+id/btn_siDing"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="四字定" />
+
+                <Button
+                    android:id="@+id/btn_erXian"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="二字現" />
+
+                <Button
+                    android:id="@+id/btn_sanXian"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="三字現" />
+
+                <Button
+                    android:id="@+id/btn_siXian"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="四字現" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_qselectRes"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="生成" />
+
+                <Button
+                    android:id="@+id/btn_qselectReset"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="復位" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_gameStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/rg_dingBasic"
