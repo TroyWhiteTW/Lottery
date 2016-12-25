@@ -111,6 +111,24 @@ public class QselectActivity extends AppCompatActivity {
         rb_pei_qu = (RadioButton) findViewById(R.id.rb_pei_qu);
         sv_qselect = (ScrollView) findViewById(R.id.sv_qselect);
 
+        et_qian.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         btnOnClick();
         rbSetting();
     }
