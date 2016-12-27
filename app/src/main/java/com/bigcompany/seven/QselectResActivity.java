@@ -228,6 +228,194 @@ public class QselectResActivity extends AppCompatActivity {
             Log("al4[" + i + "] = " + al4.get(i));
         }
 
+        TreeMap<Integer, String> treeMap5 = new TreeMap<>();
+        for (int i = 0; i < sb_et_21.length(); i++) {
+            treeMap5.put(i, sb_et_21.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList5 = new ArrayList<>(treeMap5.entrySet());
+        Comparator<Map.Entry> sortByValue5 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList5, sortByValue5);
+        LinkedHashMap<Integer, String> linkedHashMap5 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList5)
+            linkedHashMap5.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap5 = " + linkedHashMap5.toString());
+        al5 = new ArrayList<>(linkedHashMap5.values());
+        for (int i = 0; i < al5.size(); i++) {
+            Log("al5[" + i + "] = " + al5.get(i));
+        }
+
+        TreeMap<Integer, String> treeMap6 = new TreeMap<>();
+        for (int i = 0; i < sb_et_22.length(); i++) {
+            treeMap6.put(i, sb_et_22.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList6 = new ArrayList<>(treeMap6.entrySet());
+        Comparator<Map.Entry> sortByValue6 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList6, sortByValue6);
+        LinkedHashMap<Integer, String> linkedHashMap6 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList6)
+            linkedHashMap6.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap6 = " + linkedHashMap6.toString());
+        al6 = new ArrayList<>(linkedHashMap6.values());
+        for (int i = 0; i < al6.size(); i++) {
+            Log("al6[" + i + "] = " + al6.get(i));
+        }
+
+        TreeMap<Integer, String> treeMap7 = new TreeMap<>();
+        for (int i = 0; i < sb_et_31.length(); i++) {
+            treeMap7.put(i, sb_et_31.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList7 = new ArrayList<>(treeMap7.entrySet());
+        Comparator<Map.Entry> sortByValue7 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList7, sortByValue7);
+        LinkedHashMap<Integer, String> linkedHashMap7 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList7)
+            linkedHashMap7.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap7 = " + linkedHashMap7.toString());
+        al7 = new ArrayList<>(linkedHashMap7.values());
+        for (int i = 0; i < al7.size(); i++) {
+            Log("al7[" + i + "] = " + al7.get(i));
+        }
+
+        TreeMap<Integer, String> treeMap8 = new TreeMap<>();
+        for (int i = 0; i < sb_et_32.length(); i++) {
+            treeMap8.put(i, sb_et_32.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList8 = new ArrayList<>(treeMap8.entrySet());
+        Comparator<Map.Entry> sortByValue8 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList8, sortByValue8);
+        LinkedHashMap<Integer, String> linkedHashMap8 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList8)
+            linkedHashMap8.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap8 = " + linkedHashMap8.toString());
+        al8 = new ArrayList<>(linkedHashMap8.values());
+        for (int i = 0; i < al8.size(); i++) {
+            Log("al8[" + i + "] = " + al8.get(i));
+        }
+
+        TreeMap<Integer, String> treeMap9 = new TreeMap<>();
+        for (int i = 0; i < sb_et_33.length(); i++) {
+            treeMap9.put(i, sb_et_33.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList9 = new ArrayList<>(treeMap9.entrySet());
+        Comparator<Map.Entry> sortByValue9 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList9, sortByValue9);
+        LinkedHashMap<Integer, String> linkedHashMap9 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList9)
+            linkedHashMap9.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap9 = " + linkedHashMap9.toString());
+        al9 = new ArrayList<>(linkedHashMap9.values());
+        for (int i = 0; i < al9.size(); i++) {
+            Log("al9[" + i + "] = " + al9.get(i));
+        }
+
+        TreeMap<Integer, String> treeMap10 = new TreeMap<>();
+        for (int i = 0; i < sb_et_41.length(); i++) {
+            treeMap10.put(i, sb_et_41.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList10 = new ArrayList<>(treeMap10.entrySet());
+        Comparator<Map.Entry> sortByValue10 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList10, sortByValue10);
+        LinkedHashMap<Integer, String> linkedHashMap10 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList10)
+            linkedHashMap10.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap10 = " + linkedHashMap10.toString());
+        al10 = new ArrayList<>(linkedHashMap10.values());
+        for (int i = 0; i < al10.size(); i++) {
+            Log("al10[" + i + "] = " + al10.get(i));
+        }
+
+        TreeMap<Integer, String> treeMap11 = new TreeMap<>();
+        for (int i = 0; i < sb_et_42.length(); i++) {
+            treeMap11.put(i, sb_et_42.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList11 = new ArrayList<>(treeMap11.entrySet());
+        Comparator<Map.Entry> sortByValue11 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList11, sortByValue11);
+        LinkedHashMap<Integer, String> linkedHashMap11 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList11)
+            linkedHashMap11.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap11 = " + linkedHashMap11.toString());
+        al11 = new ArrayList<>(linkedHashMap11.values());
+        for (int i = 0; i < al11.size(); i++) {
+            Log("al11[" + i + "] = " + al11.get(i));
+        }
+
+        TreeMap<Integer, String> treeMap12 = new TreeMap<>();
+        for (int i = 0; i < sb_et_43.length(); i++) {
+            treeMap12.put(i, sb_et_43.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList12 = new ArrayList<>(treeMap12.entrySet());
+        Comparator<Map.Entry> sortByValue12 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList12, sortByValue12);
+        LinkedHashMap<Integer, String> linkedHashMap12 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList12)
+            linkedHashMap12.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap12 = " + linkedHashMap12.toString());
+        al12 = new ArrayList<>(linkedHashMap12.values());
+        for (int i = 0; i < al12.size(); i++) {
+            Log("al12[" + i + "] = " + al12.get(i));
+        }
+
+        TreeMap<Integer, String> treeMap13 = new TreeMap<>();
+        for (int i = 0; i < sb_et_44.length(); i++) {
+            treeMap13.put(i, sb_et_44.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList13 = new ArrayList<>(treeMap13.entrySet());
+        Comparator<Map.Entry> sortByValue13 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList13, sortByValue13);
+        LinkedHashMap<Integer, String> linkedHashMap13 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList13)
+            linkedHashMap13.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap13 = " + linkedHashMap13.toString());
+        al13 = new ArrayList<>(linkedHashMap13.values());
+        for (int i = 0; i < al13.size(); i++) {
+            Log("al13[" + i + "] = " + al13.get(i));
+        }
 
     }
 
