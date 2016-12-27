@@ -736,12 +736,12 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
-    public void sortEditTextString_4() {
+    public void sortEditTextString_4(String a, String b, String c, String d) {
         HashMap<Integer, String> hashMap = new HashMap<>();
-        if (!et_41.equals("")) hashMap.put(0, et_41);
-        if (!et_42.equals("")) hashMap.put(1, et_42);
-        if (!et_43.equals("")) hashMap.put(2, et_43);
-        if (!et_44.equals("")) hashMap.put(3, et_44);
+        if (!a.equals("")) hashMap.put(0, a);
+        if (!b.equals("")) hashMap.put(1, b);
+        if (!c.equals("")) hashMap.put(2, c);
+        if (!d.equals("")) hashMap.put(3, d);
         ArrayList<Map.Entry<Integer, String>> entryList = new ArrayList<>(hashMap.entrySet());
         Comparator<Map.Entry> sortByValue = new Comparator<Map.Entry>() {
             @Override
@@ -1481,42 +1481,228 @@ public class QselectResActivity extends AppCompatActivity {
                         siDingQuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
                         break;
                     case 3:
-                        sortEditTextString_4();
                         siDingAll();
-                        switch (al.size()) {
-                            case 1:
+                        if (al10.size() == 0 && al11.size() != 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4("", al11.get(j), al12.get(k), al13.get(l));
+                                        siDingPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4(al10.get(i), "", al12.get(k), al13.get(l));
+                                        siDingPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4(al10.get(i), al11.get(j), "", al13.get(l));
+                                        siDingPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int k = 0; k < al12.size(); k++) {
+                                        sortEditTextString_4(al10.get(i), al11.get(j), al12.get(k), "");
+                                        siDingPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int k = 0; k < al12.size(); k++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4("", "", al12.get(k), al13.get(l));
+                                    siDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4("", al11.get(j), "", al13.get(l));
+                                    siDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    sortEditTextString_4("", al11.get(j), al12.get(k), "");
+                                    siDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4(al10.get(i), "", "", al13.get(l));
+                                    siDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    sortEditTextString_4(al10.get(i), "", al12.get(k), "");
+                                    siDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    sortEditTextString_4(al10.get(i), al11.get(j), "", "");
+                                    siDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int l = 0; l < al13.size(); l++) {
+                                sortEditTextString_4("", "", "", al13.get(l));
                                 siDingPeiChu1(al.get(0));
-                                break;
-                            case 2:
-                                siDingPeiChu2(al.get(0), al.get(1));
-                                break;
-                            case 3:
-                                siDingPeiChu3(al.get(0), al.get(1), al.get(2));
-                                break;
-                            case 4:
-                                siDingPeiChu4(al.get(0), al.get(1), al.get(2), al.get(3));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int k = 0; k < al12.size(); k++) {
+                                sortEditTextString_4("", "", al12.get(k), "");
+                                siDingPeiChu1(al.get(0));
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                sortEditTextString_4("", al11.get(j), "", "");
+                                siDingPeiChu1(al.get(0));
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                sortEditTextString_4(al10.get(i), "", "", "");
+                                siDingPeiChu1(al.get(0));
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int k = 0; k < al12.size(); k++) {
+                                        for (int l = 0; l < al13.size(); l++) {
+                                            sortEditTextString_4(al10.get(i), al11.get(j), al12.get(k), al13.get(l));
+                                            siDingPeiChu4(al.get(0), al.get(1), al.get(2), al.get(3));
+                                        }
+                                    }
+                                }
+                            }
                         }
                         break;
                     case 4:
-                        sortEditTextString_4();
-                        switch (al.size()) {
-                            case 1:
+                        if (al10.size() == 0 && al11.size() != 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4("", al11.get(j), al12.get(k), al13.get(l));
+                                        siDingPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4(al10.get(i), "", al12.get(k), al13.get(l));
+                                        siDingPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4(al10.get(i), al11.get(j), "", al13.get(l));
+                                        siDingPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int k = 0; k < al12.size(); k++) {
+                                        sortEditTextString_4(al10.get(i), al11.get(j), al12.get(k), "");
+                                        siDingPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int k = 0; k < al12.size(); k++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4("", "", al12.get(k), al13.get(l));
+                                    siDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4("", al11.get(j), "", al13.get(l));
+                                    siDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    sortEditTextString_4("", al11.get(j), al12.get(k), "");
+                                    siDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4(al10.get(i), "", "", al13.get(l));
+                                    siDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    sortEditTextString_4(al10.get(i), "", al12.get(k), "");
+                                    siDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    sortEditTextString_4(al10.get(i), al11.get(j), "", "");
+                                    siDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int l = 0; l < al13.size(); l++) {
+                                sortEditTextString_4("", "", "", al13.get(l));
                                 siDingPeiQu1(al.get(0));
-                                break;
-                            case 2:
-                                siDingPeiQu2(al.get(0), al.get(1));
-                                break;
-                            case 3:
-                                siDingPeiQu3(al.get(0), al.get(1), al.get(2));
-                                break;
-                            case 4:
-                                siDingPeiQu4(al.get(0), al.get(1), al.get(2), al.get(3));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int k = 0; k < al12.size(); k++) {
+                                sortEditTextString_4("", "", al12.get(k), "");
+                                siDingPeiQu1(al.get(0));
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                sortEditTextString_4("", al11.get(j), "", "");
+                                siDingPeiQu1(al.get(0));
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                sortEditTextString_4(al10.get(i), "", "", "");
+                                siDingPeiQu1(al.get(0));
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int k = 0; k < al12.size(); k++) {
+                                        for (int l = 0; l < al13.size(); l++) {
+                                            sortEditTextString_4(al10.get(i), al11.get(j), al12.get(k), al13.get(l));
+                                            siDingPeiQu4(al.get(0), al.get(1), al.get(2), al.get(3));
+                                        }
+                                    }
+                                }
+                            }
                         }
                         break;
                     default:
@@ -1676,42 +1862,228 @@ public class QselectResActivity extends AppCompatActivity {
             case 6:
                 switch (gameSet) {
                     case 5:
-                        sortEditTextString_4();
                         siXianAll();
-                        switch (al.size()) {
-                            case 1:
+                        if (al10.size() == 0 && al11.size() != 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4("", al11.get(j), al12.get(k), al13.get(l));
+                                        siXianPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4(al10.get(i), "", al12.get(k), al13.get(l));
+                                        siXianPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4(al10.get(i), al11.get(j), "", al13.get(l));
+                                        siXianPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int k = 0; k < al12.size(); k++) {
+                                        sortEditTextString_4(al10.get(i), al11.get(j), al12.get(k), "");
+                                        siXianPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int k = 0; k < al12.size(); k++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4("", "", al12.get(k), al13.get(l));
+                                    siXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4("", al11.get(j), "", al13.get(l));
+                                    siXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    sortEditTextString_4("", al11.get(j), al12.get(k), "");
+                                    siXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4(al10.get(i), "", "", al13.get(l));
+                                    siXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    sortEditTextString_4(al10.get(i), "", al12.get(k), "");
+                                    siXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    sortEditTextString_4(al10.get(i), al11.get(j), "", "");
+                                    siXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int l = 0; l < al13.size(); l++) {
+                                sortEditTextString_4("", "", "", al13.get(l));
                                 siXianPeiChu1(al.get(0));
-                                break;
-                            case 2:
-                                siXianPeiChu2(al.get(0), al.get(1));
-                                break;
-                            case 3:
-                                siXianPeiChu3(al.get(0), al.get(1), al.get(2));
-                                break;
-                            case 4:
-                                siXianPeiChu4(al.get(0), al.get(1), al.get(2), al.get(3));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int k = 0; k < al12.size(); k++) {
+                                sortEditTextString_4("", "", al12.get(k), "");
+                                siXianPeiChu1(al.get(0));
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                sortEditTextString_4("", al11.get(j), "", "");
+                                siXianPeiChu1(al.get(0));
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                sortEditTextString_4(al10.get(i), "", "", "");
+                                siXianPeiChu1(al.get(0));
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int k = 0; k < al12.size(); k++) {
+                                        for (int l = 0; l < al13.size(); l++) {
+                                            sortEditTextString_4(al10.get(i), al11.get(j), al12.get(k), al13.get(l));
+                                            siXianPeiChu4(al.get(0), al.get(1), al.get(2), al.get(3));
+                                        }
+                                    }
+                                }
+                            }
                         }
                         break;
                     case 6:
-                        sortEditTextString_4();
-                        switch (al.size()) {
-                            case 1:
+                        if (al10.size() == 0 && al11.size() != 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4("", al11.get(j), al12.get(k), al13.get(l));
+                                        siXianPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4(al10.get(i), "", al12.get(k), al13.get(l));
+                                        siXianPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int l = 0; l < al13.size(); l++) {
+                                        sortEditTextString_4(al10.get(i), al11.get(j), "", al13.get(l));
+                                        siXianPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int k = 0; k < al12.size(); k++) {
+                                        sortEditTextString_4(al10.get(i), al11.get(j), al12.get(k), "");
+                                        siXianPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int k = 0; k < al12.size(); k++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4("", "", al12.get(k), al13.get(l));
+                                    siXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4("", al11.get(j), "", al13.get(l));
+                                    siXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    sortEditTextString_4("", al11.get(j), al12.get(k), "");
+                                    siXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int l = 0; l < al13.size(); l++) {
+                                    sortEditTextString_4(al10.get(i), "", "", al13.get(l));
+                                    siXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int k = 0; k < al12.size(); k++) {
+                                    sortEditTextString_4(al10.get(i), "", al12.get(k), "");
+                                    siXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    sortEditTextString_4(al10.get(i), al11.get(j), "", "");
+                                    siXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() == 0 && al13.size() != 0) {
+                            for (int l = 0; l < al13.size(); l++) {
+                                sortEditTextString_4("", "", "", al13.get(l));
                                 siXianPeiQu1(al.get(0));
-                                break;
-                            case 2:
-                                siXianPeiQu2(al.get(0), al.get(1));
-                                break;
-                            case 3:
-                                siXianPeiQu3(al.get(0), al.get(1), al.get(2));
-                                break;
-                            case 4:
-                                siXianPeiQu4(al.get(0), al.get(1), al.get(2), al.get(3));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al10.size() == 0 && al11.size() == 0 && al12.size() != 0 && al13.size() == 0) {
+                            for (int k = 0; k < al12.size(); k++) {
+                                sortEditTextString_4("", "", al12.get(k), "");
+                                siXianPeiQu1(al.get(0));
+                            }
+                        } else if (al10.size() == 0 && al11.size() != 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int j = 0; j < al11.size(); j++) {
+                                sortEditTextString_4("", al11.get(j), "", "");
+                                siXianPeiQu1(al.get(0));
+                            }
+                        } else if (al10.size() != 0 && al11.size() == 0 && al12.size() == 0 && al13.size() == 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                sortEditTextString_4(al10.get(i), "", "", "");
+                                siXianPeiQu1(al.get(0));
+                            }
+                        } else if (al10.size() != 0 && al11.size() != 0 && al12.size() != 0 && al13.size() != 0) {
+                            for (int i = 0; i < al10.size(); i++) {
+                                for (int j = 0; j < al11.size(); j++) {
+                                    for (int k = 0; k < al12.size(); k++) {
+                                        for (int l = 0; l < al13.size(); l++) {
+                                            sortEditTextString_4(al10.get(i), al11.get(j), al12.get(k), al13.get(l));
+                                            siXianPeiQu4(al.get(0), al.get(1), al.get(2), al.get(3));
+                                        }
+                                    }
+                                }
+                            }
                         }
                         break;
                     default:
