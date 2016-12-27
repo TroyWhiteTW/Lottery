@@ -689,10 +689,10 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
-    public void sortEditTextString_2() {
+    public void sortEditTextString_2(String a, String b) {
         HashMap<Integer, String> hashMap = new HashMap<>();
-        if (!et_21.equals("")) hashMap.put(0, et_21);
-        if (!et_22.equals("")) hashMap.put(1, et_22);
+        if (!a.equals("")) hashMap.put(0, a);
+        if (!b.equals("")) hashMap.put(1, b);
         ArrayList<Map.Entry<Integer, String>> entryList = new ArrayList<>(hashMap.entrySet());
         Comparator<Map.Entry> sortByValue = new Comparator<Map.Entry>() {
             @Override
@@ -712,11 +712,11 @@ public class QselectResActivity extends AppCompatActivity {
         }
     }
 
-    public void sortEditTextString_3() {
+    public void sortEditTextString_3(String a, String b, String c) {
         HashMap<Integer, String> hashMap = new HashMap<>();
-        if (!et_31.equals("")) hashMap.put(0, et_31);
-        if (!et_32.equals("")) hashMap.put(1, et_32);
-        if (!et_33.equals("")) hashMap.put(2, et_33);
+        if (!a.equals("")) hashMap.put(0, a);
+        if (!b.equals("")) hashMap.put(1, b);
+        if (!c.equals("")) hashMap.put(2, c);
         ArrayList<Map.Entry<Integer, String>> entryList = new ArrayList<>(hashMap.entrySet());
         Comparator<Map.Entry> sortByValue = new Comparator<Map.Entry>() {
             @Override
@@ -897,30 +897,44 @@ public class QselectResActivity extends AppCompatActivity {
 //                            erDingQuShiGe(et_shi, et_ge);
                         break;
                     case 3:
-                        sortEditTextString_2();
                         erDingAll();
-                        switch (al.size()) {
-                            case 1:
+                        if (al5.size() != 0 && al6.size() == 0) {
+                            for (int i = 0; i < al5.size(); i++) {
+                                sortEditTextString_2(al5.get(i), "");
                                 erDingPeiChu1(al.get(0));
-                                break;
-                            case 2:
-                                erDingPeiChu2(al.get(0), al.get(1));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al5.size() == 0 && al6.size() != 0) {
+                            for (int j = 0; j < al6.size(); j++) {
+                                sortEditTextString_2("", al6.get(j));
+                                erDingPeiChu1(al.get(0));
+                            }
+                        } else if (al5.size() != 0 && al6.size() != 0) {
+                            for (int i = 0; i < al5.size(); i++) {
+                                for (int j = 0; j < al6.size(); j++) {
+                                    sortEditTextString_2(al5.get(i), al6.get(j));
+                                    erDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
                         }
                         break;
                     case 4:
-                        sortEditTextString_2();
-                        switch (al.size()) {
-                            case 1:
+                        if (al5.size() != 0 && al6.size() == 0) {
+                            for (int i = 0; i < al5.size(); i++) {
+                                sortEditTextString_2(al5.get(i), "");
                                 erDingPeiQu1(al.get(0));
-                                break;
-                            case 2:
-                                erDingPeiQu2(al.get(0), al.get(1));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al5.size() == 0 && al6.size() != 0) {
+                            for (int j = 0; j < al6.size(); j++) {
+                                sortEditTextString_2("", al6.get(j));
+                                erDingPeiQu1(al.get(0));
+                            }
+                        } else if (al5.size() != 0 && al6.size() != 0) {
+                            for (int i = 0; i < al5.size(); i++) {
+                                for (int j = 0; j < al6.size(); j++) {
+                                    sortEditTextString_2(al5.get(i), al6.get(j));
+                                    erDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
                         }
                         break;
                     default:
@@ -1135,36 +1149,100 @@ public class QselectResActivity extends AppCompatActivity {
 //                            sanDingQuBaiShiGe(et_bai, et_shi, et_ge);
                         break;
                     case 3:
-                        sortEditTextString_3();
                         sanDingAll();
-                        switch (al.size()) {
-                            case 1:
+                        if (al7.size() != 0 && al8.size() == 0 && al9.size() == 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                sortEditTextString_3(al7.get(i), "", "");
                                 sanDingPeiChu1(al.get(0));
-                                break;
-                            case 2:
-                                sanDingPeiChu2(al.get(0), al.get(1));
-                                break;
-                            case 3:
-                                sanDingPeiChu3(al.get(0), al.get(1), al.get(2));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al7.size() == 0 && al8.size() != 0 && al9.size() == 0) {
+                            for (int j = 0; j < al8.size(); j++) {
+                                sortEditTextString_3("", al8.get(j), "");
+                                sanDingPeiChu1(al.get(0));
+                            }
+                        } else if (al7.size() == 0 && al8.size() == 0 && al9.size() != 0) {
+                            for (int k = 0; k < al9.size(); k++) {
+                                sortEditTextString_3("", "", al9.get(k));
+                                sanDingPeiChu1(al.get(0));
+                            }
+                        } else if (al7.size() == 0 && al8.size() != 0 && al9.size() != 0) {
+                            for (int j = 0; j < al8.size(); j++) {
+                                for (int k = 0; k < al9.size(); k++) {
+                                    sortEditTextString_3("", al8.get(j), al9.get(k));
+                                    sanDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() == 0 && al9.size() != 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int k = 0; k < al9.size(); k++) {
+                                    sortEditTextString_3(al7.get(i), "", al9.get(k));
+                                    sanDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() != 0 && al9.size() == 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int j = 0; j < al8.size(); j++) {
+                                    sortEditTextString_3(al7.get(i), al8.get(j), "");
+                                    sanDingPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() != 0 && al9.size() != 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int j = 0; j < al8.size(); j++) {
+                                    for (int k = 0; k < al9.size(); k++) {
+                                        sortEditTextString_3(al7.get(i), al8.get(j), al9.get(k));
+                                        sanDingPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
                         }
                         break;
                     case 4:
-                        sortEditTextString_3();
-                        switch (al.size()) {
-                            case 1:
+                        if (al7.size() != 0 && al8.size() == 0 && al9.size() == 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                sortEditTextString_3(al7.get(i), "", "");
                                 sanDingPeiQu1(al.get(0));
-                                break;
-                            case 2:
-                                sanDingPeiQu2(al.get(0), al.get(1));
-                                break;
-                            case 3:
-                                sanDingPeiQu3(al.get(0), al.get(1), al.get(2));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al7.size() == 0 && al8.size() != 0 && al9.size() == 0) {
+                            for (int j = 0; j < al8.size(); j++) {
+                                sortEditTextString_3("", al8.get(j), "");
+                                sanDingPeiQu1(al.get(0));
+                            }
+                        } else if (al7.size() == 0 && al8.size() == 0 && al9.size() != 0) {
+                            for (int k = 0; k < al9.size(); k++) {
+                                sortEditTextString_3("", "", al9.get(k));
+                                sanDingPeiQu1(al.get(0));
+                            }
+                        } else if (al7.size() == 0 && al8.size() != 0 && al9.size() != 0) {
+                            for (int j = 0; j < al8.size(); j++) {
+                                for (int k = 0; k < al9.size(); k++) {
+                                    sortEditTextString_3("", al8.get(j), al9.get(k));
+                                    sanDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() == 0 && al9.size() != 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int k = 0; k < al9.size(); k++) {
+                                    sortEditTextString_3(al7.get(i), "", al9.get(k));
+                                    sanDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() != 0 && al9.size() == 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int j = 0; j < al8.size(); j++) {
+                                    sortEditTextString_3(al7.get(i), al8.get(j), "");
+                                    sanDingPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() != 0 && al9.size() != 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int j = 0; j < al8.size(); j++) {
+                                    for (int k = 0; k < al9.size(); k++) {
+                                        sortEditTextString_3(al7.get(i), al8.get(j), al9.get(k));
+                                        sanDingPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
                         }
                         break;
                     default:
@@ -1448,30 +1526,44 @@ public class QselectResActivity extends AppCompatActivity {
             case 4:
                 switch (gameSet) {
                     case 5:
-                        sortEditTextString_2();
                         erXianAll();
-                        switch (al.size()) {
-                            case 1:
+                        if (al5.size() != 0 && al6.size() == 0) {
+                            for (int i = 0; i < al5.size(); i++) {
+                                sortEditTextString_2(al5.get(i), "");
                                 erXianPeiChu1(al.get(0));
-                                break;
-                            case 2:
-                                erXianPeiChu2(al.get(0), al.get(1));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al5.size() == 0 && al6.size() != 0) {
+                            for (int j = 0; j < al6.size(); j++) {
+                                sortEditTextString_2("", al6.get(j));
+                                erXianPeiChu1(al.get(0));
+                            }
+                        } else if (al5.size() != 0 && al6.size() != 0) {
+                            for (int i = 0; i < al5.size(); i++) {
+                                for (int j = 0; j < al6.size(); j++) {
+                                    sortEditTextString_2(al5.get(i), al6.get(j));
+                                    erXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
                         }
                         break;
                     case 6:
-                        sortEditTextString_2();
-                        switch (al.size()) {
-                            case 1:
+                        if (al5.size() != 0 && al6.size() == 0) {
+                            for (int i = 0; i < al5.size(); i++) {
+                                sortEditTextString_2(al5.get(i), "");
                                 erXianPeiQu1(al.get(0));
-                                break;
-                            case 2:
-                                erXianPeiQu2(al.get(0), al.get(1));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al5.size() == 0 && al6.size() != 0) {
+                            for (int j = 0; j < al6.size(); j++) {
+                                sortEditTextString_2("", al6.get(j));
+                                erXianPeiQu1(al.get(0));
+                            }
+                        } else if (al5.size() != 0 && al6.size() != 0) {
+                            for (int i = 0; i < al5.size(); i++) {
+                                for (int j = 0; j < al6.size(); j++) {
+                                    sortEditTextString_2(al5.get(i), al6.get(j));
+                                    erXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
                         }
                         break;
                     default:
@@ -1481,36 +1573,100 @@ public class QselectResActivity extends AppCompatActivity {
             case 5:
                 switch (gameSet) {
                     case 5:
-                        sortEditTextString_3();
                         sanXianAll();
-                        switch (al.size()) {
-                            case 1:
+                        if (al7.size() != 0 && al8.size() == 0 && al9.size() == 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                sortEditTextString_3(al7.get(i), "", "");
                                 sanXianPeiChu1(al.get(0));
-                                break;
-                            case 2:
-                                sanXianPeiChu2(al.get(0), al.get(1));
-                                break;
-                            case 3:
-                                sanXianPeiChu3(al.get(0), al.get(1), al.get(2));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al7.size() == 0 && al8.size() != 0 && al9.size() == 0) {
+                            for (int j = 0; j < al8.size(); j++) {
+                                sortEditTextString_3("", al8.get(j), "");
+                                sanXianPeiChu1(al.get(0));
+                            }
+                        } else if (al7.size() == 0 && al8.size() == 0 && al9.size() != 0) {
+                            for (int k = 0; k < al9.size(); k++) {
+                                sortEditTextString_3("", "", al9.get(k));
+                                sanXianPeiChu1(al.get(0));
+                            }
+                        } else if (al7.size() == 0 && al8.size() != 0 && al9.size() != 0) {
+                            for (int j = 0; j < al8.size(); j++) {
+                                for (int k = 0; k < al9.size(); k++) {
+                                    sortEditTextString_3("", al8.get(j), al9.get(k));
+                                    sanXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() == 0 && al9.size() != 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int k = 0; k < al9.size(); k++) {
+                                    sortEditTextString_3(al7.get(i), "", al9.get(k));
+                                    sanXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() != 0 && al9.size() == 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int j = 0; j < al8.size(); j++) {
+                                    sortEditTextString_3(al7.get(i), al8.get(j), "");
+                                    sanXianPeiChu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() != 0 && al9.size() != 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int j = 0; j < al8.size(); j++) {
+                                    for (int k = 0; k < al9.size(); k++) {
+                                        sortEditTextString_3(al7.get(i), al8.get(j), al9.get(k));
+                                        sanXianPeiChu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
                         }
                         break;
                     case 6:
-                        sortEditTextString_3();
-                        switch (al.size()) {
-                            case 1:
+                        if (al7.size() != 0 && al8.size() == 0 && al9.size() == 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                sortEditTextString_3(al7.get(i), "", "");
                                 sanXianPeiQu1(al.get(0));
-                                break;
-                            case 2:
-                                sanXianPeiQu2(al.get(0), al.get(1));
-                                break;
-                            case 3:
-                                sanXianPeiQu3(al.get(0), al.get(1), al.get(2));
-                                break;
-                            default:
-                                break;
+                            }
+                        } else if (al7.size() == 0 && al8.size() != 0 && al9.size() == 0) {
+                            for (int j = 0; j < al8.size(); j++) {
+                                sortEditTextString_3("", al8.get(j), "");
+                                sanXianPeiQu1(al.get(0));
+                            }
+                        } else if (al7.size() == 0 && al8.size() == 0 && al9.size() != 0) {
+                            for (int k = 0; k < al9.size(); k++) {
+                                sortEditTextString_3("", "", al9.get(k));
+                                sanXianPeiQu1(al.get(0));
+                            }
+                        } else if (al7.size() == 0 && al8.size() != 0 && al9.size() != 0) {
+                            for (int j = 0; j < al8.size(); j++) {
+                                for (int k = 0; k < al9.size(); k++) {
+                                    sortEditTextString_3("", al8.get(j), al9.get(k));
+                                    sanXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() == 0 && al9.size() != 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int k = 0; k < al9.size(); k++) {
+                                    sortEditTextString_3(al7.get(i), "", al9.get(k));
+                                    sanXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() != 0 && al9.size() == 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int j = 0; j < al8.size(); j++) {
+                                    sortEditTextString_3(al7.get(i), al8.get(j), "");
+                                    sanXianPeiQu2(al.get(0), al.get(1));
+                                }
+                            }
+                        } else if (al7.size() != 0 && al8.size() != 0 && al9.size() != 0) {
+                            for (int i = 0; i < al7.size(); i++) {
+                                for (int j = 0; j < al8.size(); j++) {
+                                    for (int k = 0; k < al9.size(); k++) {
+                                        sortEditTextString_3(al7.get(i), al8.get(j), al9.get(k));
+                                        sanXianPeiQu3(al.get(0), al.get(1), al.get(2));
+                                    }
+                                }
+                            }
                         }
                         break;
                     default:
