@@ -22,7 +22,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class QselectResActivity extends AppCompatActivity {
-    private ArrayList<String> al, al2, al3;
+    private ArrayList<String> al, al1, al2, al3, al4, al5, al6, al7, al8, al9, al10, al11, al12, al13;
     private Button btn_sendGameSet;
     private EditText et_perMoney;
     private int gameStyle;//classID: 1=二定位; 2=三定位; 3=四定位; 4=二字現; 5=三字現; 6=四字現
@@ -133,6 +133,17 @@ public class QselectResActivity extends AppCompatActivity {
         sb_et_43.append(et_43);
         sb_et_44.append(et_44);
 
+        treeSbRt();
+
+        btn_sendGameSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendGameSet();
+            }
+        });
+    }
+
+    public void treeSbRt() {
         TreeMap<Integer, String> treeMap = new TreeMap<>();
         for (int i = 0; i < sb_et_qian.length(); i++) {
             treeMap.put(i, sb_et_qian.substring(i, i + 1));
@@ -149,10 +160,9 @@ public class QselectResActivity extends AppCompatActivity {
         for (Map.Entry e : entryList)
             linkedHashMap.put((Integer) e.getKey(), (String) e.getValue());
         Log("linkedHashMap = " + linkedHashMap.toString());
-
-        al2 = new ArrayList<>(linkedHashMap.values());
-        for (int i = 0; i < al2.size(); i++) {
-            Log("al2[" + i + "] = " + al2.get(i));
+        al1 = new ArrayList<>(linkedHashMap.values());
+        for (int i = 0; i < al1.size(); i++) {
+            Log("al1[" + i + "] = " + al1.get(i));
         }
 
         TreeMap<Integer, String> treeMap2 = new TreeMap<>();
@@ -171,18 +181,54 @@ public class QselectResActivity extends AppCompatActivity {
         for (Map.Entry e : entryList2)
             linkedHashMap2.put((Integer) e.getKey(), (String) e.getValue());
         Log("linkedHashMap2 = " + linkedHashMap2.toString());
+        al2 = new ArrayList<>(linkedHashMap2.values());
+        for (int i = 0; i < al2.size(); i++) {
+            Log("al2[" + i + "] = " + al2.get(i));
+        }
 
-        al3 = new ArrayList<>(linkedHashMap2.values());
+        TreeMap<Integer, String> treeMap3 = new TreeMap<>();
+        for (int i = 0; i < sb_et_shi.length(); i++) {
+            treeMap3.put(i, sb_et_shi.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList3 = new ArrayList<>(treeMap3.entrySet());
+        Comparator<Map.Entry> sortByValue3 = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
+            }
+        };
+        Collections.sort(entryList3, sortByValue3);
+        LinkedHashMap<Integer, String> linkedHashMap3 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList3)
+            linkedHashMap3.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap3 = " + linkedHashMap3.toString());
+        al3 = new ArrayList<>(linkedHashMap3.values());
         for (int i = 0; i < al3.size(); i++) {
             Log("al3[" + i + "] = " + al3.get(i));
         }
 
-        btn_sendGameSet.setOnClickListener(new View.OnClickListener() {
+        TreeMap<Integer, String> treeMap4 = new TreeMap<>();
+        for (int i = 0; i < sb_et_ge.length(); i++) {
+            treeMap4.put(i, sb_et_ge.substring(i, i + 1));
+        }
+        ArrayList<Map.Entry<Integer, String>> entryList4 = new ArrayList<>(treeMap4.entrySet());
+        Comparator<Map.Entry> sortByValue4 = new Comparator<Map.Entry>() {
             @Override
-            public void onClick(View v) {
-                sendGameSet();
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                return ((String) o1.getValue()).compareTo((String) o2.getValue());
             }
-        });
+        };
+        Collections.sort(entryList4, sortByValue4);
+        LinkedHashMap<Integer, String> linkedHashMap4 = new LinkedHashMap<>();
+        for (Map.Entry e : entryList4)
+            linkedHashMap4.put((Integer) e.getKey(), (String) e.getValue());
+        Log("linkedHashMap4 = " + linkedHashMap4.toString());
+        al4 = new ArrayList<>(linkedHashMap4.values());
+        for (int i = 0; i < al4.size(); i++) {
+            Log("al4[" + i + "] = " + al4.get(i));
+        }
+
+
     }
 
     public void sendGameSet() {
@@ -534,54 +580,133 @@ public class QselectResActivity extends AppCompatActivity {
                     case 1:
                         erDingAll();
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingChuQian(et_qian);
+                            for (int i = 0; i < al1.size(); i++) {
+                                erDingChuQian(al1.get(i));
+                            }
+//                            erDingChuQian(et_qian);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingChuBai(et_bai);
+                            for (int i = 0; i < al2.size(); i++) {
+                                erDingChuBai(al2.get(i));
+                            }
+//                            erDingChuBai(et_bai);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingChuShi(et_shi);
+                            for (int i = 0; i < al3.size(); i++) {
+                                erDingChuShi(al3.get(i));
+                            }
+//                            erDingChuShi(et_shi);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            erDingChuGe(et_ge);
+                            for (int i = 0; i < al4.size(); i++) {
+                                erDingChuGe(al4.get(i));
+                            }
+//                            erDingChuGe(et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingChuQianBai(et_qian, et_bai);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    erDingChuQianBai(al1.get(i), al2.get(j));
+                                }
+                            }
+//                            erDingChuQianBai(et_qian, et_bai);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingChuQianShi(et_qian, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    erDingChuQianShi(al1.get(i), al3.get(j));
+                                }
+                            }
+//                            erDingChuQianShi(et_qian, et_shi);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            erDingChuQianGe(et_qian, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    erDingChuQianGe(al1.get(i), al4.get(j));
+                                }
+                            }
+//                            erDingChuQianGe(et_qian, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingChuBaiShi(et_bai, et_shi);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    erDingChuBaiShi(al2.get(i), al3.get(j));
+                                }
+                            }
+//                            erDingChuBaiShi(et_bai, et_shi);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            erDingChuBaiGe(et_bai, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    erDingChuBaiGe(al2.get(i), al4.get(j));
+                                }
+                            }
+//                            erDingChuBaiGe(et_bai, et_ge);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            erDingChuShiGe(et_shi, et_ge);
+                            for (int i = 0; i < al3.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    erDingChuShiGe(al3.get(i), al4.get(j));
+                                }
+                            }
+//                            erDingChuShiGe(et_shi, et_ge);
                         break;
                     case 2:
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingQuQian(et_qian);
+                            for (int i = 0; i < al1.size(); i++) {
+                                erDingQuQian(al1.get(i));
+                            }
+//                            erDingQuQian(et_qian);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingQuBai(et_bai);
+                            for (int i = 0; i < al2.size(); i++) {
+                                erDingQuBai(al2.get(i));
+                            }
+//                            erDingQuBai(et_bai);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingQuShi(et_shi);
+                            for (int i = 0; i < al3.size(); i++) {
+                                erDingQuShi(al3.get(i));
+                            }
+//                            erDingQuShi(et_shi);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            erDingQuGe(et_ge);
+                            for (int i = 0; i < al4.size(); i++) {
+                                erDingQuGe(al4.get(i));
+                            }
+//                            erDingQuGe(et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            for (int i = 0; i < al2.size(); i++) {
-                                for (int j = 0; j < al3.size(); j++) {
-                                    erDingQuQianBai(al2.get(i), al3.get(j));
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    erDingQuQianBai(al1.get(i), al2.get(j));
                                 }
                             }
 //                            erDingQuQianBai(et_qian, et_bai);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingQuQianShi(et_qian, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    erDingQuQianShi(al1.get(i), al3.get(j));
+                                }
+                            }
+//                            erDingQuQianShi(et_qian, et_shi);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            erDingQuQianGe(et_qian, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    erDingQuQianGe(al1.get(i), al4.get(j));
+                                }
+                            }
+//                            erDingQuQianGe(et_qian, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            erDingQuBaiShi(et_bai, et_shi);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    erDingQuBaiShi(al2.get(i), al3.get(j));
+                                }
+                            }
+//                            erDingQuBaiShi(et_bai, et_shi);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            erDingQuBaiGe(et_bai, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    erDingQuBaiGe(al2.get(i), al4.get(j));
+                                }
+                            }
+//                            erDingQuBaiGe(et_bai, et_ge);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            erDingQuShiGe(et_shi, et_ge);
+                            for (int i = 0; i < al3.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    erDingQuShiGe(al3.get(i), al4.get(j));
+                                }
+                            }
+//                            erDingQuShiGe(et_shi, et_ge);
                         break;
                     case 3:
                         sortEditTextString_2();
@@ -619,67 +744,207 @@ public class QselectResActivity extends AppCompatActivity {
                     case 1:
                         sanDingAll();
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingChuQian(et_qian);
+                            for (int i = 0; i < al1.size(); i++) {
+                                sanDingChuQian(al1.get(i));
+                            }
+//                            sanDingChuQian(et_qian);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingChuBai(et_bai);
+                            for (int i = 0; i < al2.size(); i++) {
+                                sanDingChuBai(al2.get(i));
+                            }
+//                            sanDingChuBai(et_bai);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingChuShi(et_shi);
+                            for (int i = 0; i < al3.size(); i++) {
+                                sanDingChuShi(al3.get(i));
+                            }
+//                            sanDingChuShi(et_shi);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingChuGe(et_ge);
+                            for (int i = 0; i < al4.size(); i++) {
+                                sanDingChuGe(al4.get(i));
+                            }
+//                            sanDingChuGe(et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingChuQianBai(et_qian, et_bai);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    sanDingChuQianBai(al1.get(i), al2.get(j));
+                                }
+                            }
+//                            sanDingChuQianBai(et_qian, et_bai);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingChuQianShi(et_qian, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    sanDingChuQianShi(al1.get(i), al3.get(j));
+                                }
+                            }
+//                            sanDingChuQianShi(et_qian, et_shi);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingChuQianGe(et_qian, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    sanDingChuQianGe(al1.get(i), al4.get(j));
+                                }
+                            }
+//                            sanDingChuQianGe(et_qian, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingChuBaiShi(et_bai, et_shi);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    sanDingChuBaiShi(al2.get(i), al3.get(j));
+                                }
+                            }
+//                            sanDingChuBaiShi(et_bai, et_shi);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingChuBaiGe(et_bai, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    sanDingChuBaiGe(al2.get(i), al4.get(j));
+                                }
+                            }
+//                            sanDingChuBaiGe(et_bai, et_ge);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingChuShiGe(et_shi, et_ge);
+                            for (int i = 0; i < al3.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    sanDingChuShiGe(al3.get(i), al4.get(j));
+                                }
+                            }
+//                            sanDingChuShiGe(et_shi, et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingChuQianBaiShi(et_qian, et_bai, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al3.size(); k++) {
+                                        sanDingChuQianBaiShi(al1.get(i), al2.get(j), al3.get(k));
+                                    }
+                                }
+                            }
+//                        sanDingChuQianBaiShi(et_qian, et_bai, et_shi);
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingChuQianBaiGe(et_qian, et_bai, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        sanDingChuQianBaiGe(al1.get(i), al2.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            sanDingChuQianBaiGe(et_qian, et_bai, et_ge);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingChuQianShiGe(et_qian, et_shi, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        sanDingChuQianShiGe(al1.get(i), al3.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            sanDingChuQianShiGe(et_qian, et_shi, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingChuBaiShiGe(et_bai, et_shi, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        sanDingChuBaiShiGe(al2.get(i), al3.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+                        sanDingChuBaiShiGe(et_bai, et_shi, et_ge);
                         break;
                     case 2:
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingQuQian(et_qian);
+                            for (int i = 0; i < al1.size(); i++) {
+                                sanDingQuQian(al1.get(i));
+                            }
+//                            sanDingQuQian(et_qian);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingQuBai(et_bai);
+                            for (int i = 0; i < al2.size(); i++) {
+                                sanDingQuBai(al2.get(i));
+                            }
+//                            sanDingQuBai(et_bai);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingQuShi(et_shi);
+                            for (int i = 0; i < al3.size(); i++) {
+                                sanDingQuShi(al3.get(i));
+                            }
+//                            sanDingQuShi(et_shi);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingQuGe(et_ge);
+                            for (int i = 0; i < al4.size(); i++) {
+                                sanDingQuGe(al4.get(i));
+                            }
+//                            sanDingQuGe(et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingQuQianBai(et_qian, et_bai);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    sanDingQuQianBai(al1.get(i), al2.get(j));
+                                }
+                            }
+//                            sanDingQuQianBai(et_qian, et_bai);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingQuQianShi(et_qian, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    sanDingQuQianShi(al1.get(i), al3.get(j));
+                                }
+                            }
+//                            sanDingQuQianShi(et_qian, et_shi);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingQuQianGe(et_qian, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    sanDingQuQianGe(al1.get(i), al4.get(j));
+                                }
+                            }
+//                            sanDingQuQianGe(et_qian, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingQuBaiShi(et_bai, et_shi);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    sanDingQuBaiShi(al2.get(i), al3.get(j));
+                                }
+                            }
+//                            sanDingQuBaiShi(et_bai, et_shi);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingQuBaiGe(et_bai, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    sanDingQuBaiGe(al2.get(i), al4.get(j));
+                                }
+                            }
+//                            sanDingQuBaiGe(et_bai, et_ge);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingQuShiGe(et_shi, et_ge);
+                            for (int i = 0; i < al3.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    sanDingQuShiGe(al3.get(i), al4.get(j));
+                                }
+                            }
+//                            sanDingQuShiGe(et_shi, et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            sanDingQuQianBaiShi(et_qian, et_bai, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al3.size(); k++) {
+                                        sanDingQuQianBaiShi(al1.get(i), al2.get(j), al3.get(k));
+                                    }
+                                }
+                            }
+//                            sanDingQuQianBaiShi(et_qian, et_bai, et_shi);
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingQuQianBaiGe(et_qian, et_bai, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        sanDingQuQianBaiGe(al1.get(i), al2.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                        sanDingQuQianBaiGe(et_qian, et_bai, et_ge);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingQuQianShiGe(et_qian, et_shi, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        sanDingQuQianShiGe(al1.get(i), al3.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            sanDingQuQianShiGe(et_qian, et_shi, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            sanDingQuBaiShiGe(et_bai, et_shi, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        sanDingQuBaiShiGe(al2.get(i), al3.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            sanDingQuBaiShiGe(et_bai, et_shi, et_ge);
                         break;
                     case 3:
                         sortEditTextString_3();
@@ -723,73 +988,231 @@ public class QselectResActivity extends AppCompatActivity {
                     case 1:
                         siDingAll();
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingChuQian(et_qian);
+                            for (int i = 0; i < al1.size(); i++) {
+                                siDingChuQian(al1.get(i));
+                            }
+//                            siDingChuQian(et_qian);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingChuBai(et_bai);
+                            for (int i = 0; i < al2.size(); i++) {
+                                siDingChuBai(al2.get(i));
+                            }
+//                            siDingChuBai(et_bai);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingChuShi(et_shi);
+                            for (int i = 0; i < al3.size(); i++) {
+                                siDingChuShi(al3.get(i));
+                            }
+//                            siDingChuShi(et_shi);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingChuGe(et_ge);
+                            for (int i = 0; i < al4.size(); i++) {
+                                siDingChuGe(al4.get(i));
+                            }
+//                            siDingChuGe(et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingChuQianBai(et_qian, et_bai);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    siDingChuQianBai(al1.get(i), al2.get(j));
+                                }
+                            }
+//                            siDingChuQianBai(et_qian, et_bai);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingChuQianShi(et_qian, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    siDingChuQianShi(al1.get(i), al3.get(j));
+                                }
+                            }
+//                            siDingChuQianShi(et_qian, et_shi);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingChuQianGe(et_qian, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    siDingChuQianGe(al1.get(i), al4.get(j));
+                                }
+                            }
+//                            siDingChuQianGe(et_qian, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingChuBaiShi(et_bai, et_shi);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    siDingChuBaiShi(al2.get(i), al3.get(j));
+                                }
+                            }
+//                            siDingChuBaiShi(et_bai, et_shi);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingChuBaiGe(et_bai, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    siDingChuBaiGe(al2.get(i), al4.get(j));
+                                }
+                            }
+//                            siDingChuBaiGe(et_bai, et_ge);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingChuShiGe(et_shi, et_ge);
+                            for (int i = 0; i < al3.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    siDingChuShiGe(al3.get(i), al4.get(j));
+                                }
+                            }
+//                            siDingChuShiGe(et_shi, et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingChuQianBaiShi(et_qian, et_bai, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al3.size(); k++) {
+                                        siDingChuQianBaiShi(al1.get(i), al2.get(j), al3.get(k));
+                                    }
+                                }
+                            }
+//                            siDingChuQianBaiShi(et_qian, et_bai, et_shi);
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingChuQianBaiGe(et_qian, et_bai, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        siDingChuQianBaiGe(al1.get(i), al2.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            siDingChuQianBaiGe(et_qian, et_bai, et_ge);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingChuQianShiGe(et_qian, et_shi, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        siDingChuQianShiGe(al1.get(i), al3.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            siDingChuQianShiGe(et_qian, et_shi, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingChuBaiShiGe(et_bai, et_shi, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        siDingChuBaiShiGe(al2.get(i), al3.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            siDingChuBaiShiGe(et_bai, et_shi, et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingChuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al3.size(); k++) {
+                                        for (int l = 0; l < al4.size(); l++) {
+                                            siDingChuQianBaiShiGe(al1.get(i), al2.get(j), al3.get(k), al4.get(l));
+                                        }
+                                    }
+                                }
+                            }
+//                        siDingChuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
                         break;
                     case 2:
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingQuQian(et_qian);
+                            for (int i = 0; i < al1.size(); i++) {
+                                siDingQuQian(al1.get(i));
+                            }
+//                            siDingQuQian(et_qian);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingQuBai(et_bai);
+                            for (int i = 0; i < al2.size(); i++) {
+                                siDingQuBai(al2.get(i));
+                            }
+//                            siDingQuBai(et_bai);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingQuShi(et_shi);
+                            for (int i = 0; i < al3.size(); i++) {
+                                siDingQuShi(al3.get(i));
+                            }
+//                            siDingQuShi(et_shi);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingQuGe(et_ge);
+                            for (int i = 0; i < al4.size(); i++) {
+                                siDingQuGe(al4.get(i));
+                            }
+//                            siDingQuGe(et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingQuQianBai(et_qian, et_bai);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    siDingQuQianBai(al1.get(i), al2.get(j));
+                                }
+                            }
+//                            siDingQuQianBai(et_qian, et_bai);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingQuQianShi(et_qian, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    siDingQuQianShi(al1.get(i), al3.get(j));
+                                }
+                            }
+//                            siDingQuQianShi(et_qian, et_shi);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingQuQianGe(et_qian, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    siDingQuQianGe(al1.get(i), al4.get(j));
+                                }
+                            }
+//                            siDingQuQianGe(et_qian, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingQuBaiShi(et_bai, et_shi);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    siDingQuBaiShi(al2.get(i), al3.get(j));
+                                }
+                            }
+//                            siDingQuBaiShi(et_bai, et_shi);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingQuBaiGe(et_bai, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    siDingQuBaiGe(al2.get(i), al4.get(j));
+                                }
+                            }
+//                            siDingQuBaiGe(et_bai, et_ge);
                         if (et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingQuShiGe(et_shi, et_ge);
+                            for (int i = 0; i < al3.size(); i++) {
+                                for (int j = 0; j < al4.size(); j++) {
+                                    siDingQuShiGe(al3.get(i), al4.get(j));
+                                }
+                            }
+//                            siDingQuShiGe(et_shi, et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && et_ge.isEmpty())
-                            siDingQuQianBaiShi(et_qian, et_bai, et_shi);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al3.size(); k++) {
+                                        siDingQuQianBaiShi(al1.get(i), al2.get(j), al3.get(k));
+                                    }
+                                }
+                            }
+//                            siDingQuQianBaiShi(et_qian, et_bai, et_shi);
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingQuQianBaiGe(et_qian, et_bai, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        siDingQuQianBaiGe(al1.get(i), al2.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            siDingQuQianBaiGe(et_qian, et_bai, et_ge);
                         if (!et_qian.isEmpty() && et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingQuQianShiGe(et_qian, et_shi, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        siDingQuQianShiGe(al1.get(i), al3.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            siDingQuQianShiGe(et_qian, et_shi, et_ge);
                         if (et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingQuBaiShiGe(et_bai, et_shi, et_ge);
+                            for (int i = 0; i < al2.size(); i++) {
+                                for (int j = 0; j < al3.size(); j++) {
+                                    for (int k = 0; k < al4.size(); k++) {
+                                        siDingQuBaiShiGe(al2.get(i), al3.get(j), al4.get(k));
+                                    }
+                                }
+                            }
+//                            siDingQuBaiShiGe(et_bai, et_shi, et_ge);
 
                         if (!et_qian.isEmpty() && !et_bai.isEmpty() && !et_shi.isEmpty() && !et_ge.isEmpty())
-                            siDingQuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
+                            for (int i = 0; i < al1.size(); i++) {
+                                for (int j = 0; j < al2.size(); j++) {
+                                    for (int k = 0; k < al3.size(); k++) {
+                                        for (int l = 0; l < al4.size(); l++) {
+                                            siDingQuQianBaiShiGe(al1.get(i), al2.get(j), al3.get(k), al4.get(l));
+                                        }
+                                    }
+                                }
+                            }
+                        siDingQuQianBaiShiGe(et_qian, et_bai, et_shi, et_ge);
                         break;
                     case 3:
                         sortEditTextString_4();

@@ -247,7 +247,10 @@ public class GameActivity extends AppCompatActivity {
 //            for (String line : aa) {
 //                Log.i("troy", line);
 //            }
+//            JSONObject jo0 = mu.getJSONObjectData();
+//            Log(jo0.toString());
             JSONArray ja = mu.getJSONObjectData().getJSONObject("fail_dtl").getJSONArray("l");
+            Log(ja.toString());
             int len = ja.length();
             Log.i("troy", "共有" + len + "筆資料");
             if (len != 0) {
