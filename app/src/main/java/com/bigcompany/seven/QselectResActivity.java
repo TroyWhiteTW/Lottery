@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -27,6 +29,7 @@ public class QselectResActivity extends AppCompatActivity {
     private EditText et_perMoney;
     private int gameStyle;//classID: 1=二定位; 2=三定位; 3=四定位; 4=二字現; 5=三字現; 6=四字現
     private int gameSet;
+    private int rcedits, rcedits_use;
     private String et_qian, et_bai, et_shi, et_ge, et_21, et_22, et_31, et_32, et_33, et_41, et_42, et_43, et_44;
     private String cookie;
     private String app_net;
@@ -79,7 +82,7 @@ public class QselectResActivity extends AppCompatActivity {
 //        Log("et_44=" + et_44);
 
         initial();
-
+        getData();
         gameSet();
 
         tv_howMany.setText("筆數：" + list.size());
@@ -141,6 +144,32 @@ public class QselectResActivity extends AppCompatActivity {
                 sendGameSet();
             }
         });
+    }
+
+    public void getData() {
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                getGameData();
+                Looper.loop();
+            }
+        }.start();
+    }
+
+    public void getGameData() {
+        try {
+            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_head_data");
+            mu.sendCookie(cookie);
+            JSONObject jo = mu.getJSONObjectData();
+            rcedits = jo.getInt("rcedits");
+            Log("rcedits= " + rcedits);
+            rcedits_use = jo.getInt("rcedits_use");
+            Log("rcedits_use= " + rcedits_use);
+        } catch (Exception e) {
+            Toast("無法與伺服器取得連線");
+            Log(e.toString());
+        }
     }
 
     public void treeSbRt() {
@@ -665,25 +694,28 @@ public class QselectResActivity extends AppCompatActivity {
     }
 
     public void doSendData() {
-        try {
-            MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_soonselect");
-            mu.sendCookie(cookie);
-            mu.postKeyValue("post_money", et_perMoney.getText().toString());
-            mu.postKeyValue("post_number_money", sb3.toString());
-            mu.postKeyValue("selectlogsclassid", String.valueOf(gameStyle));
-            mu.postKeyValue("selectlogs", selectlogs);
-            List<String> ret = mu.getHtml();
-            for (String line : ret) {
-                Log(line);
-            }
-            Toast("下注完成");
-            finish();
-        } catch (Exception e) {
-            Toast("無法與伺服器取得連線");
-            Log(e.toString());
-        }
         if (!et_perMoney.getText().toString().equals("")) {
-
+            if (Integer.valueOf(et_perMoney.getText().toString()) * list.size() > rcedits - rcedits_use) {
+                Toast("餘額不足");
+            } else {
+                try {
+                    MultipartUtility_tw mu = new MultipartUtility_tw("http://" + app_net + "/mobile/wap_ajax.php?action=app_soonselect");
+                    mu.sendCookie(cookie);
+                    mu.postKeyValue("post_money", et_perMoney.getText().toString());
+                    mu.postKeyValue("post_number_money", sb3.toString());
+                    mu.postKeyValue("selectlogsclassid", String.valueOf(gameStyle));
+                    mu.postKeyValue("selectlogs", selectlogs);
+                    List<String> ret = mu.getHtml();
+                    for (String line : ret) {
+                        Log(line);
+                    }
+                    Toast("下注完成");
+                    finish();
+                } catch (Exception e) {
+                    Toast("無法與伺服器取得連線");
+                    Log(e.toString());
+                }
+            }
         } else {
             Toast("未輸入金額");
         }
